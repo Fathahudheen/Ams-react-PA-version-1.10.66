@@ -1,14 +1,14 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import pagination from './pagination'
+import Pagination from '../../widgets/pagination'
 
 import {
   CCard,
   CCardBody,
   CCol,
   CLink,
-  CPagination,
-  CPaginationItem,
+  // CPagination,
+  // CPaginationItem,
   CDropdown,
   CDropdownToggle,
   CDropdownMenu,
@@ -166,7 +166,7 @@ const Dashboard = () => {
               </CTable>
             </CCardBody>
             <div>
-              <paginat />
+              <Pagination />
             </div>
           </CCard>
         </CCol>

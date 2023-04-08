@@ -5,7 +5,7 @@ import {
   cilDrop,
   cilPuzzle,
   cilSpeedometer,
-  cilStar,
+  // cilStar,
   cilUserFollow,
   cilPeople,
   cilCommentSquare,
