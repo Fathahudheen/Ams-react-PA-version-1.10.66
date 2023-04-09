@@ -1,19 +1,13 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 import Pagination from '../../widgets/pagination'
+import Modal from 'src/views/widgets/Modal'
 
 import {
   CCard,
   CCardBody,
   CCol,
   CLink,
-  // CPagination,
-  // CPaginationItem,
-  CDropdown,
-  CDropdownToggle,
-  CDropdownMenu,
-  CDropdownItem,
-  // CProgress,
   CRow,
   CTable,
   CTableBody,
@@ -31,6 +25,7 @@ import {
   cibTwitter,
   cibWhatsapp,
 } from '@coreui/icons'
+import Filter from 'src/views/widgets/Filter'
 
 const Dashboard = () => {
   const tableExample = [
@@ -96,9 +91,19 @@ const Dashboard = () => {
     <>
       <CRow>
         <CCol xs>
+          <div>
+            {/* <CButton
+              style={{ backgroundColor: 'rgb(88 107 135)', border: 'none' }}
+              className="mb-2"
+            >
+              ADD+
+            </CButton> */}
+            <Modal />
+          </div>
           <CCard className="mb-4">
             <CCardBody>
-              <div className="d-flex">
+              <Filter />
+              {/* <div className="d-flex">
                 <p className="fw-bold fs-4"> Enquiry source </p>
                 <div className="justify-content-end ms-auto">
                   <CDropdown>
@@ -110,7 +115,7 @@ const Dashboard = () => {
                     </CDropdownMenu>
                   </CDropdown>
                 </div>
-              </div>
+              </div> */}
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
                   <CTableRow>
