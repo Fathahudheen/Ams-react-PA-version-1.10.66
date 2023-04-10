@@ -1,7 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
-import { CModal, CButton, CModalHeader, CModalTitle, CModalBody, CModalFooter } from '@coreui/react'
-
+import {
+  CModal,
+  CButton,
+  CModalHeader,
+  CModalTitle,
+  CModalBody,
+  CModalFooter,
+  CForm,
+} from '@coreui/react'
+import Form from './Form'
 function Modal() {
   const [visible, setVisible] = useState(false)
 
@@ -17,18 +25,27 @@ function Modal() {
       </div>
       <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
-          <CModalTitle>Modal title</CModalTitle>
+          <CModalTitle>Add</CModalTitle>
         </CModalHeader>
         <CModalBody>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-          in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+          <CForm className="row g-3">
+            <div className="d-flex justify-content-center">
+              <Form />
+            </div>
+            <CModalFooter>
+              <CButton color="secondary" onClick={() => setVisible(false)}>
+                Close
+              </CButton>
+              <CButton
+                color="primary"
+                type="submit"
+                style={{ backgroundColor: 'rgb(69 89 132)', border: 'none' }}
+              >
+                Submit
+              </CButton>
+            </CModalFooter>
+          </CForm>
         </CModalBody>
-        <CModalFooter>
-          <CButton color="secondary" onClick={() => setVisible(false)}>
-            Close
-          </CButton>
-          <CButton color="primary">Save changes</CButton>
-        </CModalFooter>
       </CModal>
     </>
   )
