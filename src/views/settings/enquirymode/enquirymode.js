@@ -1,25 +1,16 @@
 import React from 'react'
-// import CIcon from '@coreui/icons-react'
 import Pagination from '../../widgets/pagination'
 import Modal from 'src/views/widgets/Modal'
-// import { useState } from 'react'
-// import { Button } from 'react-bootstrap'
-// import { BsFill0CircleFill } from 'react-icons/bs'
-import Delete from 'src/views/actions/Delete'
+import Filter from 'src/views/widgets/Filter'
 
+import Edit from 'src/views/actions/Edit'
 import View from 'src/views/actions/View'
+import Delete from 'src/views/actions/Delete'
 
 import {
   CCard,
   CCardBody,
   CCol,
-  // CLink,
-  // CModal,
-  CButton,
-  // CModalHeader,
-  // CModalTitle,
-  // CModalBody,
-  // CModalFooter,
   CRow,
   CTable,
   CTableBody,
@@ -37,10 +28,8 @@ import {
   cibTwitter,
   cibWhatsapp,
 } from '@coreui/icons'
-import Filter from 'src/views/widgets/Filter'
 
 const Dashboard = () => {
-  // const [visible, setVisible] = useState(false)
   const tableExample = [
     {
       id: { id: 1 },
@@ -109,12 +98,10 @@ const Dashboard = () => {
           </div>
           <CCard className="mb-4">
             <CCardBody>
-              <div className="">
-                <div className="d-flex">
-                  <div className="fw-bold fs-4"> Enquiry Mode </div>
-                  <div className="justify-content-end ms-auto mb-2">
-                    <Filter />
-                  </div>
+              <div className="d-flex">
+                <div className="fw-bold fs-4"> Enquiry Mode </div>
+                <div className="justify-content-end ms-auto mb-2">
+                  <Filter />
                 </div>
               </div>
 
@@ -122,8 +109,6 @@ const Dashboard = () => {
                 <CTableHead color="light">
                   <CTableRow>
                     <CTableHeaderCell className="text-end">Id</CTableHeaderCell>
-                    {/* <CTableHeaderCell className="text-center">Image</CTableHeaderCell> */}
-
                     <CTableHeaderCell>Name</CTableHeaderCell>
                     <CTableHeaderCell>Description</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Status</CTableHeaderCell>
@@ -136,10 +121,6 @@ const Dashboard = () => {
                       <CTableDataCell className="text-end">
                         <div>{item.id.id}</div>
                       </CTableDataCell>
-                      {/* <CTableDataCell className="text-center">
-                        <CIcon size="xl" icon={item.mode.icon} />
-                      </CTableDataCell> */}
-
                       <CTableDataCell>
                         <div>{item.mode.name}</div>
                       </CTableDataCell>
@@ -166,10 +147,10 @@ const Dashboard = () => {
                             <View />
                           </div>
                           <div>
-                            <Delete />
+                            <Edit />
                           </div>
                           <div>
-                            <CButton>Delete</CButton>
+                            <Delete />
                           </div>
                         </div>
                       </CTableDataCell>

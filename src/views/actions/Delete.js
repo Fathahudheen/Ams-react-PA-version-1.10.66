@@ -1,30 +1,8 @@
 import React from 'react'
-import { useState } from 'react'
-// import CIcon from '@coreui/icons-react'
-import { CModal, CButton, CModalHeader, CModalTitle, CModalBody, CModalFooter } from '@coreui/react'
+import { TrashFill } from 'react-bootstrap-icons'
 
-function View() {
-  const [visible, setVisible] = useState(false)
-  return (
-    <>
-      {/* <CIcon>
-        <cibBigCartel />
-      </CIcon> */}
-      <CButton onClick={() => setVisible(!visible)}>Edit</CButton>
-      <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
-        <CModalHeader>
-          <CModalTitle>Edit</CModalTitle>
-        </CModalHeader>
-        <CModalBody>Edit</CModalBody>
-        <CModalFooter>
-          <CButton color="secondary" onClick={() => setVisible(false)}>
-            Close
-          </CButton>
-          <CButton color="primary">Save changes</CButton>
-        </CModalFooter>
-      </CModal>
-    </>
-  )
+const Delete = () => {
+  return <TrashFill size={25} className="m-1 iconsPointer" />
 }
 
-export default View
+export default Delete

@@ -1,13 +1,15 @@
 import React from 'react'
-import CIcon from '@coreui/icons-react'
 import Modal from 'src/views/widgets/Modal'
+import Filter from 'src/views/widgets/Filter'
+
+import Edit from 'src/views/actions/Edit'
+import View from 'src/views/actions/View'
+import Delete from 'src/views/actions/Delete'
 
 import {
   CCard,
   CCardBody,
   CCol,
-  CLink,
-  // CProgress,
   CRow,
   CTable,
   CTableBody,
@@ -96,14 +98,17 @@ const Dashboard = () => {
 
           <CCard className="mb-4">
             <CCardBody>
-              <p className="fw-bold fs-4"> Enquiry source </p>
-
+              <div className="d-flex">
+                <div className="fw-bold fs-4"> Enquiry Source </div>
+                <div className="justify-content-end ms-auto mb-2">
+                  <Filter />
+                </div>
+              </div>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
                   <CTableRow>
                     <CTableHeaderCell className="text-end">Id</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Image</CTableHeaderCell>
-
+                    {/* <CTableHeaderCell className="text-center">Image</CTableHeaderCell> */}
                     <CTableHeaderCell>Name</CTableHeaderCell>
                     <CTableHeaderCell>Description</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Status</CTableHeaderCell>
@@ -116,10 +121,9 @@ const Dashboard = () => {
                       <CTableDataCell className="text-end">
                         <div>{item.id.id}</div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center">
+                      {/* <CTableDataCell className="text-center">
                         <CIcon size="xl" icon={item.mode.icon} />
-                      </CTableDataCell>
-
+                      </CTableDataCell> */}
                       <CTableDataCell>
                         <div>{item.mode.name}</div>
                       </CTableDataCell>
@@ -140,12 +144,18 @@ const Dashboard = () => {
                           </span>
                         </div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <CLink>
-                          <CIcon size="xl " icon={item.action.view} />
-                        </CLink>
-                        <CIcon size="xl ms-1 " icon={item.action.edit} />
-                        <CIcon size="xl ms-1" icon={item.action.delete} />
+                      <CTableDataCell>
+                        <div className="d-flex justify-content-center ">
+                          <div className="">
+                            <View />
+                          </div>
+                          <div>
+                            <Edit />
+                          </div>
+                          <div>
+                            <Delete />
+                          </div>
+                        </div>
                       </CTableDataCell>
                     </CTableRow>
                   ))}
