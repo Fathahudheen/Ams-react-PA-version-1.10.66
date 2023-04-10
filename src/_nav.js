@@ -1,5 +1,6 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
+
 import {
   cilDrop,
   cilPuzzle,
@@ -90,7 +91,6 @@ const _nav = [
         component: CNavItem,
         name: 'Enquiry Mode',
         to: '/settings/enquirymode',
-        icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
