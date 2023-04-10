@@ -1,11 +1,9 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 import {
-  cilCursor,
   cilDrop,
   cilPuzzle,
   cilSpeedometer,
-  // cilStar,
   cilUserFollow,
   cilPeople,
   cilCommentSquare,
@@ -24,7 +22,6 @@ const _nav = [
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     badge: {
       color: 'info',
-      // text: 'NEW',
     },
   },
   {
@@ -35,15 +32,11 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Myteam',
+    name: 'My Team',
     to: '/theme/typography',
     icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
   },
 
-  // {
-  //   component: CNavTitle,
-  //   name: 'Theme',
-  // },
   {
     component: CNavItem,
     name: 'Enquiry',
@@ -52,7 +45,7 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Allstudents',
+    name: 'All Students',
     to: '/theme/typography',
     icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
   },
@@ -70,19 +63,19 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Fee payments',
+    name: 'Fee Payments',
     to: '/theme/colors',
     icon: <CIcon icon={cilDollar} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
-    name: 'Users management',
+    name: 'Users Management',
     to: '/theme/typography',
     icon: <CIcon icon={cilGroup} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
-    name: 'Support enquiry',
+    name: 'Support Enquiry',
     to: '/theme/colors',
     icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
   },
@@ -93,29 +86,20 @@ const _nav = [
     to: '/settings',
     icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
     items: [
-      // {
-      //   component: CNavItem,
-      //   name: 'Accordion',
-      //   to: '/base/accordion',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Breadcrumb',
-      //   to: '/base/breadcrumbs',
-      // },
       {
         component: CNavItem,
-        name: 'Enquiry mode',
+        name: 'Enquiry Mode',
         to: '/settings/enquirymode',
+        icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
-        name: 'Enquiry source',
+        name: 'Enquiry Source',
         to: '/settings/enquirysource',
       },
       {
         component: CNavItem,
-        name: 'Course category',
+        name: 'Course Category',
         to: '/base/tables',
       },
       {
@@ -130,61 +114,11 @@ const _nav = [
       },
       {
         component: CNavItem,
-        name: 'Subjects-Syllabus',
+        name: 'Subjects Syllabus',
         to: '/base/popovers',
       },
     ],
   },
-  {
-    component: CNavGroup,
-    name: 'Buttons',
-    to: '/buttons',
-    icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,
-    // items: [
-    //   {
-    //     component: CNavItem,
-    //     name: 'Buttons',
-    //     to: '/buttons/buttons',
-    //   },
-    //   {
-    //     component: CNavItem,
-    //     name: 'Buttons groups',
-    //     to: '/buttons/button-groups',
-    //   },
-    //   {
-    //     component: CNavItem,
-    //     name: 'Dropdowns',
-    //     to: '/buttons/dropdowns',
-    //   },
-    // ],
-  },
-  // {
-  //   component: CNavGroup,
-  //   name: 'Pages',
-  //   icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
-  //   items: [
-  //     {
-  //       component: CNavItem,
-  //       name: 'Login',
-  //       to: '/login',
-  //     },
-  //     {
-  //       component: CNavItem,
-  //       name: 'Register',
-  //       to: '/register',
-  //     },
-  //     {
-  //       component: CNavItem,
-  //       name: 'Error 404',
-  //       to: '/404',
-  //     },
-  //     {
-  //       component: CNavItem,
-  //       name: 'Error 500',
-  //       to: '/500',
-  //     },
-  //   ],
-  // },
 ]
 
 export default _nav
