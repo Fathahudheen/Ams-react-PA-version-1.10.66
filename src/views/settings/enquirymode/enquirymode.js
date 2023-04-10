@@ -2,6 +2,7 @@ import React from 'react'
 import CIcon from '@coreui/icons-react'
 import Pagination from '../../widgets/pagination'
 import Modal from 'src/views/widgets/Modal'
+// import View from 'src/views/actions/View'
 
 import {
   CCard,
@@ -158,12 +159,14 @@ const Dashboard = () => {
                           </span>
                         </div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <CLink>
-                          <CIcon size="xl " icon={item.action.view} />
-                        </CLink>
-                        <CIcon size="xl ms-1 " icon={item.action.edit} />
-                        <CIcon size="xl ms-1" icon={item.action.delete} />
+                      <CTableDataCell>
+                        <div className="d-flex justify-content-center">
+                          <CLink>
+                            <CIcon size="xl " icon={item.action.view} />
+                          </CLink>
+                          <CIcon size="xl " icon={item.action.edit} />
+                          <CIcon size="xl" icon={item.action.delete} />
+                        </div>
                       </CTableDataCell>
                     </CTableRow>
                   ))}
