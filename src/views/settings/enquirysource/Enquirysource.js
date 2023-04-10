@@ -1,5 +1,7 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
+import Modal from 'src/views/widgets/Modal'
+
 import {
   CCard,
   CCardBody,
@@ -88,11 +90,14 @@ const Dashboard = () => {
     <>
       <CRow>
         <CCol xs>
+          <div>
+            <Modal />
+          </div>
+
           <CCard className="mb-4">
             <CCardBody>
-              <div>
-                <p className="fw-bold fs-4"> Enquiry source </p>
-              </div>
+              <p className="fw-bold fs-4"> Enquiry source </p>
+
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
                   <CTableRow>

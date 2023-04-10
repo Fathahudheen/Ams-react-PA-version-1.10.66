@@ -1,28 +1,30 @@
 import React from 'react'
 import { useState } from 'react'
 // import CIcon from '@coreui/icons-react'
-// import { ArrowRight } from 'react-bootstrap-icons'
 import { CModal, CButton, CModalHeader, CModalTitle, CModalBody, CModalFooter } from '@coreui/react'
 
-function Delete() {
+function View() {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>View</CButton>
+      {/* <CIcon>
+        <cibBigCartel />
+      </CIcon> */}
+      <CButton onClick={() => setVisible(!visible)}>Edit</CButton>
       <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
-          <CModalTitle>View</CModalTitle>
-          {/* <ArrowRight /> */}
+          <CModalTitle>Edit</CModalTitle>
         </CModalHeader>
-        <CModalBody>This is view</CModalBody>
+        <CModalBody>Edit</CModalBody>
         <CModalFooter>
           <CButton color="secondary" onClick={() => setVisible(false)}>
             Close
           </CButton>
+          <CButton color="primary">Save changes</CButton>
         </CModalFooter>
       </CModal>
     </>
   )
 }
 
-export default Delete
+export default View

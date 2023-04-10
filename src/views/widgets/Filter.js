@@ -3,8 +3,8 @@ import { CDropdown, CDropdownMenu, CDropdownToggle, CDropdownItem } from '@coreu
 
 function Filter() {
   return (
-    <div className="d-flex">
-      <p className="fw-bold fs-4"> Enquiry source </p>
+    <div className="">
+      {/* <p className="fw-bold fs-4"> Enquiry mode </p> */}
       <div className="justify-content-end ms-auto">
         <CDropdown>
           <CDropdownToggle color="light">Filter Table</CDropdownToggle>

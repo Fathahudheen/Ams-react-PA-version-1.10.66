@@ -1,14 +1,25 @@
 import React from 'react'
-import CIcon from '@coreui/icons-react'
+// import CIcon from '@coreui/icons-react'
 import Pagination from '../../widgets/pagination'
 import Modal from 'src/views/widgets/Modal'
-// import View from 'src/views/actions/View'
+// import { useState } from 'react'
+// import { Button } from 'react-bootstrap'
+// import { BsFill0CircleFill } from 'react-icons/bs'
+import Delete from 'src/views/actions/Delete'
+
+import View from 'src/views/actions/View'
 
 import {
   CCard,
   CCardBody,
   CCol,
-  CLink,
+  // CLink,
+  // CModal,
+  CButton,
+  // CModalHeader,
+  // CModalTitle,
+  // CModalBody,
+  // CModalFooter,
   CRow,
   CTable,
   CTableBody,
@@ -29,6 +40,7 @@ import {
 import Filter from 'src/views/widgets/Filter'
 
 const Dashboard = () => {
+  // const [visible, setVisible] = useState(false)
   const tableExample = [
     {
       id: { id: 1 },
@@ -93,35 +105,24 @@ const Dashboard = () => {
       <CRow>
         <CCol xs>
           <div>
-            {/* <CButton
-              style={{ backgroundColor: 'rgb(88 107 135)', border: 'none' }}
-              className="mb-2"
-            >
-              ADD+
-            </CButton> */}
             <Modal />
           </div>
           <CCard className="mb-4">
             <CCardBody>
-              <Filter />
-              {/* <div className="d-flex">
-                <p className="fw-bold fs-4"> Enquiry source </p>
-                <div className="justify-content-end ms-auto">
-                  <CDropdown>
-                    <CDropdownToggle color="light">Dropdown button</CDropdownToggle>
-                    <CDropdownMenu>
-                      <CDropdownItem href="#">Action</CDropdownItem>
-                      <CDropdownItem href="#">Another action</CDropdownItem>
-                      <CDropdownItem href="#">Something else here</CDropdownItem>
-                    </CDropdownMenu>
-                  </CDropdown>
+              <div className="">
+                <div className="d-flex">
+                  <div className="fw-bold fs-4"> Enquiry Mode </div>
+                  <div className="justify-content-end ms-auto mb-2">
+                    <Filter />
+                  </div>
                 </div>
-              </div> */}
+              </div>
+
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
                   <CTableRow>
                     <CTableHeaderCell className="text-end">Id</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Image</CTableHeaderCell>
+                    {/* <CTableHeaderCell className="text-center">Image</CTableHeaderCell> */}
 
                     <CTableHeaderCell>Name</CTableHeaderCell>
                     <CTableHeaderCell>Description</CTableHeaderCell>
@@ -135,9 +136,9 @@ const Dashboard = () => {
                       <CTableDataCell className="text-end">
                         <div>{item.id.id}</div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center">
+                      {/* <CTableDataCell className="text-center">
                         <CIcon size="xl" icon={item.mode.icon} />
-                      </CTableDataCell>
+                      </CTableDataCell> */}
 
                       <CTableDataCell>
                         <div>{item.mode.name}</div>
@@ -160,12 +161,16 @@ const Dashboard = () => {
                         </div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="d-flex justify-content-center">
-                          <CLink>
-                            <CIcon size="xl " icon={item.action.view} />
-                          </CLink>
-                          <CIcon size="xl " icon={item.action.edit} />
-                          <CIcon size="xl" icon={item.action.delete} />
+                        <div className="d-flex justify-content-center ">
+                          <div className="">
+                            <View />
+                          </div>
+                          <div>
+                            <Delete />
+                          </div>
+                          <div>
+                            <CButton>Delete</CButton>
+                          </div>
                         </div>
                       </CTableDataCell>
                     </CTableRow>
