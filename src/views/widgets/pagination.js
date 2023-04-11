@@ -5,11 +5,13 @@ function Pagination() {
   return (
     <div>
       <CPagination align="center" aria-label="Page navigation example">
-        <CPaginationItem disabled>Previous</CPaginationItem>
-        <CPaginationItem>1</CPaginationItem>
-        <CPaginationItem>2</CPaginationItem>
-        <CPaginationItem>3</CPaginationItem>
-        <CPaginationItem>Next</CPaginationItem>
+        <CPaginationItem style={{ color: 'rgb(69 89 132)' }} disabled>
+          Previous
+        </CPaginationItem>
+        <CPaginationItem style={{ color: 'rgb(69 89 132)' }}>1</CPaginationItem>
+        <CPaginationItem style={{ color: 'rgb(69 89 132)' }}>2</CPaginationItem>
+        <CPaginationItem style={{ color: 'rgb(69 89 132)' }}>3</CPaginationItem>
+        <CPaginationItem style={{ color: 'rgb(69 89 132)' }}>Next</CPaginationItem>
       </CPagination>
     </div>
   )
