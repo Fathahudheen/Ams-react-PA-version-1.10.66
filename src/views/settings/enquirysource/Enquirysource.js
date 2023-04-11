@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'src/views/widgets/Modal'
 import Filter from 'src/views/widgets/Filter'
+import Pagination from '../../widgets/pagination'
 
 import Edit from 'src/views/actions/Edit'
 import View from 'src/views/actions/View'
@@ -162,6 +163,9 @@ const Dashboard = () => {
                 </CTableBody>
               </CTable>
             </CCardBody>
+            <div>
+              <Pagination />
+            </div>
           </CCard>
         </CCol>
       </CRow>

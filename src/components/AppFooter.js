@@ -13,7 +13,7 @@ const AppFooter = () => {
       <div>
         <span className="me-1">Developed by</span>
         <a href="https://fullstackdeveloper.io/" target="_blank" rel="noopener noreferrer">
-          Fullstack developer academy
+          Fullstack Developer Academy
         </a>
       </div>
     </CFooter>
