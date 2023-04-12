@@ -2,7 +2,6 @@ import React from 'react'
 import CIcon from '@coreui/icons-react'
 
 import {
-  cilDrop,
   cilPuzzle,
   cilSpeedometer,
   cilUserFollow,
@@ -11,7 +10,10 @@ import {
   cilPen,
   cilList,
   cilDollar,
-  cilGroup,
+  cilSpreadsheet,
+  cilHandshake,
+  cilAddressBook,
+  cilUser,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem } from '@coreui/react'
 
@@ -33,9 +35,16 @@ const _nav = [
   },
   {
     component: CNavItem,
+    name: 'Course',
+    to: '/theme/colors',
+    icon: <CIcon icon={cilSpreadsheet} customClassName="nav-icon" />,
+  },
+
+  {
+    component: CNavItem,
     name: 'My Team',
     to: '/theme/typography',
-    icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
   },
 
   {
@@ -72,13 +81,13 @@ const _nav = [
     component: CNavItem,
     name: 'Users Management',
     to: '/theme/typography',
-    icon: <CIcon icon={cilGroup} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilAddressBook} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
     name: 'Support Enquiry',
     to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilHandshake} customClassName="nav-icon" />,
   },
 
   {
@@ -114,7 +123,7 @@ const _nav = [
       },
       {
         component: CNavItem,
-        name: 'Subjects Syllabus',
+        name: 'Subjects',
         to: '/base/popovers',
       },
     ],
