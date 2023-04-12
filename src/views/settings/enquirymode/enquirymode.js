@@ -135,7 +135,7 @@ const Dashboard = () => {
                                 ? { backgroundColor: 'green' }
                                 : { backgroundColor: 'red' }
                             }
-                            className="p-2 rounded-5 text-light"
+                            className="ps-2 pe-2 p-1  rounded-5 text-light "
                           >
                             {item.mode.status ? 'Active' : 'Inactive'}
                           </span>

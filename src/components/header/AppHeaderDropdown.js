@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   CAvatar,
-  // CBadge,
   CDropdown,
   CDropdownDivider,
   CDropdownHeader,
@@ -9,21 +9,10 @@ import {
   CDropdownMenu,
   CDropdownToggle,
 } from '@coreui/react'
-import {
-  // cilBell,
-  // cilCreditCard,
-  // cilCommentSquare,
-  // cilEnvelopeOpen,
-  // cilFile,
-  cilLockLocked,
-  cilSettings,
-  // cilTask,
-  cilUser,
-} from '@coreui/icons'
+import { cilLockLocked, cilSettings, cilUser } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 
 import avatar8 from './../../assets/images/avatars/8.jpg'
-
 const AppHeaderDropdown = () => {
   return (
     <CDropdown variant="nav-item">
@@ -43,7 +32,9 @@ const AppHeaderDropdown = () => {
         <CDropdownDivider />
         <CDropdownItem href="#">
           <CIcon icon={cilLockLocked} className="me-2" />
-          Log Out
+          <Link className="text-dark" to="/login" style={{ textDecoration: 'none' }}>
+            Log Out
+          </Link>
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
