@@ -21,9 +21,6 @@ import { logo } from 'src/assets/brand/logo'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
-  // const state = {
-  //   user: { name: 'Fathah', role: 'developer' },
-  // }
 
   return (
     <CHeader position="sticky" className="mb-4">
@@ -40,7 +37,7 @@ const AppHeader = () => {
         <CHeaderNav className="me-auto"></CHeaderNav>
         <CHeaderNav>
           <CNavItem>
-            <CNavLink>John Admin</CNavLink>
+            <CNavLink className="me-2">John &nbsp;Admin</CNavLink>
           </CNavItem>
           <CNavItem>
             <CNavLink href="#">

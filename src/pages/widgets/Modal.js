@@ -20,7 +20,7 @@ function Modal() {
           style={{ backgroundColor: 'rgb(88 107 135)', border: 'none' }}
           onClick={() => setVisible(!visible)}
         >
-          ADD +
+          +ADD
         </CButton>
       </div>
       <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>

@@ -1,5 +1,6 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
+// import { LayoutTextSidebarReverse,FileFontFill,FileTextFill,ChatRightDotsFill,ChatRightTextFill,CardHeading,JournalText,ListTask,CalendarDay } from 'react-bootstrap-icons'
 
 import {
   cilPuzzle,
@@ -8,12 +9,19 @@ import {
   cilPeople,
   cilCommentSquare,
   cilPen,
-  cilList,
   cilDollar,
   cilSpreadsheet,
   cilHandshake,
-  cilAddressBook,
   cilUser,
+  cilLibrary,
+  cilHamburgerMenu,
+  cilListRich,
+  cilList,
+  cilAvTimer,
+  cilExcerpt,
+  cilEnvelopeLetter,
+  cilEnvelopeOpen,
+  cilContact,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem } from '@coreui/react'
 
@@ -29,67 +37,54 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Lisensee',
-    to: '/theme/colors',
+    name: 'Licensee',
+    to: '/licensee',
     icon: <CIcon icon={cilUserFollow} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
-    name: 'Course',
-    to: '/theme/colors',
+    name: 'Course Management',
+    to: '/coursemanage',
     icon: <CIcon icon={cilSpreadsheet} customClassName="nav-icon" />,
   },
 
   {
     component: CNavItem,
     name: 'My Team',
-    to: '/theme/typography',
+    to: '/myteam',
     icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
   },
 
   {
     component: CNavItem,
     name: 'Enquiry',
-    to: '/theme/colors',
+    to: '/enquiry',
     icon: <CIcon icon={cilCommentSquare} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
-    name: 'All Students',
-    to: '/theme/typography',
+    name: 'Admission',
+    to: '/admission',
     icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
     name: 'Enrollments',
-    to: '/theme/colors',
+    to: '/enrollments',
     icon: <CIcon icon={cilPen} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
-    name: 'Task',
-    to: '/theme/typography',
-    icon: <CIcon icon={cilList} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
     name: 'Fee Payments',
-    to: '/theme/colors',
+    to: '/payments',
     icon: <CIcon icon={cilDollar} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
-    name: 'Users Management',
-    to: '/theme/typography',
-    icon: <CIcon icon={cilAddressBook} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
     name: 'Support Enquiry',
-    to: '/theme/colors',
+    to: '/supportenq',
     icon: <CIcon icon={cilHandshake} customClassName="nav-icon" />,
   },
-
   {
     component: CNavGroup,
     name: 'Settings',
@@ -98,33 +93,68 @@ const _nav = [
     items: [
       {
         component: CNavItem,
+        name: 'Course Category',
+        to: '/settings/category',
+        icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
+        // icon: <LayoutTextSidebarReverse className="me-3" customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Course ',
+        to: '/settings/course',
+        icon: <CIcon icon={cilListRich} customClassName="nav-icon" />,
+        // icon: <CardHeading className="me-3" customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Subject',
+        to: '/settings/subject',
+        icon: <CIcon icon={cilList} customClassName="nav-icon" />,
+        // icon: <FileTextFill className="me-3" customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Topic',
+        to: '/settings/topic',
+        icon: <CIcon icon={cilHamburgerMenu} customClassName="nav-icon" />,
+
+        // icon: <FileFontFill className="me-3" customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Course Track',
+        to: '/settings/coursetrack',
+        icon: <CIcon icon={cilExcerpt} customClassName="nav-icon" />,
+        // icon: <JournalText className="me-3" customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
         name: 'Enquiry Mode',
         to: '/settings/enquirymode',
+        icon: <CIcon icon={cilEnvelopeLetter} customClassName="nav-icon" />,
+        // icon: <ChatRightDotsFill className="me-3" customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
         name: 'Enquiry Source',
         to: '/settings/enquirysource',
+        icon: <CIcon icon={cilEnvelopeOpen} customClassName="nav-icon" />,
+        // icon: <ChatRightTextFill className="me-3" customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
-        name: 'Course Category',
-        to: '/base/tables',
+        name: 'Support Type',
+        to: '/settings/suportype',
+        icon: <CIcon icon={cilContact} customClassName="nav-icon" />,
+        // icon: <CIcon icon={cilHandshake} customClassName="nav-icon" />,
       },
+
       {
         component: CNavItem,
         name: 'Duration',
-        to: '/base/tooltips',
-      },
-      {
-        component: CNavItem,
-        name: 'Course Track',
-        to: '/base/placeholders',
-      },
-      {
-        component: CNavItem,
-        name: 'Subjects',
-        to: '/base/popovers',
+        to: '/settings/duration',
+        icon: <CIcon icon={cilAvTimer} customClassName="nav-icon" />,
+        // icon: <CalendarDay className="me-3" customClassName="nav-icon" />,
       },
     ],
   },

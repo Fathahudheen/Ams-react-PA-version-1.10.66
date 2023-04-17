@@ -1,12 +1,12 @@
 import React from 'react'
-import Modal from 'src/views/widgets/Modal'
-import Filter from 'src/views/widgets/Filter'
+import Modal from 'src/pages/widgets/Modal'
+import Filter from 'src/pages/widgets/Filter'
 import Pagination from '../../widgets/pagination'
 
-import Edit from 'src/views/actions/Edit'
-import View from 'src/views/actions/View'
-import Delete from 'src/views/actions/Delete'
-
+import Edit from 'src/pages/actions/Edit'
+import View from 'src/pages/actions/View'
+import Delete from 'src/pages/actions/Delete'
+import CIcon from '@coreui/icons-react'
 import {
   CCard,
   CCardBody,
@@ -109,7 +109,6 @@ const Dashboard = () => {
                 <CTableHead color="light">
                   <CTableRow>
                     <CTableHeaderCell className="text-end">Id</CTableHeaderCell>
-                    {/* <CTableHeaderCell className="text-center">Image</CTableHeaderCell> */}
                     <CTableHeaderCell>Name</CTableHeaderCell>
                     <CTableHeaderCell>Description</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Status</CTableHeaderCell>
@@ -122,12 +121,10 @@ const Dashboard = () => {
                       <CTableDataCell className="text-end">
                         <div>{item.id.id}</div>
                       </CTableDataCell>
-                      {/* <CTableDataCell className="text-center">
-                        <CIcon size="xl" icon={item.mode.icon} />
-                      </CTableDataCell> */}
                       <CTableDataCell>
                         <div>{item.mode.name}</div>
                       </CTableDataCell>
+
                       <CTableDataCell>
                         <div>{item.mode.desc}</div>
                       </CTableDataCell>
@@ -139,7 +136,7 @@ const Dashboard = () => {
                                 ? { backgroundColor: 'green' }
                                 : { backgroundColor: 'red' }
                             }
-                            className="p-2 rounded-5 text-light"
+                            className="ps-2 pe-2 p-1 rounded-5 text-light"
                           >
                             {item.mode.status ? 'Active' : 'Inactive'}
                           </span>
