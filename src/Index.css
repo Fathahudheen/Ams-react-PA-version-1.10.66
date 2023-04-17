@@ -14,3 +14,19 @@
   -webkit-box-shadow: inset 0 0 6px rgb(88 107 135);
   background-color: rgb(88 107 135);
 }
+.icon-btn{
+  border: none;
+  background: transparent;
+  font-size: 23px !important;
+}
+.icon-btn:hover{
+  background: white;
+}
+.icon-btn:active{
+  background: white !important;
+}
+.btn-close{
+  background-color: white !important;
+  opacity: .8 !important;
+  border-radius: 15px !important;
+}
