@@ -1,8 +1,12 @@
 import React from 'react'
+import ViewTable from './ViewTable/ViewTable'
+
 
 const Licensee = () => {
   return (
-    <div><h1>Licensee</h1></div>
+    <>
+    <ViewTable/>
+    </>
   )
 }
 
