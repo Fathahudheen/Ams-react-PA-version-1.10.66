@@ -1,11 +1,11 @@
 import React from 'react'
 import Pagination from '../../widgets/pagination'
-import Modal from 'src/views/widgets/Modal'
-import Filter from 'src/views/widgets/Filter'
+import Modal from 'src/pages/widgets/Modal'
+import Filter from 'src/pages/widgets/Filter'
 
-import Edit from 'src/views/actions/Edit'
-import View from 'src/views/actions/View'
-import Delete from 'src/views/actions/Delete'
+import Edit from 'src/pages/actions/Edit'
+import View from 'src/pages/actions/View'
+import Delete from 'src/pages/actions/Delete'
 
 import {
   CCard,
@@ -135,7 +135,7 @@ const Dashboard = () => {
                                 ? { backgroundColor: 'green' }
                                 : { backgroundColor: 'red' }
                             }
-                            className="ps-2 pe-2 p-1  rounded-5 text-light "
+                            className="ps-2 pe-2 p-1 rounded-5 text-light "
                           >
                             {item.mode.status ? 'Active' : 'Inactive'}
                           </span>

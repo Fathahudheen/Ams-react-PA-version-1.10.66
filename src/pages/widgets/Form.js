@@ -1,5 +1,5 @@
 import React from 'react'
-import { CCol, CFormInput, CFormTextarea, CFormSwitch } from '@coreui/react'
+import { CCol, CFormInput, CFormTextarea} from '@coreui/react'
 
 function Form() {
   return (
@@ -20,7 +20,7 @@ function Form() {
           rows={3}
         ></CFormTextarea>
       </CCol>
-      <div className="d-flex justify-content-center mt-3 ">
+      {/* <div className="d-flex justify-content-center mt-3 ">
         <cCol>
           <CFormSwitch
             className="btn-outline-success"
@@ -31,7 +31,7 @@ function Form() {
             defaultChecked
           />
         </cCol>
-      </div>
+      </div> */}
       {/* <CCol xs={12}>
         <CButton color="primary" type="submit">
           Submit form

@@ -30,12 +30,12 @@ const AppHeaderDropdown = () => {
           Reset password
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem href="#">
-          <CIcon icon={cilLockLocked} className="me-2" />
-          <Link className="text-dark" to="/login" style={{ textDecoration: 'none' }}>
+        <Link className="text-dark" to="/login" style={{ textDecoration: 'none' }}>
+          <CDropdownItem>
+            <CIcon icon={cilLockLocked} className="me-2" />
             Log Out
-          </Link>
-        </CDropdownItem>
+          </CDropdownItem>
+        </Link>
       </CDropdownMenu>
     </CDropdown>
   )
