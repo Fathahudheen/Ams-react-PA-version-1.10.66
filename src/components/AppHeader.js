@@ -40,7 +40,7 @@ const AppHeader = () => {
             <CNavLink className="me-2">John &nbsp;Admin</CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">
+            <CNavLink>
               <CIcon icon={cilBell} size="lg" />
             </CNavLink>
           </CNavItem>

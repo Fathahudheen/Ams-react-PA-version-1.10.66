@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 import routes from '../routes'
 
 import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
@@ -33,8 +33,10 @@ const AppBreadcrumb = () => {
 
   return (
     <CBreadcrumb className="m-0 ms-2">
-      <CBreadcrumbItem href="/">
-        <p style={{ color: 'rgb(69 89 132)' }}> Home</p>
+      <CBreadcrumbItem >
+        <Link to="/dashboard" style={{textDecoration:'none'}}>
+          <p style={{ color: 'rgb(69 89 132)' }}> Home</p>
+        </Link>
       </CBreadcrumbItem>
       {breadcrumbs.map((breadcrumb, index) => {
         return (
