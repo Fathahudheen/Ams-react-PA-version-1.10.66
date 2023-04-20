@@ -1,85 +1,80 @@
 
-// import './App.css';
+import React from 'react'
+import './App.css';
 import {BsPersonFill,BsLockFill } from "react-icons/bs";
-// import MainRouter from './Components/reactRouter/MainRouter';
-import {Card,Container,Col,Row, CardGroup, InputGroup,Form, Button} from 'react-bootstrap'
-import { Link } from "react-router-dom";
+
+import {Container,Col,Row,  InputGroup,Form, Button} from 'react-bootstrap'
+
 
 function Loginn() {
   return (
     < >
     
-      
-      <div className="  min-vh-100 d-flex flex-row align-items-center">
-      <Container>
-        <Row className='justify-content-center text-center'>
-          <Col md="8">
-           <CardGroup>
-           <Card className="p-4 mb-0 justify-content-center text-center text-white" style={{backgroundColor:"#5e6570"}}>
-             
-             <h1>Sign up  </h1>
-             <p >Lorem ipsum dolor sit amet,
-               consectetur adipisicing elit, sed do eiusmod 
-               tempor incididunt ut labore et dolore magna aliqua.</p>
-              <Row>
-                <Col >
-              <img src='../assets/img-top.png'className='w-100'></img>
-                </Col>
-              </Row>
-          
+      <Container fluid  className='main-bg bg'>
+    
+    
+    
+    <Container  style={{paddingLeft:"100px",paddingRight:"100px"}}>
+    <Row className="box ">
+    <Col md="4" className=' bg-left' >
+     
+          </Col>
        
+        <Col md="6" className="text-center text-login text-white">
+          
+               <div>
+               <h1 className="fs-1 fw-bold mb-3 ">WELCOME</h1>
+                <p >Sign In to your account</p>
+               </div>
+               
+           <div className='text-center'>
+               
+             <Form className='p-1'>
+           
              
-            
-         </Card>
-         <Card className="p-4 mb-0">
-             <Form>
-             <h1>Login</h1>
-             <p >Sign In to your account</p>
-           <Row>
-            <Col>
-            <InputGroup>
-           <span className='input-group-text'>
-            <BsPersonFill/>
+         
+          
+            <InputGroup className='mt-1 '  style={{width:"100%",height:"45px"}}>
+           <span className='input-group-text bg-light'>
+            <BsPersonFill style={{color:"#213b50"}}/>
            </span>
            <Form.Control type="text" placeholder="Username" />
           
-           </InputGroup></Col>
-           </Row>
-           <Row className='mt-2'>
-            <Col>
-            <InputGroup>
-           <span className='input-group-text'>
-            <BsLockFill/>
+           </InputGroup>
+           
+           
+            <InputGroup className='mt-3'style={{width:"100%",height:"45px"}}>
+           <span className='input-group-text bg-light'>
+            <BsLockFill style={{color:"#213b50"}}/>
            </span>
            <Form.Control type="password" placeholder="Password" />
           
            </InputGroup>
            
-            </Col>
-           </Row>
-           <Row className='mt-2 me-auto'style={{display:"flex",justifyContent:"space-around"}}>
-            <Col >
-            <Link to="/dashboard">
-            <Button style={{width:"100%",backgroundColor:"#193d87"}}>
-              Login
+           <div className='my-2'>
+          <a href='' className='text-white'>Forgot password?</a>
+           </div>
+         
+           <Row className='justify-content-center'>
+           <Button className='fw-bold ' style={{width:"50%",backgroundColor:"white",color:"#213b50",borderRadius:"20px",border:"0px"}}>
+              LOGIN
             </Button>
-            </Link>
-            </Col>
-            <Col>
-            <Button className="btn btn-link px-0" type="button">Forgot password?</Button>
-            </Col>
            </Row>
+           
+          
+           
+           
              </Form>
              
             
-         </Card>
-           </CardGroup>
-             
-           
-          </Col>
-        </Row>
+        </div>
+              
+               
+            
+        </Col>
+    </Row>
       </Container>
-    </div>
+    </Container>
     
     </>
   );
