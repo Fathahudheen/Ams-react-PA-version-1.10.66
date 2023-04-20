@@ -1,6 +1,6 @@
 
 import React from 'react'
-import './App.css';
+import './Index.css';
 import {BsPersonFill,BsLockFill } from "react-icons/bs";
 
 import {Container,Col,Row,  InputGroup,Form, Button} from 'react-bootstrap'
