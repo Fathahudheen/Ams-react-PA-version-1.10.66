@@ -7,7 +7,7 @@ import CIcon from '@coreui/icons-react'
 import { AppSidebarNav } from './AppSidebarNav'
 // import { Link } from 'react-router-dom'
 import { logoNegative } from 'src/assets/brand/logo-negative'
-// import logo4 from '../assets/images/logo4.png'
+import logo4 from '../assets/images/logo4.png'
 import { sygnet } from 'src/assets/brand/sygnet'
 
 import SimpleBar from 'simplebar-react'
@@ -35,9 +35,9 @@ const AppSidebar = () => {
         <Link to="/dashboard" style={{textDecoration:'none'}}>
       {/* <p className='sidebar-brand-narrow fw-bold fs-6 text-white'>Academic Managment System</p> */}
         </Link>
-        {/* <img src={logo4} className="sidebar-brand-narrow" alt="logo" height={85} /> */}
-        <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} />
-        <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} />
+        <img src={logo4} className="sidebar-brand-full" alt="logo" height={85} />
+        {/* <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} /> */}
+        {/* <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} /> */}
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar> 

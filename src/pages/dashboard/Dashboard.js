@@ -94,6 +94,9 @@ const Dashboard = () => {
         name: 'Yiorgos Avraamu',
         new: true,
         registered: 'Jan 1, 2021',
+        place: 'Kozhikode',
+        mobile:"6238115451",
+        status:"Active",
       },
       country: { name: 'USA', flag: cifUs },
       usage: {
@@ -101,6 +104,7 @@ const Dashboard = () => {
         period: 'Jun 11, 2021 - Jul 10, 2021',
         color: 'success',
       },
+      status:{activ:'Active'},
       payment: { name: 'Mastercard', icon: cibCcMastercard },
       activity: '10 sec ago',
     },
@@ -110,6 +114,9 @@ const Dashboard = () => {
         name: 'Avram Tarasios',
         new: false,
         registered: 'Jan 1, 2021',
+        place: 'Malappuram',
+        mobile:"9878115451",
+        status:"Active",
       },
       country: { name: 'Brazil', flag: cifBr },
       usage: {
@@ -122,27 +129,32 @@ const Dashboard = () => {
     },
     {
       avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2021' },
+      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2021',place: 'kannur', mobile:"9358115489",status:"Inactive",},
+
       country: { name: 'India', flag: cifIn },
       usage: {
         value: 74,
         period: 'Jun 11, 2021 - Jul 10, 2021',
         color: 'warning',
+        place: 'Perambra',
+        mobile:"8538115452"
       },
       payment: { name: 'Stripe', icon: cibCcStripe },
       activity: '1 hour ago',
     },
     {
       avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2021' },
+      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2021',place: 'Kottakkal',mobile:"7238115456",status:"Active", },
       country: { name: 'France', flag: cifFr },
       usage: {
         value: 98,
         period: 'Jun 11, 2021 - Jul 10, 2021',
         color: 'danger',
+        
       },
       payment: { name: 'PayPal', icon: cibCcPaypal },
       activity: 'Last month',
+      status:{active:'Active'}
     },
     {
       avatar: { src: avatar5, status: 'success' },
@@ -150,12 +162,16 @@ const Dashboard = () => {
         name: 'Agapetus Tadeáš',
         new: true,
         registered: 'Jan 1, 2021',
+        place: 'Valanchery',
+        mobile:"9528115485",
+        status:"Active",
       },
       country: { name: 'Spain', flag: cifEs },
       usage: {
         value: 22,
         period: 'Jun 11, 2021 - Jul 10, 2021',
         color: 'primary',
+        
       },
       payment: { name: 'Google Wallet', icon: cibCcApplePay },
       activity: 'Last week',
@@ -166,12 +182,16 @@ const Dashboard = () => {
         name: 'Friderik Dávid',
         new: true,
         registered: 'Jan 1, 2021',
+        place: 'Perinthalmanna',
+        mobile:"9538115445",
+        status:"Inactive",
       },
       country: { name: 'Poland', flag: cifPl },
       usage: {
         value: 43,
         period: 'Jun 11, 2021 - Jul 10, 2021',
         color: 'success',
+        
       },
       payment: { name: 'Amex', icon: cibCcAmex },
       activity: 'Last week',
@@ -406,9 +426,9 @@ const Dashboard = () => {
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
                     <CTableHeaderCell>User</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
-                    <CTableHeaderCell>Usage</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Payment Method</CTableHeaderCell>
+                    <CTableHeaderCell className="">Place</CTableHeaderCell>
+                    <CTableHeaderCell>Mobile number</CTableHeaderCell>
+                    <CTableHeaderCell className="">Status</CTableHeaderCell>
                     <CTableHeaderCell>Activity</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
@@ -416,31 +436,37 @@ const Dashboard = () => {
                   {tableExample.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
-                        <CAvatar size="md" src={item.avatar.src} status={item.avatar.status} />
+                        <CAvatar size="md" src={item.avatar.src}   />
                       </CTableDataCell>
                       <CTableDataCell>
                         <div>{item.user.name}</div>
-                        <div className="small text-medium-emphasis">
+                        {/* <div className="small text-medium-emphasis">
                           <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
                           {item.user.registered}
-                        </div>
+                        </div> */}
                       </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <CIcon size="xl" icon={item.country.flag} title={item.country.name} />
+                      <CTableDataCell className="">
+                        {/* <CIcon size="xl" icon={item.country.flag} title={item.country.name} /> */}
+                        <div>{item.user.place}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="clearfix">
+                      <div>{item.user.mobile}</div>
+
+                      
+                        {/* <div className="clearfix">
                           <div className="float-start">
                             <strong>{item.usage.value}%</strong>
                           </div>
                           <div className="float-end">
                             <small className="text-medium-emphasis">{item.usage.period}</small>
                           </div>
-                        </div>
-                        <CProgress thin color={item.usage.color} value={item.usage.value} />
+                        </div> */}
+                        {/* <CProgress thin color={item.usage.color} value={item.usage.value} /> */}
                       </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <CIcon size="xl" icon={item.payment.icon} />
+                      <CTableDataCell className="">
+                        {/* <CIcon size="xl" icon={item.payment.icon} /> */}
+                        <div>{item.user.status}</div>
+
                       </CTableDataCell>
                       <CTableDataCell>
                         <div className="small text-medium-emphasis">Last login</div>
