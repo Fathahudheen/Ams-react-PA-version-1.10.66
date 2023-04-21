@@ -1,17 +1,26 @@
-import React, { useState} from "react";
+import React, { useState,useEffect} from "react";
 import { Modal, Button } from "react-bootstrap";
-import { RiDeleteBin6Fill } from "react-icons/ri";
 import axios from "axios";
 import {toast } from "react-toastify";
 
 
-const DeleteData = ({row}) => {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const handleDelete = async (row) => {
+const DeleteData = ({ deleteclose,dlt,id }) => {
+  const [remove,setRemove]=useState(id)
+ useEffect(() => {
+  setRemove(id)
+  }, [id]);
+    const [show, setShow] = useState(dlt);
+    useEffect(() => {
+      setShow(dlt)
+    }, [dlt])
+    const handleModalClose = () => {
+      deleteclose()
+      setShow(false)
+    }
+    const handleDelete = async (remove) => {
+      console.log(remove);
         try {
-          const response = await axios.delete(`http://localhost:8000/licensee/${row._id}`);
+          const response = await axios.delete(`http://localhost:8000/licensee/${remove}`);
           if(response.status===200){
             toast.success('User Successfully Deleted !', {
                 toastId: 'success',
@@ -22,15 +31,13 @@ const DeleteData = ({row}) => {
         alert(error)
         };
       };
+    // useEffect(() => {
+    //   handleDelete(remove);
+    // },[remove]);
   return (
     <>
-     <Button className="icon-btn" onClick={() => {
-        handleShow();
-      }}>
-      <RiDeleteBin6Fill className="text-danger" />
-      </Button>
-
-      <Modal show={show}  backdrop="static" centered onHide={handleClose} animation={false}>
+     
+      <Modal show={show}  backdrop="static" centered onHide={handleModalClose} animation={false}>
         <Modal.Header closeButton style={{ backgroundColor: "#40536e", color: "white" }}>
           <Modal.Title>Delete ?</Modal.Title>
         </Modal.Header>
@@ -38,12 +45,12 @@ const DeleteData = ({row}) => {
            Are you sure you wish to delete this user ?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="danger" className='text-white' onClick={handleModalClose}>
             No
           </Button>
-          <Button variant="success" onClick={()=>{
-            handleDelete(row);
-            handleClose();
+          <Button variant="success" className='text-white' onClick={()=>{
+            handleDelete(remove);
+            handleModalClose();
           }}>
             Yes
           </Button>
