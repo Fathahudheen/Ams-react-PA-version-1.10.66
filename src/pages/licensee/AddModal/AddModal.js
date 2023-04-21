@@ -70,6 +70,7 @@ const AddModal = () => {
         toast.success("User Successfully Created !", {
           toastId: "success",
           position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
         });
       }
     } catch (error) {
