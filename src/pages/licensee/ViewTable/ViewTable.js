@@ -216,7 +216,7 @@ const ViewTable = () => {
                 </div>
                 <DataTable
                   columns={columns}
-                  data={filterData}
+                  data={data}
                   paginationRowsPerPageOptions={paginationRowsPerPageOptions}
                   pagination
                   paginationPerPage={7}
