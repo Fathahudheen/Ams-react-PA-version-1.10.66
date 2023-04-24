@@ -78,6 +78,7 @@ const AddModal = () => {
     }
   };
 
+
   // ...............Adding User Ends Here.......................//
   return (
     <>
@@ -105,12 +106,12 @@ const AddModal = () => {
         <Container>
           <Row>
             <Col lg={12}>
-              <Form onSubmit={formik.handleSubmit} action="">
+              <Form  onSubmit={formik.handleSubmit} action="">
                 <Modal.Body
                   style={{ height: "310px" }}
                   className="overflow-auto"
                 >
-                  <Form.Label className="ms-1">First name</Form.Label>
+                  <Form.Label className="ms-1 ">First name</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -135,7 +136,7 @@ const AddModal = () => {
                       {formik.errors.firstname}
                     </p>
                   ) : null}
-                  <Form.Label className="ms-1">Last name</Form.Label>
+                  <Form.Label className="ms-1 mt-1">Last name</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -145,7 +146,7 @@ const AddModal = () => {
                     value={formik.values.lastname}
                     onChange={formik.handleChange}
                   />
-                  <Form.Label className="ms-1">Phone</Form.Label>
+                  <Form.Label className="ms-1 mt-1">Phone</Form.Label>
                   <Form.Control
                     required
                     type="number"
@@ -170,7 +171,7 @@ const AddModal = () => {
                       {formik.errors.mobile_no}
                     </p>
                   ) : null}
-                  <Form.Label className="ms-1">User Name</Form.Label>
+                  <Form.Label className="ms-1 mt-1">Email</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -195,7 +196,7 @@ const AddModal = () => {
                       {formik.errors.email}
                     </p>
                   ) : null}
-                  <Form.Label className="ms-1">Password</Form.Label>
+                  <Form.Label className="ms-1 mt-1">Password</Form.Label>
                   <Form.Control
                     required
                     type="password"
