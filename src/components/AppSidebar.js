@@ -9,6 +9,8 @@ import { AppSidebarNav } from './AppSidebarNav'
 import { logoNegative } from 'src/assets/brand/logo-negative'
 import logo4 from '../assets/images/logo4.png'
 import { sygnet } from 'src/assets/brand/sygnet'
+import smlogo from '../assets/images/sm-logo.png'
+
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
@@ -16,6 +18,7 @@ import 'simplebar/dist/simplebar.min.css'
 // sidebar nav config
 import navigation from '../_nav'  
 import { Link } from 'react-router-dom'
+// import { from } from 'core-js/core/array'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
@@ -35,9 +38,10 @@ const AppSidebar = () => {
         <Link to="/dashboard" style={{textDecoration:'none'}}>
       {/* <p className='sidebar-brand-narrow fw-bold fs-6 text-white'>Academic Managment System</p> */}
         </Link>
-        <img src={logo4} className="sidebar-brand-full" alt="logo" height={85} />
+        <img src={logo4} className="sidebar-brand-full" alt="logo" height={68} />
         {/* <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} /> */}
         {/* <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} /> */}
+        <img src={smlogo} className="sidebar-brand-narrow" icon={sygnet}  height={35} />
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar> 
