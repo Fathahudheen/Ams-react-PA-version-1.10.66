@@ -110,13 +110,13 @@ const WidgetsDropdown = () => {
           color="info"
           value={
             <>
-              200{' '}
+              3{' '}
               {/* <span className="fs-6 fw-normal">
                 (40.9% <CIcon icon={cilArrowTop} />)
               </span> */}
             </>
           }
-          title="Students"
+          title="My Team"
           // action={
           //   <CDropdown alignment="end">
           //     <CDropdownToggle color="transparent" caret={false} className="p-0">
@@ -196,13 +196,13 @@ const WidgetsDropdown = () => {
           color="warning"
           value={
             <>
-              2.49{' '}
+              212{' '}
               {/* <span className="fs-6 fw-normal">
                 (84.7% <CIcon icon={cilArrowTop} />)
               </span> */}
             </>
           }
-          title="Conversion Rate"
+          title="Admissions"
           // action={
           //   <CDropdown alignment="end">
           //     <CDropdownToggle color="transparent" caret={false} className="p-0">
@@ -269,13 +269,13 @@ const WidgetsDropdown = () => {
           color="danger"
           value={
             <>
-              44  {' '}
+              123  {' '}
               {/* <span className="fs-6 fw-normal">
                 (-23.6% <CIcon icon={cilArrowBottom} />)
               </span> */}
             </>
           }
-          title="Sessions"
+          title="Enrollments"
           // action={
           //   <CDropdown alignment="end">
           //     <CDropdownToggle color="transparent" caret={false} className="p-0">
@@ -363,10 +363,10 @@ const WidgetsDropdown = () => {
           color="danger"
           value={
             <>
-              44  {' '}
+              12  {' '}
             </>
           }
-          title="Sessions"
+          title="Course Categories"
         />
       </CCol>
       <CCol sm={6} lg={3}>
@@ -375,10 +375,10 @@ const WidgetsDropdown = () => {
           color="warning"
           value={
             <>
-              44  {' '}
+              52  {' '}
             </>
           }
-          title="Sessions"
+          title="Courses"
         />
       </CCol>
       <CCol sm={6} lg={3}>
@@ -387,10 +387,10 @@ const WidgetsDropdown = () => {
           color="info"
           value={
             <>
-              44  {' '}
+              120  {' '}
             </>
           }
-          title="Sessions"
+          title="Enquiries"
         />
       </CCol>
       <CCol sm={6} lg={3}>
