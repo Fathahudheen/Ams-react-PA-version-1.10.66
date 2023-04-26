@@ -69,7 +69,7 @@ const ViewModal = ({ viewclose, view, id }) => {
                 <Form.Label className="ms-1 mt-2">Role</Form.Label>
                 <Form.Control disabled type="text" value={user.role_opt} />
                 <Form.Label className="ms-1 mt-2">Join Date</Form.Label>
-                <Form.Control disabled type="text" value={user.join_Date} />
+                <Form.Control disabled type="text" value={user.createdAt} />
                 <Form.Label className="ms-1 mt-2">Status</Form.Label>
                 <Form.Control disabled type="text" value={user.status} />
               </Col>

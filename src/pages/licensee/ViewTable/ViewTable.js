@@ -125,7 +125,7 @@ const ViewTable = () => {
     },
     {
       name: 'JOIN DATE',
-      selector: 'join_Date',
+      selector: 'createdAt',
       sortable: true,
     },
     {
@@ -210,7 +210,7 @@ const ViewTable = () => {
                       <option>Inactive</option>
                     </Form.Select>
                   </div>
-                  <div className='search_inp ' style={{width:'50px', display: 'flex', alignItems: 'center',justifyContent: 'center',fontSize: '20px',fontWeight: '400',marginRight:'10px',height:'37px'}}>
+                  <div className='search_inp ' style={{width:'70px', display: 'flex', alignItems: 'center',justifyContent: 'center',fontSize: '20px',fontWeight: '400',marginRight:'18px',height:'37px'}}>
                   <CgUserList style={{fontWeight: '400',fontSize:'22px'}} className="text-dark" />&nbsp;{data.length}
                   </div>
                 </div>
