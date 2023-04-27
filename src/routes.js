@@ -19,6 +19,10 @@ const Enquirysource = React.lazy(() => import('./pages/settings/enquirysource/En
 const Supportype = React.lazy(() => import('./pages/settings/supporttype/Suportype'))
 const Duration = React.lazy(() => import('./pages/settings/duration/Duration'))
 
+//miscellaneous ie,this is not for platform admin
+const Task = React.lazy(() => import('./pages/miscellaneous/task/Task'))
+const Tasktype = React.lazy(() => import('./pages/miscellaneous/task type/Tasktype'))
+
 const routes = [
   { path: '/home', name: 'Home' },
   { path: '/licensee', name: 'Licensee', element: Licensee },
@@ -39,6 +43,11 @@ const routes = [
   { path: '/settings/enquirysource', name: 'Enquiry Source', element: Enquirysource },
   { path: '/settings/suportype', name: 'Support Type', element: Supportype },
   { path: '/settings/duration', name: 'Duration', element: Duration },
+
+//miscellaneous ie,this is not for platform admin
+{ path: '/miscellaneous/task', name: 'Task', element:Task },
+{ path: '/miscellaneous/tasktype', name: 'Task Type', element: Tasktype },
+
 ]
 
 export default routes
