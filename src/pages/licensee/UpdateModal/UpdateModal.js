@@ -3,7 +3,21 @@ import { Modal, Button, Container, Row, Col, Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
-const UpdateModal = ({ updateclose, update, id }) => {
+const UpdateModal = ({ updateclose, update, id, tableRenderTrue, load }) => {
+
+   //................Table Render Controll.............//
+
+   const [ren, setRen] = useState(load)
+  useEffect(() => {
+    setRen(load)
+  }, [load])
+  const renderControll = () => {
+    tableRenderTrue()
+    setRen(false)
+  }
+ 
+    //................Table Render Controll Ends.............//
+
   // ..................Modal Controlls......................//
 
   const [show, setShow] = useState(update)
@@ -42,14 +56,6 @@ const UpdateModal = ({ updateclose, update, id }) => {
 
   //  .................Fetching Employee One Ends.................//
 
-  // const [values, setValues] = useState({
-  //   id:row._id,
-  //   f_name:row.f_name,
-  //   l_name:row.l_name,
-  //   mobile_no:row.mobile_no,
-  //   password:row.password,
-  //   status:row.status
-  // });
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -76,6 +82,7 @@ const UpdateModal = ({ updateclose, update, id }) => {
           position: toast.POSITION.TOP_RIGHT,
         })
       }
+      renderControll()
     } catch (error) {
       alert(error)
     }
@@ -156,6 +163,7 @@ const UpdateModal = ({ updateclose, update, id }) => {
             onClick={() => {
               handleModalClose()
               updateUser(user)
+
             }}
           >
             Save
