@@ -11,6 +11,7 @@ const ViewModal = ({ viewclose, view, id }) => {
   const handleModalClose = () => {
     viewclose()
     setShow(false)
+    
   }
 
   // ..................Modal Controlls Ends......................//
