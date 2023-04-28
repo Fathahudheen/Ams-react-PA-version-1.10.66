@@ -1,8 +1,8 @@
 import React from 'react'
-
+import ViewTable from './ViewTable/ViewTable'
 const Coursemanage = () => {
   return (
-    <div><h1>Course Management</h1></div>
+    <ViewTable/>
   )
 }
 
