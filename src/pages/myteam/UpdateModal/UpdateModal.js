@@ -91,14 +91,14 @@ const UpdateModal = ({ updateclose, update, id }) => {
             <Row>
               <Col lg={12}>
                 <Form action="">
-                  <Form.Label className="ms-1">First name</Form.Label>
+                  <Form.Label className="ms-1">First Name</Form.Label>
                   <Form.Control
                     type="text"
                     name="f_name"
                     value={user.f_name}
                     onChange={handleChange}
                   />
-                  <Form.Label className="ms-1 mt-2">Last name</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Last Name</Form.Label>
                   <Form.Control
                     type="text"
                     name="l_name"
