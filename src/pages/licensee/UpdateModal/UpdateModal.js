@@ -3,21 +3,7 @@ import { Modal, Button, Container, Row, Col, Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
-const UpdateModal = ({ updateclose, update, id, tableRenderTrue, load }) => {
-
-   //................Table Render Controll.............//
-
-   const [ren, setRen] = useState(load)
-  useEffect(() => {
-    setRen(load)
-  }, [load])
-  const renderControll = () => {
-    tableRenderTrue()
-    setRen(false)
-  }
- 
-    //................Table Render Controll Ends.............//
-
+const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
   // ..................Modal Controlls......................//
 
   const [show, setShow] = useState(update)
@@ -31,7 +17,7 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue, load }) => {
 
   // ..................Modal Controlls Ends......................//
 
-  //  .................Fetching Employee One.................//
+  //  .................Fetching One data.................//
 
   const [details, setDetails] = useState(id)
   useEffect(() => {
@@ -40,7 +26,6 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue, load }) => {
 
   const [user, setUser] = useState({})
   const showDetail = async (details) => {
-    console.log('hai' + details)
     try {
       const response = await axios.get(`http://localhost:8000/licensee/${details}`)
       console.log('response' + response.data.f_name)
@@ -54,8 +39,9 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue, load }) => {
     showDetail(details)
   }, [details])
 
-  //  .................Fetching Employee One Ends.................//
+  //  .................Fetching One data Ends.................//
 
+  // ....................Updating one data.....................//
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -82,11 +68,14 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue, load }) => {
           position: toast.POSITION.TOP_RIGHT,
         })
       }
-      renderControll()
+      tableRenderTrue()
     } catch (error) {
       alert(error)
     }
   }
+
+  // ....................Updating one data ends.....................//
+
   return (
     <>
       <Modal show={show} backdrop="static" centered onHide={handleModalClose} animation={false}>
@@ -98,14 +87,14 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue, load }) => {
             <Row>
               <Col lg={12}>
                 <Form action="">
-                  <Form.Label className="ms-1">First name</Form.Label>
+                  <Form.Label className="ms-1">First Name</Form.Label>
                   <Form.Control
                     type="text"
                     name="f_name"
                     value={user.f_name}
                     onChange={handleChange}
                   />
-                  <Form.Label className="ms-1 mt-2">Last name</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Last Name</Form.Label>
                   <Form.Control
                     type="text"
                     name="l_name"
@@ -163,7 +152,6 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue, load }) => {
             onClick={() => {
               handleModalClose()
               updateUser(user)
-
             }}
           >
             Save

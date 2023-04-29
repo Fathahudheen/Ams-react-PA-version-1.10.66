@@ -6,23 +6,9 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import './AddModal.css'
 
-const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
-
-  //................Table Render Controll.............//
-
-  const [ren, setRen] = useState(load)
-  useEffect(() => {
-    setRen(load)
-  }, [load])
-  const renderControll = () => {
-    tableRenderTrue()
-    setRen(false)
-  }
-
-   //................Table Render Controll Ends.............//
-
+const AddModal = ({ tableRenderTrue, addclose, add }) => {
   // .............Modal Controls..................//
- 
+
   const [show, setShow] = useState(add)
   useEffect(() => {
     setShow(add)
@@ -30,7 +16,6 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
   const handleModalClose = () => {
     addclose()
     setShow(false)
-    
   }
   // .............Modal Controls End..................//
 
@@ -55,7 +40,7 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
         create(values)
         resetForm()
         handleModalClose()
-        renderControll()
+        tableRenderTrue()
       } catch (error) {
         console.error(error)
       }
@@ -66,9 +51,9 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
   // ...............Adding User Here.......................//
 
   const create = async ({ firstname, lastname, email, password, mobile_no }) => {
-    if(firstname==''&&email==''){
+    if (firstname == '' && email == '') {
       console.log('enter all detailes')
-    }else{
+    } else {
       try {
         const user_lic = {
           f_name: firstname,
@@ -90,7 +75,6 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
         console.log(error)
       }
     }
-    
   }
 
   // ...............Adding User Ends Here.......................//
@@ -105,7 +89,7 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
             <Col lg={12}>
               <Form onSubmit={formik.handleSubmit} action="">
                 <Modal.Body style={{ height: '310px' }} className="overflow-auto">
-                  <Form.Label className="ms-1 ">First name</Form.Label>
+                  <Form.Label className="ms-1 ">First Name</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -118,19 +102,9 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
                     onBlur={formik.handleBlur}
                   />
                   {formik.errors.firstname && formik.touched.firstname ? (
-                    <p
-                      style={{
-                        fontSize: '10px',
-                        color: 'red',
-                        marginTop: '1px',
-                        marginLeft: '2%',
-                      }}
-                      className="form-error"
-                    >
-                      {formik.errors.firstname}
-                    </p>
+                    <p className="form-error">{formik.errors.firstname}</p>
                   ) : null}
-                  <Form.Label className="ms-1 mt-1">Last name</Form.Label>
+                  <Form.Label className="ms-1 mt-1">Last Name</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -153,17 +127,7 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
                     onBlur={formik.handleBlur}
                   />
                   {formik.errors.mobile_no && formik.touched.mobile_no ? (
-                    <p
-                      style={{
-                        fontSize: '10px',
-                        color: 'red',
-                        marginTop: '1px',
-                        marginLeft: '2%',
-                      }}
-                      className="form-error"
-                    >
-                      {formik.errors.mobile_no}
-                    </p>
+                    <p className="form-error">{formik.errors.mobile_no}</p>
                   ) : null}
                   <Form.Label className="ms-1 mt-1">Email</Form.Label>
                   <Form.Control
@@ -178,17 +142,7 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
                     onBlur={formik.handleBlur}
                   />
                   {formik.errors.email && formik.touched.email ? (
-                    <p
-                      style={{
-                        fontSize: '10px',
-                        color: 'red',
-                        marginTop: '1px',
-                        marginLeft: '2%',
-                      }}
-                      className="form-error"
-                    >
-                      {formik.errors.email}
-                    </p>
+                    <p className="form-error">{formik.errors.email}</p>
                   ) : null}
                   <Form.Label className="ms-1 mt-1">Password</Form.Label>
                   <Form.Control
@@ -203,17 +157,7 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
                     onBlur={formik.handleBlur}
                   />
                   {formik.errors.password && formik.touched.password ? (
-                    <p
-                      style={{
-                        fontSize: '10px',
-                        color: 'red',
-                        marginTop: '1px',
-                        marginLeft: '2%',
-                      }}
-                      className="form-error"
-                    >
-                      {formik.errors.password}
-                    </p>
+                    <p className="form-error">{formik.errors.password}</p>
                   ) : null}
                 </Modal.Body>
                 <Modal.Footer className="positoin-fixed">
@@ -231,7 +175,7 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
                   <Button
                     className="text-white"
                     onClick={() => {
-                      formik.isValid ? create(formik.values) : alert(formik.errors)  
+                      formik.isValid ? create(formik.values) : alert(formik.errors)
                     }}
                     type="submit"
                     variant="success ms-2"
