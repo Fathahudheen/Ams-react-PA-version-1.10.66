@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { Container, Row, Col, Badge, Card, Form, Button } from 'react-bootstrap'
 import './ViewTable.css'
 import { CgUserList } from 'react-icons/cg'
-import { GoEye,GoPlus } from 'react-icons/go'
+import { GoEye, GoPlus } from 'react-icons/go'
 import { BsPencilSquare } from 'react-icons/bs'
 import { RiDeleteBin6Fill } from 'react-icons/ri'
 import AddModal from '../AddModal/AddModal'
@@ -14,9 +14,8 @@ import DeleteData from '../DeleteData/DeleteData'
 import { ToastContainer } from 'react-toastify'
 
 const ViewTable = () => {
+  //................Table Render Controll.............//
 
- //................Table Render Controll.............//
-  
   const [load, setLoad] = useState(false)
   const tableRenderTrue = () => {
     setLoad(true)
@@ -25,17 +24,17 @@ const ViewTable = () => {
     setLoad(false)
   }
 
-//................Table Render Controll Ends.............//
+  //................Table Render Controll Ends.............//
 
   // ................Fetching All Data.....................//
 
   const [data, setData] = useState([])
   useEffect(() => {
     async function fetchData() {
-      console.log('hai')
       const response = await fetch('http://localhost:8000/licensee')
       const json = await response.json()
       setData(json)
+      setSearchData(json)
       setFilterData(json)
       console.log('hp')
     }
@@ -46,32 +45,49 @@ const ViewTable = () => {
 
   //  .................Search Data........................//
 
-  const [filterData, setFilterData] = useState([])
+  const [searchData, setSearchData] = useState([])
 
   const Search = (event) => {
     const query = event.target.value
-    const filtered = filterData.filter((item) =>
+    const searched = searchData.filter((item) =>
       item.f_name.toLowerCase().includes(query.toLowerCase()),
     )
-    setData(filtered)
+    setData(searched)
   }
   useEffect(() => {
-    setFilterData(data)
-  }, [filterData])
+    setSearchData(data)
+  }, [searchData])
 
   //  .................Search Data Ends.....................//
 
-   // ...........Add Modal ......................//
+   //  .................Filter Data........................//
 
-   const [addModal, setAddModal] = useState(false)
-   const addModalClose = () => {
-    setAddModal(false)
+   const [filterData, setFilterData] = useState([])
+
+   const filter = (event) => {
+     const filterquery = event.target.value
+     const filtered = filterData.filter((item) =>
+     item.status.toUpperCase() === filterquery.toUpperCase() || filterquery === "",
+     )
+     setData(filtered)
    }
-   const addModalShow = () => {
-    setAddModal(true)
-   }
+   useEffect(() => {
+    setFilterData(data)
+   }, [filterData])
  
-   // ...........Add Modal Ends ......................//
+   //  .................Filter Data Ends.....................//
+
+  // ...........Add Modal ......................//
+
+  const [addModal, setAddModal] = useState(false)
+  const addModalClose = () => {
+    setAddModal(false)
+  }
+  const addModalShow = () => {
+    setAddModal(true)
+  }
+
+  // ...........Add Modal Ends ......................//
 
   // ...........View Modal ......................//
 
@@ -175,6 +191,7 @@ const ViewTable = () => {
             onClick={() => {
               viewModalShow()
               handleClick(row._id)
+              tableRenderTrue()
             }}
           >
             <GoEye className="text-primary" />
@@ -220,7 +237,7 @@ const ViewTable = () => {
                   <Button
                     className="mb-2 fw-600 d-flex align-items-center text-white"
                     variant="success"
-                    onClick={()=>{
+                    onClick={() => {
                       addModalShow()
                       tableRenderFalse()
                     }}
@@ -233,10 +250,11 @@ const ViewTable = () => {
                     onChange={Search}
                     placeholder="Search"
                   />
-                  <div className="me-3" style={{ width: '180px' }}>
+                  <div className="me-3" style={{ width: '120px' }}>
                     <Form.Select
                       className="ms-auto search_inp "
                       aria-label="Default select example"
+                      onChange={filter}
                       name=""
                     >
                       <option
@@ -244,7 +262,7 @@ const ViewTable = () => {
                         value=""
                         className=" text-white"
                       >
-                        Filter
+                        All
                       </option>
                       <option>Active</option>
                       <option>Inactive</option>
@@ -253,20 +271,17 @@ const ViewTable = () => {
                   <div
                     className="search_inp "
                     style={{
-                      width: '70px',
+                      width: '95px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontSize: '20px',
+                      fontSize: '1rem',
                       fontWeight: '400',
                       marginRight: '18px',
                       height: '37px',
                     }}
                   >
-                    <CgUserList
-                      style={{ fontWeight: '400', fontSize: '22px' }}
-                      className="text-dark"
-                    />
+                    Count :
                     &nbsp;{data.length}
                   </div>
                 </div>
@@ -287,10 +302,26 @@ const ViewTable = () => {
           </Col>
         </Row>
       </Container>
-      <AddModal tableRenderTrue={tableRenderTrue} load={load} addclose={addModalClose} add={addModal}/>
-      <ViewModal viewclose={viewModalClose} view={viewModal} id={id}  />
-      <UpdateModal updateclose={updateModalClose} update={updateModal} id={id} tableRenderTrue={tableRenderTrue} load={load}/>
-      <DeleteData deleteclose={deleteModalClose} dlt={deleteModal} id={id} tableRenderTrue={tableRenderTrue} load={load}/>
+      <AddModal tableRenderTrue={tableRenderTrue} addclose={addModalClose} add={addModal} />
+      <ViewModal
+        tableRenderFalse={tableRenderFalse}
+        load={load}
+        viewclose={viewModalClose}
+        view={viewModal}
+        id={id}
+      />
+      <UpdateModal
+        updateclose={updateModalClose}
+        update={updateModal}
+        id={id}
+        tableRenderTrue={tableRenderTrue}
+      />
+      <DeleteData
+        deleteclose={deleteModalClose}
+        dlt={deleteModal}
+        id={id}
+        tableRenderTrue={tableRenderTrue}
+      />
       <ToastContainer
         position="top-right"
         autoClose={1000}
