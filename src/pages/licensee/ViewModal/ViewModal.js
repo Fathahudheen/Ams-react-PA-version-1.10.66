@@ -26,6 +26,7 @@ const ViewModal = ({tableRenderFalse, load, viewclose, view, id }) => {
 
   const [user, setUser] = useState({})
   const showDetail = async (details) => {
+
       try {
         const response = await axios.get(`http://localhost:8000/licensee/${details}`)
         const data = response.data
@@ -33,6 +34,7 @@ const ViewModal = ({tableRenderFalse, load, viewclose, view, id }) => {
       } catch (error) {
         console.error(error)
       }
+
   }
   useEffect(() => {
     showDetail(details)
@@ -56,6 +58,7 @@ const ViewModal = ({tableRenderFalse, load, viewclose, view, id }) => {
           <Container>
             <Row>
               <Col lg={12}>
+               
                 <Form.Label className="ms-1 mt-2">First name</Form.Label>
                 <Form.Control disabled type="text" value={user && user.f_name !=='' ? user.f_name :''} />
                 <Form.Label className="ms-1 mt-2">Last name</Form.Label>

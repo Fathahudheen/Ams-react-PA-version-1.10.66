@@ -1,8 +1,8 @@
 import React from 'react'
-
+import ViewTable from './ViewTable/ViewTable'
 const Admission = () => {
   return (
-    <div><h1>Admission</h1></div>
+    <ViewTable/>
   )
 }
 
