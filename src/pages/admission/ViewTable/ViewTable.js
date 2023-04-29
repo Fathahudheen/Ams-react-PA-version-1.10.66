@@ -4,16 +4,23 @@ import 'react-toastify/dist/ReactToastify.css'
 import { Container, Row, Col, Badge, Card, Form, Button } from 'react-bootstrap'
 import './ViewTable.css'
 import { CgUserList } from 'react-icons/cg'
-import { GoEye } from 'react-icons/go'
-import { BsPencilSquare } from 'react-icons/bs'
-import { RiDeleteBin6Fill } from 'react-icons/ri'
-import AddModal from '../AddModal/AddModal'
+import { GoEye,GoPlus } from 'react-icons/go'
 import ViewModal from '../ViewModal/ViewModal'
-import UpdateModal from '../UpdateModal/UpdateModal'
-import DeleteData from '../DeleteData/DeleteData'
 import { ToastContainer } from 'react-toastify'
 
 const ViewTable = () => {
+
+   //................Table Render Controll.............//
+  
+   const [load, setLoad] = useState(false)
+   const tableRenderTrue = () => {
+     setLoad(true)
+   }
+   const tableRenderFalse = () => {
+     setLoad(false)
+   }
+ 
+ //................Table Render Controll Ends.............//
   // ................Fetching All Data.....................//
 
   const [data, setData] = useState([])
@@ -59,29 +66,7 @@ const ViewTable = () => {
 
   // ...........View Modal Ends ......................//
 
-  // ...........Update Modal ......................//
-
-  const [updateModal, setUpdateModal] = useState(false)
-  const updateModalClose = () => {
-    setUpdateModal(false)
-  }
-  const updateModalShow = () => {
-    setUpdateModal(true)
-  }
-
-  // ...........Update Modal Ends ......................//
-
-  // ...........Delete Modal ......................//
-
-  const [deleteModal, setDeleteModal] = useState(false)
-  const deleteModalClose = () => {
-    setDeleteModal(false)
-  }
-  const deleteModalShow = () => {
-    setDeleteModal(true)
-  }
-
-  // ...........Delete Modal Ends ......................//
+ 
 
   // ............................//
   const [id, setId] = useState(null)
@@ -163,26 +148,7 @@ const ViewTable = () => {
           >
             <GoEye className="text-primary" />
           </Button>
-          <Button
-            key={`upd-${row._id}`}
-            className="icon-btn"
-            onClick={() => {
-              updateModalShow()
-              handleClick(row._id)
-            }}
-          >
-            <BsPencilSquare className="text-info" />
-          </Button>
-          <Button
-            key={`dlt-${row._id}`}
-            className="icon-btn"
-            onClick={() => {
-              deleteModalShow()
-              handleClick(row._id)
-            }}
-          >
-            <RiDeleteBin6Fill className="text-danger" />
-          </Button>
+          
         </div>
       ),
     },
@@ -197,23 +163,23 @@ const ViewTable = () => {
             <Card>
               <Card.Body className="pt-4">
                 <div style={{ width: '100%' }} className="d-flex ">
-                  <AddModal />
-                  <input
+                    <input
                     className="ms-auto me-3 mb-2 ps-2 search_inp"
                     type="text"
                     onChange={Search}
                     placeholder="Search"
                   />
-                  <div className='me-3' style={{ width: '180px' }}>
+                  <div className='me-3 mb-2' style={{ width: '180px' }}>
                     <Form.Select
                       className="ms-auto search_inp "
                       aria-label="Default select example"
                       name=""
+                      
                     >
-                      <option
+                      <option 
                         style={{ backgroundColor: '#40536e' }}
                         value=""
-                        className=" text-white"
+                        className=" text-white "
                       >
                         Filter
                       </option>
@@ -243,9 +209,7 @@ const ViewTable = () => {
         </Row>
       </Container>
       <ViewModal viewclose={viewModalClose} view={viewModal} id={id} />
-      <UpdateModal updateclose={updateModalClose} update={updateModal} id={id} />
-      <DeleteData deleteclose={deleteModalClose} dlt={deleteModal} id={id} />
-      <ToastContainer
+          <ToastContainer
         position="top-right"
         autoClose={1000}
         hideProgressBar={false}
