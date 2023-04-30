@@ -1,8 +1,12 @@
 import React from 'react'
+import ViewTable from './ViewTable/ViewTable'
+
 
 const Supportenq = () => {
   return (
-    <div><h1>Support Enquiry</h1></div>
+    <>
+    <ViewTable/>
+    </>
   )
 }
 
