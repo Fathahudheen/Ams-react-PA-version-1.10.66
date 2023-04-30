@@ -111,7 +111,7 @@ const AddModal = () => {
                   style={{ height: "310px" }}
                   className="overflow-auto"
                 >
-                  <Form.Label className="ms-1 ">First name</Form.Label>
+                  <Form.Label className="ms-1 ">First Name</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -136,7 +136,7 @@ const AddModal = () => {
                       {formik.errors.firstname}
                     </p>
                   ) : null}
-                  <Form.Label className="ms-1 mt-1">Last name</Form.Label>
+                  <Form.Label className="ms-1 mt-1">Last Name</Form.Label>
                   <Form.Control
                     required
                     type="text"

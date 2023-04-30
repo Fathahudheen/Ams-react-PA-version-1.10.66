@@ -3,22 +3,8 @@ import { Modal, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-const DeleteData = ({ deleteclose, dlt, id, tableRenderTrue, load }) => {
-
-  //................Table Render Controll.............//
-
-  const [ren, setRen] = useState(load)
-  useEffect(() => {
-    setRen(load)
-  }, [load])
-  const renderControll = () => {
-    tableRenderTrue()
-    setRen(false)
-  }
-
-   //................Table Render Controll Ends.............//
-
- 
+const DeleteData = ({ deleteclose, dlt, id, tableRenderTrue }) => {
+  
   // ............Modal Controlls...............//
 
   const [show, setShow] = useState(dlt)
@@ -30,7 +16,7 @@ const DeleteData = ({ deleteclose, dlt, id, tableRenderTrue, load }) => {
     setShow(false)
   }
 
-   // ............Modal Controlls Ends...............//
+  // ............Modal Controlls Ends...............//
 
   //  .................Delete User..................//
 
@@ -48,12 +34,12 @@ const DeleteData = ({ deleteclose, dlt, id, tableRenderTrue, load }) => {
           position: toast.POSITION.TOP_RIGHT,
         })
       }
-      renderControll()
+      tableRenderTrue()
     } catch (error) {
       alert(error)
     }
   }
-  
+
   //  .................Delete User Ends..................//
 
   return (

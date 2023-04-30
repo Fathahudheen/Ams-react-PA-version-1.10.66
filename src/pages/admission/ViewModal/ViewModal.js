@@ -56,18 +56,26 @@ const ViewModal = ({ viewclose, view, id }) => {
           <Container>
             <Row>
               <Col lg={12}>
+                <Form.Label className="ms-1 mt-2">Enq Id</Form.Label>
+                <Form.Control disabled type="text" value={user.enq_id} />
+                <Form.Label className="ms-1 mt-2">Followup Id</Form.Label>
+                <Form.Control disabled type="text" value={user.followup_id} />
                 <Form.Label className="ms-1 mt-2">Reg No</Form.Label>
                 <Form.Control disabled type="text" value={user.reg_no} />
                 <Form.Label className="ms-1 mt-2">First name</Form.Label>
                 <Form.Control disabled type="text" value={user.fname} />
                 <Form.Label className="ms-1 mt-2">Last name</Form.Label>
                 <Form.Control disabled type="text" value={user.lname} />
+                <Form.Label className="ms-1 mt-2">Date of birth</Form.Label>
+                <Form.Control disabled type="text" value={user.dob} />
+                <Form.Label className="ms-1 mt-2">Gender</Form.Label>
+                <Form.Control disabled type="text" value={user.gender} />
                 <Form.Label className="ms-1 mt-2">Email</Form.Label>
                 <Form.Control disabled type="text" value={user.email} />
                 <Form.Label className="ms-1 mt-2">Mobile</Form.Label>
-                <Form.Control disabled type="text" value={user.mobile} />
-                <Form.Label className="ms-1 mt-2">Date of birth</Form.Label>
-                <Form.Control disabled type="text" value={user.dob} />
+                <Form.Control disabled type="text" value={user.mobile} />    
+                <Form.Label className="ms-1 mt-2">Alt Mobile</Form.Label>
+                <Form.Control disabled type="text" value={user.altPhone} />            
                 <Form.Label className="ms-1 mt-2">Qualification</Form.Label>
                 <Form.Control disabled type="text" value={user.qualification} />
                 <Form.Label className="ms-1 mt-2">Course opted</Form.Label>
@@ -86,12 +94,20 @@ const ViewModal = ({ viewclose, view, id }) => {
                 <Form.Control disabled type="text" value={user.district} />
                 <Form.Label className="ms-1 mt-2">State</Form.Label>
                 <Form.Control disabled type="text" value={user.state} />
-                {/* <Form.Label className="ms-1 mt-2">Role</Form.Label>
-                <Form.Control disabled type="text" value={user.role_opt} /> */}
+                <Form.Label className="ms-1 mt-2">Receipt No</Form.Label>
+                <Form.Control disabled type="text" value={user.recpNo} />
+                <Form.Label className="ms-1 mt-2">Amount</Form.Label>
+                <Form.Control disabled type="text" value={user.amount} />
+                <Form.Label className="ms-1 mt-2">org_id</Form.Label>
+                <Form.Control disabled type="text" value={user.org_id} /> 
                 <Form.Label className="ms-1 mt-2">CreatedAt</Form.Label>
-                <Form.Control disabled type="text" value={user.createdAt} />
+                <Form.Control disabled type="text" value={user.createdAt} /> 
+                <Form.Label className="ms-1 mt-2">CreatedBy</Form.Label>
+                <Form.Control disabled type="text" value={user.createdBy} /> 
                 <Form.Label className="ms-1 mt-2">UpdatedAt</Form.Label>
                 <Form.Control disabled type="text" value={user.updatedAt} />
+                <Form.Label className="ms-1 mt-2">UpdatedBy</Form.Label>
+                <Form.Control disabled type="text" value={user.updatedBy} />
                 <Form.Label className="ms-1 mt-2">Status</Form.Label>
                 <Form.Control disabled type="text" value={user.status} />
               </Col>
