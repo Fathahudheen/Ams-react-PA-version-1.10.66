@@ -1,12 +1,8 @@
 import React from 'react'
-import ViewTable from './ViewTable/ViewTable'
 
 const Suportype = () => {
   return (
-    
-    <>
-    <ViewTable/>
-    </>
+    <div><h1>Support Type</h1></div>
   )
 }
 
