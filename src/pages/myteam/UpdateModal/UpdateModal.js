@@ -3,7 +3,7 @@ import { Modal, Button, Container, Row, Col, Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
-const UpdateModal = ({ updateclose, update, id }) => {
+const UpdateModal = ({ updateclose, update, id , tableRenderTrue }) => {
   // ..................Modal Controlls......................//
 
   const [show, setShow] = useState(update)
@@ -76,6 +76,7 @@ const UpdateModal = ({ updateclose, update, id }) => {
           position: toast.POSITION.TOP_RIGHT,
         })
       }
+      tableRenderTrue()
     } catch (error) {
       alert(error)
     }
