@@ -4,7 +4,7 @@ import axios from "axios";
 import {toast } from "react-toastify";
 
 
-const DeleteData = ({ deleteclose,dlt,id }) => {
+const DeleteData = ({ deleteclose,dlt,id, tableRenderTrue  }) => {
   const [remove,setRemove]=useState(id)
  useEffect(() => {
   setRemove(id)
@@ -27,6 +27,7 @@ const DeleteData = ({ deleteclose,dlt,id }) => {
                 position: toast.POSITION.TOP_RIGHT
             });
           } 
+          tableRenderTrue()
         } catch (error) {
         alert(error)
         };
