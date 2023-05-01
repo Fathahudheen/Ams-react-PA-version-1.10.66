@@ -3,14 +3,8 @@ import DataTable from 'react-data-table-component'
 import 'react-toastify/dist/ReactToastify.css'
 import { Container, Row, Col, Badge, Card, Form, Button } from 'react-bootstrap'
 import './ViewTable.css'
-import { CgUserList } from 'react-icons/cg'
 import { GoEye, GoPlus } from 'react-icons/go'
-import { BsPencilSquare } from 'react-icons/bs'
-import { RiDeleteBin6Fill } from 'react-icons/ri'
-import AddModal from '../AddModal/AddModal'
 import ViewModal from '../ViewModal/ViewModal'
-import UpdateModal from '../UpdateModal/UpdateModal'
-import DeleteData from '../DeleteData/DeleteData'
 import { ToastContainer } from 'react-toastify'
 
 const ViewTable = () => {
@@ -77,17 +71,7 @@ const ViewTable = () => {
  
    //  .................Filter Data Ends.....................//
 
-  // ...........Add Modal ......................//
-
-  const [addModal, setAddModal] = useState(false)
-  const addModalClose = () => {
-    setAddModal(false)
-  }
-  const addModalShow = () => {
-    setAddModal(true)
-  }
-
-  // ...........Add Modal Ends ......................//
+  
 
   // ...........View Modal ......................//
 
@@ -101,29 +85,9 @@ const ViewTable = () => {
 
   // ...........View Modal Ends ......................//
 
-  // ...........Update Modal ......................//
+  
 
-  const [updateModal, setUpdateModal] = useState(false)
-  const updateModalClose = () => {
-    setUpdateModal(false)
-  }
-  const updateModalShow = () => {
-    setUpdateModal(true)
-  }
-
-  // ...........Update Modal Ends ......................//
-
-  // ...........Delete Modal ......................//
-
-  const [deleteModal, setDeleteModal] = useState(false)
-  const deleteModalClose = () => {
-    setDeleteModal(false)
-  }
-  const deleteModalShow = () => {
-    setDeleteModal(true)
-  }
-
-  // ...........Delete Modal Ends ......................//
+  
 
   // ...........Row Id.................//
   const [id, setId] = useState(null)
@@ -149,23 +113,6 @@ const ViewTable = () => {
       sortable: true,
       
     },
-    // {
-    //   name: 'ENQUIRY FROM',
-    //   selector: 'enq_from',
-    //   sortable: true,
-    // },
-    // {      
-    //   name: 'ENQUIRY To',
-    //   selector: 'enq_to',
-    //   sortable: true,
-
-    // },
-    // {      
-    //   name: 'DESCRIPTION',
-    //   selector: 'descp',
-    //   sortable: true,
-
-    // },
     {
       name: 'EMAIL',
       selector: 'email',
@@ -206,28 +153,8 @@ const ViewTable = () => {
           >
             <GoEye className="text-primary" />
           </Button>
-          <Button
-            key={`upd-${row._id}`}
-            className="icon-btn"
-            onClick={() => {
-              updateModalShow()
-              handleClick(row._id)
-              tableRenderFalse()
-            }}
-          >
-            <BsPencilSquare className="text-info" />
-          </Button>
-          <Button
-            key={`dlt-${row._id}`}
-            className="icon-btn"
-            onClick={() => {
-              deleteModalShow()
-              handleClick(row._id)
-              tableRenderFalse()
-            }}
-          >
-            <RiDeleteBin6Fill className="text-danger" />
-          </Button>
+          
+          
         </div>
       ),
     },
@@ -244,23 +171,14 @@ const ViewTable = () => {
             <Card>
               <Card.Body className="pt-4">
                 <div style={{ width: '100%' }} className="d-flex ">
-                  <Button
-                    className="mb-2 fw-600 d-flex align-items-center text-white"
-                    variant="success"
-                    onClick={() => {
-                      addModalShow()
-                      tableRenderFalse()
-                    }}
-                  >
-                    <GoPlus /> ADD
-                  </Button>
+                 
                   <input
                     className="ms-auto me-3 mb-2 ps-2 search_inp"
                     type="text"
                     onChange={Search}
                     placeholder="Search"
                   />
-                  <div className="me-3" style={{ width: '120px' }}>
+                  <div className="me-3 mb-2" style={{ width: '120px' }}>
                     <Form.Select
                       className="ms-auto search_inp "
                       aria-label="Default select example"
@@ -312,7 +230,6 @@ const ViewTable = () => {
           </Col>
         </Row>
       </Container>
-      <AddModal tableRenderTrue={tableRenderTrue} addclose={addModalClose} add={addModal} />
       <ViewModal
         tableRenderFalse={tableRenderFalse}
         load={load}
@@ -320,18 +237,7 @@ const ViewTable = () => {
         view={viewModal}
         id={id}
       />
-      <UpdateModal
-        updateclose={updateModalClose}
-        update={updateModal}
-        id={id}
-        tableRenderTrue={tableRenderTrue}
-      />
-      <DeleteData
-        deleteclose={deleteModalClose}
-        dlt={deleteModal}
-        id={id}
-        tableRenderTrue={tableRenderTrue}
-      />
+     
       <ToastContainer
         position="top-right"
         autoClose={1000}
