@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 
 import {
   CAvatar,
@@ -21,6 +21,7 @@ import {
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
 import CIcon from '@coreui/icons-react'
+import {Badge} from 'react-bootstrap'
 import {
   cibCcAmex,
   cibCcApplePay,
@@ -55,148 +56,157 @@ import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 
 const Dashboard = () => {
-  const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+  const [data, setData] = useState([])
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('http://localhost:8000/licensee')
+      const json = await response.json()
+      setData(json)
+    }
+    fetchData()
+  }, [])
+  // const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
-  const progressExample = [
-    { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
-    { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
-    { title: 'Pageviews', value: '78.706 Views', percent: 60, color: 'warning' },
-    { title: 'New Users', value: '22.123 Users', percent: 80, color: 'danger' },
-    { title: 'Bounce Rate', value: 'Average Rate', percent: 40.15, color: 'primary' },
-  ]
+  // const progressExample = [
+  //   { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
+  //   { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
+  //   { title: 'Pageviews', value: '78.706 Views', percent: 60, color: 'warning' },
+  //   { title: 'New Users', value: '22.123 Users', percent: 80, color: 'danger' },
+  //   { title: 'Bounce Rate', value: 'Average Rate', percent: 40.15, color: 'primary' },
+  // ]
 
-  const progressGroupExample1 = [
-    { title: 'Monday', value1: 34, value2: 78 },
-    { title: 'Tuesday', value1: 56, value2: 94 },
-    { title: 'Wednesday', value1: 12, value2: 67 },
-    { title: 'Thursday', value1: 43, value2: 91 },
-    { title: 'Friday', value1: 22, value2: 73 },
-    { title: 'Saturday', value1: 53, value2: 82 },
-    { title: 'Sunday', value1: 9, value2: 69 },
-  ]
+  // const progressGroupExample1 = [
+  //   { title: 'Monday', value1: 34, value2: 78 },
+  //   { title: 'Tuesday', value1: 56, value2: 94 },
+  //   { title: 'Wednesday', value1: 12, value2: 67 },
+  //   { title: 'Thursday', value1: 43, value2: 91 },
+  //   { title: 'Friday', value1: 22, value2: 73 },
+  //   { title: 'Saturday', value1: 53, value2: 82 },
+  //   { title: 'Sunday', value1: 9, value2: 69 },
+  // ]
 
-  const progressGroupExample2 = [
-    { title: 'Male', icon: cilUser, value: 53 },
-    { title: 'Female', icon: cilUserFemale, value: 43 },
-  ]
+  // const progressGroupExample2 = [
+  //   { title: 'Male', icon: cilUser, value: 53 },
+  //   { title: 'Female', icon: cilUserFemale, value: 43 },
+  // ]
 
-  const progressGroupExample3 = [
-    { title: 'Organic Search', icon: cibGoogle, percent: 56, value: '191,235' },
-    { title: 'Facebook', icon: cibFacebook, percent: 15, value: '51,223' },
-    { title: 'Twitter', icon: cibTwitter, percent: 11, value: '37,564' },
-    { title: 'LinkedIn', icon: cibLinkedin, percent: 8, value: '27,319' },
-  ]
+  // const progressGroupExample3 = [
+  //   { title: 'Organic Search', icon: cibGoogle, percent: 56, value: '191,235' },
+  //   { title: 'Facebook', icon: cibFacebook, percent: 15, value: '51,223' },
+  //   { title: 'Twitter', icon: cibTwitter, percent: 11, value: '37,564' },
+  //   { title: 'LinkedIn', icon: cibLinkedin, percent: 8, value: '27,319' },
+  // ]
 
-  const tableExample = [
-    {
-      avatar: { src: avatar1, status: 'success' },
-      user: {
-        name: 'Yiorgos Avraamu',
-        new: true,
-        registered: 'Jan 1, 2021',
-        place: 'Kozhikode',
-        mobile:"6238115451",
-        status:"Active",
-      },
-      country: { name: 'USA', flag: cifUs },
-      usage: {
-        value: 50,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'success',
-      },
-      status:{activ:'Active'},
-      payment: { name: 'Mastercard', icon: cibCcMastercard },
-      activity: '10 sec ago',
-    },
-    {
-      avatar: { src: avatar2, status: 'danger' },
-      user: {
-        name: 'Avram Tarasios',
-        new: false,
-        registered: 'Jan 1, 2021',
-        place: 'Malappuram',
-        mobile:"9878115451",
-        status:"Active",
-      },
-      country: { name: 'Brazil', flag: cifBr },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'info',
-      },
-      payment: { name: 'Visa', icon: cibCcVisa },
-      activity: '5 minutes ago',
-    },
-    {
-      avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2021',place: 'kannur', mobile:"9358115489",status:"Inactive",},
+  // const tableExample = [
+  //   {
+  //     avatar: { src: avatar1, status: 'success' },
+  //     user: {
+  //       name: 'Yiorgos Avraamu',
+  //       new: true,
+  //       registered: 'Jan 1, 2021',
+  //       place: 'Kozhikode',
+  //       mobile:"6238115451",
+  //       status:"Active",
+  //     },
+  //     country: { name: 'USA', flag: cifUs },
+  //     usage: {
+  //       value: 50,
+  //       period: 'Jun 11, 2021 - Jul 10, 2021',
+  //       color: 'success',
+  //     },
+  //     status:{activ:'Active'},
+  //     payment: { name: 'Mastercard', icon: cibCcMastercard },
+  //     activity: '10 sec ago',
+  //   },
+  //   {
+  //     avatar: { src: avatar2, status: 'danger' },
+  //     user: {
+  //       name: 'Avram Tarasios',
+  //       new: false,
+  //       registered: 'Jan 1, 2021',
+  //       place: 'Malappuram',
+  //       mobile:"9878115451",
+  //       status:"Active",
+  //     },
+  //     country: { name: 'Brazil', flag: cifBr },
+  //     usage: {
+  //       value: 22,
+  //       period: 'Jun 11, 2021 - Jul 10, 2021',
+  //       color: 'info',
+  //     },
+  //     payment: { name: 'Visa', icon: cibCcVisa },
+  //     activity: '5 minutes ago',
+  //   },
+  //   {
+  //     avatar: { src: avatar3, status: 'warning' },
+  //     user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2021',place: 'kannur', mobile:"9358115489",status:"Inactive",},
 
-      country: { name: 'India', flag: cifIn },
-      usage: {
-        value: 74,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'warning',
-        place: 'Perambra',
-        mobile:"8538115452"
-      },
-      payment: { name: 'Stripe', icon: cibCcStripe },
-      activity: '1 hour ago',
-    },
-    {
-      avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2021',place: 'Kottakkal',mobile:"7238115456",status:"Active", },
-      country: { name: 'France', flag: cifFr },
-      usage: {
-        value: 98,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'danger',
+  //     country: { name: 'India', flag: cifIn },
+  //     usage: {
+  //       value: 74,
+  //       period: 'Jun 11, 2021 - Jul 10, 2021',
+  //       color: 'warning',
+  //       place: 'Perambra',
+  //       mobile:"8538115452"
+  //     },
+  //     payment: { name: 'Stripe', icon: cibCcStripe },
+  //     activity: '1 hour ago',
+  //   },
+  //   {
+  //     avatar: { src: avatar4, status: 'secondary' },
+  //     user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2021',place: 'Kottakkal',mobile:"7238115456",status:"Active", },
+  //     country: { name: 'France', flag: cifFr },
+  //     usage: {
+  //       value: 98,
+  //       period: 'Jun 11, 2021 - Jul 10, 2021',
+  //       color: 'danger',
         
-      },
-      payment: { name: 'PayPal', icon: cibCcPaypal },
-      activity: 'Last month',
-      status:{active:'Active'}
-    },
-    {
-      avatar: { src: avatar5, status: 'success' },
-      user: {
-        name: 'Agapetus Tadeáš',
-        new: true,
-        registered: 'Jan 1, 2021',
-        place: 'Valanchery',
-        mobile:"9528115485",
-        status:"Active",
-      },
-      country: { name: 'Spain', flag: cifEs },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'primary',
+  //     },
+  //     payment: { name: 'PayPal', icon: cibCcPaypal },
+  //     activity: 'Last month',
+  //     status:{active:'Active'}
+  //   },
+  //   {
+  //     avatar: { src: avatar5, status: 'success' },
+  //     user: {
+  //       name: 'Agapetus Tadeáš',
+  //       new: true,
+  //       registered: 'Jan 1, 2021',
+  //       place: 'Valanchery',
+  //       mobile:"9528115485",
+  //       status:"Active",
+  //     },
+  //     country: { name: 'Spain', flag: cifEs },
+  //     usage: {
+  //       value: 22,
+  //       period: 'Jun 11, 2021 - Jul 10, 2021',
+  //       color: 'primary',
         
-      },
-      payment: { name: 'Google Wallet', icon: cibCcApplePay },
-      activity: 'Last week',
-    },
-    {
-      avatar: { src: avatar6, status: 'danger' },
-      user: {
-        name: 'Friderik Dávid',
-        new: true,
-        registered: 'Jan 1, 2021',
-        place: 'Perinthalmanna',
-        mobile:"9538115445",
-        status:"Inactive",
-      },
-      country: { name: 'Poland', flag: cifPl },
-      usage: {
-        value: 43,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'success',
+  //     },
+  //     payment: { name: 'Google Wallet', icon: cibCcApplePay },
+  //     activity: 'Last week',
+  //   },
+  //   {
+  //     avatar: { src: avatar6, status: 'danger' },
+  //     user: {
+  //       name: 'Friderik Dávid',
+  //       new: true,
+  //       registered: 'Jan 1, 2021',
+  //       place: 'Perinthalmanna',
+  //       mobile:"9538115445",
+  //       status:"Inactive",
+  //     },
+  //     country: { name: 'Poland', flag: cifPl },
+  //     usage: {
+  //       value: 43,
+  //       period: 'Jun 11, 2021 - Jul 10, 2021',
+  //       color: 'success',
         
-      },
-      payment: { name: 'Amex', icon: cibCcAmex },
-      activity: 'Last week',
-    },
-  ]
+  //     },
+  //     payment: { name: 'Amex', icon: cibCcAmex },
+  //     activity: 'Last week',
+  //   },
+  // ]
 
   return (
     <>
@@ -335,6 +345,14 @@ const Dashboard = () => {
           <CCard className="mb-4">
             <CCardHeader>Licensee</CCardHeader>
             <CCardBody>
+
+
+
+
+
+
+
+
               {/* <CRow>
                 <CCol xs={12} md={6} xl={6}>
                   <CRow>
@@ -426,31 +444,36 @@ const Dashboard = () => {
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
                     <CTableHeaderCell>User</CTableHeaderCell>
-                    <CTableHeaderCell className="">Place</CTableHeaderCell>
-                    <CTableHeaderCell>Mobile number</CTableHeaderCell>
+                    <CTableHeaderCell>Email</CTableHeaderCell>
+                    <CTableHeaderCell>Mobile</CTableHeaderCell>
                     <CTableHeaderCell className="">Status</CTableHeaderCell>
-                    <CTableHeaderCell>Activity</CTableHeaderCell>
+                    <CTableHeaderCell className="">Join Date</CTableHeaderCell>
+
+                    
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                  {tableExample.map((item, index) => (
+                  {data.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
-                        <CAvatar size="md" src={item.avatar.src}   />
+                        <CAvatar size="md" src=''   />
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{item.user.name}</div>
+                        <div>{item.f_name+' '+item.l_name}</div>
                         {/* <div className="small text-medium-emphasis">
                           <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
                           {item.user.registered}
                         </div> */}
                       </CTableDataCell>
+
                       <CTableDataCell className="">
-                        {/* <CIcon size="xl" icon={item.country.flag} title={item.country.name} /> */}
-                        <div>{item.user.place}</div>
+                        {/* <CIcon size="xl" icon={item.payment.icon} /> */}
+                        <div>{item.email}</div>
+
                       </CTableDataCell>
+                      
                       <CTableDataCell>
-                      <div>{item.user.mobile}</div>
+                      <div>{item.mobile_no}</div>
 
                       
                         {/* <div className="clearfix">
@@ -465,15 +488,17 @@ const Dashboard = () => {
                       </CTableDataCell>
                       <CTableDataCell className="">
                         {/* <CIcon size="xl" icon={item.payment.icon} /> */}
-                        <div>{item.user.status}</div>
+                        <div>
+                        <Badge bg={`${item.status === 'Active' ? 'success' : 'danger'}`}>{item.status}</Badge>
+                      </div>
+                      </CTableDataCell>
+                      <CTableDataCell className="">
+                        {/* <CIcon size="xl" icon={item.payment.icon} /> */}
+                        <div>{item.createdAt}</div>
 
                       </CTableDataCell>
-                      <CTableDataCell>
-                        <div className="small text-medium-emphasis">Last login</div>
-                        <strong>{item.activity}</strong>
-                      </CTableDataCell>
                     </CTableRow>
-                  ))}
+                   ))} 
                 </CTableBody>
               </CTable>
             </CCardBody>
