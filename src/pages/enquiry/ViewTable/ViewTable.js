@@ -1,82 +1,120 @@
-import React, { useState, useEffect } from 'react'
-import DataTable from 'react-data-table-component'
-import 'react-toastify/dist/ReactToastify.css'
-import { Container, Row, Col, Badge, Card, Form, Button } from 'react-bootstrap'
-import './ViewTable.css'
-import { CgUserList } from 'react-icons/cg'
-import { GoEye } from 'react-icons/go'
-import { BsPencilSquare } from 'react-icons/bs'
-import { RiDeleteBin6Fill } from 'react-icons/ri'
+import React, { useState, useEffect } from "react";
+import DataTable from "react-data-table-component";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  Container,
+  Row,
+  Col,
+  Badge,
+  Card,
+  Form,
+  Button,
+} from "react-bootstrap";
+import "./ViewTable.css";
+import { GoEye } from "react-icons/go";
 
-import ViewModal from '../ViewModal/ViewModal'
+import ViewModal from "../ViewModal/ViewModal";
 
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer } from "react-toastify";
 
 const ViewTable = () => {
+  //................Table Render Controll.............//
+
+  const [load, setLoad] = useState(false);
+  const tableRenderTrue = () => {
+    setLoad(true);
+  };
+  const tableRenderFalse = () => {
+    setLoad(false);
+  };
+
+  //................Table Render Controll Ends.............//
+
   // ................Fetching All Data.....................//
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://localhost:8000/enquiry')
-      const json = await response.json()
-      setData(json)
-      setFilterData(json)
-   
+      const response = await fetch("http://localhost:8000/enquiry");
+      const json = await response.json();
+      setData(json);
+      setSearchData(json);
+      setFilterData(json);
+      console.log("hp");
     }
-    fetchData()
-  }, [])
+    fetchData();
+  }, [load]);
+
   // ................Fetching All Data Enda.....................//
 
   //  .................Search Data........................//
 
-  const [filterData, setFilterData] = useState([])
+  const [searchData, setSearchData] = useState([]);
 
   const Search = (event) => {
-    const query = event.target.value
-    const filtered = filterData.filter((item) =>
-      item.fname.toLowerCase().includes(query.toLowerCase()),
-    )
-    setData(filtered)
-  }
+    const query = event.target.value;
+    const searched = searchData.filter((item) =>
+      item.fname.toLowerCase().includes(query.toLowerCase())
+    );
+    setData(searched);
+  };
   useEffect(() => {
-    setFilterData(data)
-  }, [filterData])
+    setSearchData(data);
+  }, [searchData]);
 
   //  .................Search Data Ends.....................//
 
+  //  .................Filter Data........................//
+
+  const [filterData, setFilterData] = useState([]);
+
+  const filter = (event) => {
+    const filterquery = event.target.value;
+    const filtered = filterData.filter(
+      (item) =>
+        item.status.toUpperCase() === filterquery.toUpperCase() ||
+        filterquery === ""
+    );
+    setData(filtered);
+  };
+  useEffect(() => {
+    setFilterData(data);
+  }, [filterData]);
+
+  //  .................Filter Data Ends.....................//
+
   // ...........View Modal ......................//
 
-  const [viewModal, setViewModal] = useState(false)
+  const [viewModal, setViewModal] = useState(false);
   const viewModalClose = () => {
-    setViewModal(false)
-  }
+    setViewModal(false);
+  };
   const viewModalShow = () => {
-    setViewModal(true)
-  }
+    setViewModal(true);
+  };
 
   // ...........View Modal Ends ......................//
 
-
-
-  // ............................//
-  const [id, setId] = useState(null)
+  // ...........Row Id.................//
+  const [id, setId] = useState(null);
   const handleClick = (id) => {
-    console.log(`You clicked me! ${id}`)
-    setId(id)
-    console.log(id)
-  }
+    console.log(`You clicked me! ${id}`);
+    setId(id);
+    console.log(id);
+  };
+
+  // ...........Row Id Ends..................//
 
   // .............................//
 
   const columns = [
     {
-      name: 'ID',
-      selector: '_id',
+      name: "ID",
+      selector: "_id",
       sortable: true,
     },
     {
-      name: 'NAME',
+      name: "NAME",
       cell: (row) => (
         <div>
           {row.fname} {row.lname}
@@ -85,53 +123,60 @@ const ViewTable = () => {
       sortable: true,
     },
     {
-      name: 'EMAIL',
-      selector: 'email',
+      name: "EMAIL",
+      selector: "email",
       sortable: true,
     },
     {
-      name: 'PHONE',
-      selector: 'mobile',
+      name: "PHONE",
+      selector: "mobile",
       sortable: true,
     },
     {
-      name: 'ENQ FOR',
-      selector: 'enq_for',
+      name: "ENQ FOR",
+      selector: "enq_for",
       sortable: true,
     },
-   
+    ,
     {
-      name: 'STATUS',
-      selector: 'status',
+      name: "LOCATION",
+      selector: "loc",
+      sortable: true,
+    },
+
+    {
+      name: "STATUS",
+      selector: "status",
       cell: (row) => (
         <div>
-          <Badge bg={`${row.status === 'New' ? 'success' : 'danger' }`}>{row.status}</Badge>
+          <Badge bg={`${row.status === "New" ? "success" : "danger"}`}>
+            {row.status}
+          </Badge>
         </div>
       ),
       sortable: true,
     },
     {
-      name: 'ACTIONS',
+      name: "ACTIONS",
       cell: (row) => (
         <div className="d-flex align-items-center justify-content-center">
           <Button
             key={`view-${row._id}`}
             className="icon-btn"
             onClick={() => {
-              viewModalShow()
-              handleClick(row._id)
+              viewModalShow();
+              handleClick(row._id);
+              tableRenderTrue();
             }}
           >
             <GoEye className="text-primary" />
           </Button>
-         
-      
         </div>
       ),
     },
-  ]
+  ];
 
-  const paginationRowsPerPageOptions = [7, 14, 25]
+  const paginationRowsPerPageOptions = [7, 14, 25];
   return (
     <>
       <Container fluid>
@@ -139,22 +184,22 @@ const ViewTable = () => {
           <Col className="p-1" lg={12}>
             <Card>
               <Card.Body className="pt-4">
-                <div style={{ width: '100%' }} className="d-flex ">
-             
+                <div style={{ width: "100%" }} className="d-flex ">
                   <input
                     className="ms-auto me-3 mb-2 ps-2 search_inp"
                     type="text"
                     onChange={Search}
                     placeholder="Search"
                   />
-                  <div className='me-3 mb-2' style={{ width: '180px' }}>
+                  <div className="me-3 mb-2" style={{ width: "120px" }}>
                     <Form.Select
                       className="ms-auto search_inp "
                       aria-label="Default select example"
+                      onChange={filter}
                       name=""
                     >
                       <option
-                        style={{ backgroundColor: '#40536e' }}
+                        style={{ backgroundColor: "#40536e" }}
                         value=""
                         className=" text-white"
                       >
@@ -165,8 +210,20 @@ const ViewTable = () => {
                       <option>Inactive</option>
                     </Form.Select>
                   </div>
-                  <div className='search_inp ' style={{width:'50px', display: 'flex', alignItems: 'center',justifyContent: 'center',fontSize: '20px',fontWeight: '400',marginRight:'10px',height:'37px'}}>
-                  <CgUserList style={{fontWeight: '400',fontSize:'22px'}} className="text-dark" />&nbsp;{data.length}
+                  <div
+                    className="search_inp "
+                    style={{
+                      width: "95px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "1rem",
+                      fontWeight: "400",
+                      marginRight: "18px",
+                      height: "37px",
+                    }}
+                  >
+                    Count : &nbsp;{data.length}
                   </div>
                 </div>
                 <DataTable
@@ -186,8 +243,14 @@ const ViewTable = () => {
           </Col>
         </Row>
       </Container>
-      <ViewModal viewclose={viewModalClose} view={viewModal} id={id} />
-    
+      <ViewModal
+        tableRenderFalse={tableRenderFalse}
+        load={load}
+        viewclose={viewModalClose}
+        view={viewModal}
+        id={id}
+      />
+
       <ToastContainer
         position="top-right"
         autoClose={1000}
@@ -201,7 +264,7 @@ const ViewTable = () => {
         theme="light"
       />
     </>
-  )
-}
+  );
+};
 
-export default ViewTable
+export default ViewTable;
