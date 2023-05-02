@@ -17,7 +17,7 @@
     width: 100%;
     box-sizing: border-box;
      font-size: 15px !important; 
-    font-weight: 700;
+    font-weight: 500 !important;
     color: rgba(0, 0, 0, 0.87);
     background-color: rgb(255, 255, 255);
     min-height: 48px;
