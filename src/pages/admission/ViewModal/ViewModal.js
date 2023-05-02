@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Modal, Button, Container, Row, Col, Form } from 'react-bootstrap'
-const ViewModal = ({ viewclose, view, id }) => {
+const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
   // ..................Modal Controlls......................//
 
   const [show, setShow] = useState(view)
@@ -24,11 +24,11 @@ const ViewModal = ({ viewclose, view, id }) => {
 
   const [user, setUser] = useState({})
   const showDetail = async (details) => {
-    console.log('hai' + details)
+    
     try {
       const response = await axios.get(`http://localhost:8000/std_profile/${details}`)
       const data = response.data
-      console.log('response' + response.data.fname)
+     
       setUser(data)
     } catch (error) {
       console.error(error)
@@ -36,7 +36,7 @@ const ViewModal = ({ viewclose, view, id }) => {
   }
   useEffect(() => {
     showDetail(details)
-  }, [details])
+  }, [details,load])
 
   //.................fetch one data ends....................//
   return (
@@ -57,65 +57,68 @@ const ViewModal = ({ viewclose, view, id }) => {
             <Row>
               <Col lg={12}>
                 <Form.Label className="ms-1 mt-2">Enq Id</Form.Label>
-                <Form.Control disabled type="text" value={user.enq_id} />
+                <Form.Control disabled type="text" value={user && user.enq_id !=='' ? user.enq_id :''} /> 
                 <Form.Label className="ms-1 mt-2">Followup Id</Form.Label>
-                <Form.Control disabled type="text" value={user.followup_id} />
+                <Form.Control disabled type="text"  value={user && user.followup_id !=='' ? user.followup_id :''}/>
                 <Form.Label className="ms-1 mt-2">Reg No</Form.Label>
-                <Form.Control disabled type="text" value={user.reg_no} />
+                <Form.Control disabled type="text"  value={user && user.reg_no !=='' ? user.reg_no :''}/>
                 <Form.Label className="ms-1 mt-2">First name</Form.Label>
-                <Form.Control disabled type="text" value={user.fname} />
+                <Form.Control disabled type="text" value={user && user.fname !=='' ? user.fname :''} />
                 <Form.Label className="ms-1 mt-2">Last name</Form.Label>
-                <Form.Control disabled type="text" value={user.lname} />
+                <Form.Control disabled type="text" value={user && user.lname !=='' ? user.lname :''}/>
                 <Form.Label className="ms-1 mt-2">Date of birth</Form.Label>
-                <Form.Control disabled type="text" value={user.dob} />
+                <Form.Control disabled type="text"  value={user && user.dob !=='' ? user.dob :''} />
                 <Form.Label className="ms-1 mt-2">Gender</Form.Label>
-                <Form.Control disabled type="text" value={user.gender} />
+                <Form.Control disabled type="text"  value={user && user.gender !=='' ? user.gender :''}/>
                 <Form.Label className="ms-1 mt-2">Email</Form.Label>
-                <Form.Control disabled type="text" value={user.email} />
+                <Form.Control disabled type="text" value={user && user.email !=='' ? user.email :''}/>
                 <Form.Label className="ms-1 mt-2">Mobile</Form.Label>
-                <Form.Control disabled type="text" value={user.mobile} />    
+                <Form.Control disabled type="text" value={user && user.mobile !=='' ? user.mobile :''}/>    
                 <Form.Label className="ms-1 mt-2">Alt Mobile</Form.Label>
-                <Form.Control disabled type="text" value={user.altPhone} />            
+                <Form.Control disabled type="text" value={user && user.altphone !=='' ? user.altphone :''}/>            
                 <Form.Label className="ms-1 mt-2">Qualification</Form.Label>
-                <Form.Control disabled type="text" value={user.qualification} />
+                <Form.Control disabled type="text" value={user && user.qualification !=='' ? user.qualification :''}/>
                 <Form.Label className="ms-1 mt-2">Course opted</Form.Label>
-                <Form.Control disabled type="text" value={user.course_opted} />
+                <Form.Control disabled type="text"  value={user && user.course_opted !=='' ? user.course_opted :''}/>
                 <Form.Label className="ms-1 mt-2">Guardian</Form.Label>
-                <Form.Control disabled type="text" value={user.guardian} />
+                <Form.Control disabled type="text"  value={user && user.guardian !=='' ? user.guardian :''}/>
                 <Form.Label className="ms-1 mt-2">Relationship</Form.Label>
-                <Form.Control disabled type="text" value={user.relationship} />
+                <Form.Control disabled type="text" value={user && user.relationship !=='' ? user.relationship :''}/>
                 <Form.Label className="ms-1 mt-2">Address Line1</Form.Label>
-                <Form.Control disabled type="text" value={user.addLine1} />
+                <Form.Control disabled type="text" value={user && user.addLine1 !=='' ? user.addLine1 :''}/>
                 <Form.Label className="ms-1 mt-2">Address Line2</Form.Label>
-                <Form.Control disabled type="text" value={user.addLine2} />
+                <Form.Control disabled type="text" value={user && user.addLine2 !=='' ? user.addLine2 :''}/>
                 <Form.Label className="ms-1 mt-2">Pincode</Form.Label>
-                <Form.Control disabled type="text" value={user.pincode} />
+                <Form.Control disabled type="text"  value={user && user.pincode !=='' ? user.pincode :''}/>
                 <Form.Label className="ms-1 mt-2">District</Form.Label>
-                <Form.Control disabled type="text" value={user.district} />
+                <Form.Control disabled type="text"  value={user && user.district !=='' ? user.district :''}/>
                 <Form.Label className="ms-1 mt-2">State</Form.Label>
-                <Form.Control disabled type="text" value={user.state} />
+                <Form.Control disabled type="text"  value={user && user.state !=='' ? user.state :''}/>
                 <Form.Label className="ms-1 mt-2">Receipt No</Form.Label>
-                <Form.Control disabled type="text" value={user.recpNo} />
+                <Form.Control disabled type="text" value={user && user.recpNo !=='' ? user.recpNo :''}/>
                 <Form.Label className="ms-1 mt-2">Amount</Form.Label>
-                <Form.Control disabled type="text" value={user.amount} />
-                <Form.Label className="ms-1 mt-2">org_id</Form.Label>
-                <Form.Control disabled type="text" value={user.org_id} /> 
+                <Form.Control disabled type="text"  value={user && user.amount !=='' ? user.amount :''}/>
+                <Form.Label className="ms-1 mt-2">Org_id</Form.Label>
+                <Form.Control disabled type="text"  value={user && user.org_id !=='' ? user.org_id :''}/> 
                 <Form.Label className="ms-1 mt-2">CreatedAt</Form.Label>
-                <Form.Control disabled type="text" value={user.createdAt} /> 
+                <Form.Control disabled type="text"  value={user && user.createdAt !=='' ? user.createdAt :''}/> 
                 <Form.Label className="ms-1 mt-2">CreatedBy</Form.Label>
-                <Form.Control disabled type="text" value={user.createdBy} /> 
+                <Form.Control disabled type="text" value={user && user.createdBy !=='' ? user.createdBy :''}/> 
                 <Form.Label className="ms-1 mt-2">UpdatedAt</Form.Label>
-                <Form.Control disabled type="text" value={user.updatedAt} />
+                <Form.Control disabled type="text" value={user && user.updatedAt !=='' ? user.updatedAt :''}/>
                 <Form.Label className="ms-1 mt-2">UpdatedBy</Form.Label>
-                <Form.Control disabled type="text" value={user.updatedBy} />
+                <Form.Control disabled type="text"  value={user && user.updatedBy !=='' ? user.updatedBy :''}/>
                 <Form.Label className="ms-1 mt-2">Status</Form.Label>
-                <Form.Control disabled type="text" value={user.status} />
+                <Form.Control disabled type="text" value={user && user.status !=='' ? user.status :''}/>
               </Col>
             </Row>
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button className='text-white' variant="danger" onClick={handleModalClose}>
+        <Button className='text-white' variant="danger" onClick={()=>{
+            handleModalClose()
+            tableRenderFalse()
+          }}>
             Close
           </Button>
         </Modal.Footer>

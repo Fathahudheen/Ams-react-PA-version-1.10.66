@@ -3,56 +3,73 @@ import DataTable from 'react-data-table-component'
 import 'react-toastify/dist/ReactToastify.css'
 import { Container, Row, Col, Badge, Card, Form, Button } from 'react-bootstrap'
 import './ViewTable.css'
-import { CgUserList } from 'react-icons/cg'
-import { GoEye,GoPlus } from 'react-icons/go'
+import { GoEye,GoPlus} from 'react-icons/go'
 import ViewModal from '../ViewModal/ViewModal'
 import { ToastContainer } from 'react-toastify'
 
 const ViewTable = () => {
+  //................Table Render Controll.............//
 
-   //................Table Render Controll.............//
-  
-   const [load, setLoad] = useState(false)
-   const tableRenderTrue = () => {
-     setLoad(true)
-   }
-   const tableRenderFalse = () => {
-     setLoad(false)
-   }
- 
- //................Table Render Controll Ends.............//
+  const [load, setLoad] = useState(false)
+  const tableRenderTrue = () => {
+    setLoad(true)
+  }
+  const tableRenderFalse = () => {
+    setLoad(false)
+  }
+
+  //................Table Render Controll Ends.............//
+
   // ................Fetching All Data.....................//
 
   const [data, setData] = useState([])
   useEffect(() => {
     async function fetchData() {
-      console.log('hai')
       const response = await fetch('http://localhost:8000/std_profile')
       const json = await response.json()
       setData(json)
+      setSearchData(json)
       setFilterData(json)
       console.log('hp')
     }
     fetchData()
-  }, [])
+  }, [load])
+
   // ................Fetching All Data Enda.....................//
 
   //  .................Search Data........................//
 
-  const [filterData, setFilterData] = useState([])
+  const [searchData, setSearchData] = useState([])
 
   const Search = (event) => {
     const query = event.target.value
-    const filtered = filterData.filter((item) =>
+    const searched = searchData.filter((item) =>
       item.fname.toLowerCase().includes(query.toLowerCase()),
     )
-    setData(filtered)
+    setData(searched)
   }
   useEffect(() => {
-    setFilterData(data)
-  }, [filterData])
+    setSearchData(data)
+  }, [searchData])
 
   //  .................Search Data Ends.....................//
+
+   //  .................Filter Data........................//
+
+   const [filterData, setFilterData] = useState([])
+
+   const filter = (event) => {
+     const filterquery = event.target.value
+     const filtered = filterData.filter((item) =>
+     item.status.toUpperCase() === filterquery.toUpperCase() || filterquery === "",
+     )
+     setData(filtered)
+   }
+   useEffect(() => {
+    setFilterData(data)
+   }, [filterData])
+ 
+   //  .................Filter Data Ends.....................//
 
   // ...........View Modal ......................//
 
@@ -66,9 +83,9 @@ const ViewTable = () => {
 
   // ...........View Modal Ends ......................//
 
- 
+  
 
-  // ............................//
+  // ...........Row Id.................//
   const [id, setId] = useState(null)
   const handleClick = (id) => {
     console.log(`You clicked me! ${id}`)
@@ -76,6 +93,7 @@ const ViewTable = () => {
     console.log(id)
   }
 
+  // ...........Row Id Ends..................//
   // .............................//
 
   const columns = [
@@ -113,17 +131,8 @@ const ViewTable = () => {
       selector: 'course_opted',
       sortable: true,
     },
+      
     
-    // {
-    //   name: 'ROLE',
-    //   selector: 'role_opt',
-    //   sortable: true,
-    // },
-    // {
-    //   name: 'JOIN DATE',
-    //   selector: 'join_Date',
-    //   sortable: true,
-    // },
     {
       name: 'STATUS',
       selector: 'status',
@@ -144,6 +153,7 @@ const ViewTable = () => {
             onClick={() => {
               viewModalShow()
               handleClick(row._id)
+              tableRenderTrue()
             }}
           >
             <GoEye className="text-primary" />
@@ -155,6 +165,7 @@ const ViewTable = () => {
   ]
 
   const paginationRowsPerPageOptions = [7, 14, 25]
+
   return (
     <>
       <Container fluid>
@@ -163,32 +174,46 @@ const ViewTable = () => {
             <Card>
               <Card.Body className="pt-4">
                 <div style={{ width: '100%' }} className="d-flex ">
-                    <input
+                  
+                  <input 
                     className="ms-auto me-3 mb-2 ps-2 search_inp"
                     type="text"
                     onChange={Search}
                     placeholder="Search"
                   />
-                  <div className='me-3 mb-2' style={{ width: '180px' }}>
+                  <div className="me-3 mb-2" style={{ width: '120px' }}>
                     <Form.Select
                       className="ms-auto search_inp "
                       aria-label="Default select example"
+                      onChange={filter}
                       name=""
-                      
                     >
-                      <option 
+                      <option
                         style={{ backgroundColor: '#40536e' }}
                         value=""
-                        className=" text-white "
+                        className=" text-white"
                       >
-                        Filter
+                        All
                       </option>
                       <option>Active</option>
                       <option>Inactive</option>
                     </Form.Select>
                   </div>
-                  <div className='search_inp ' style={{width:'50px', display: 'flex', alignItems: 'center',justifyContent: 'center',fontSize: '20px',fontWeight: '400',marginRight:'10px',height:'37px'}}>
-                  <CgUserList style={{fontWeight: '400',fontSize:'22px'}} className="text-dark" />&nbsp;{data.length}
+                  <div
+                    className="search_inp "
+                    style={{
+                      width: '95px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1rem',
+                      fontWeight: '400',
+                      marginRight: '18px',
+                      height: '37px',
+                    }}
+                  >
+                    Count :
+                    &nbsp;{data.length}
                   </div>
                 </div>
                 <DataTable
@@ -208,8 +233,17 @@ const ViewTable = () => {
           </Col>
         </Row>
       </Container>
-      <ViewModal viewclose={viewModalClose} view={viewModal} id={id} />
-          <ToastContainer
+     
+      <ViewModal
+        tableRenderFalse={tableRenderFalse}
+        load={load}
+        viewclose={viewModalClose}
+        view={viewModal}
+        id={id}
+      />
+      
+     
+      <ToastContainer
         position="top-right"
         autoClose={1000}
         hideProgressBar={false}
