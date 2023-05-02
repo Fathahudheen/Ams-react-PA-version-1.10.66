@@ -69,9 +69,9 @@ const ViewModal = ({tableRenderFalse, load, viewclose, view, id }) => {
                 <Form.Label className="ms-1 mt-2">CreatedAt</Form.Label>
                 <Form.Control disabled type="text" value={user && user.createdAt !=='' ? user.createdAt :''} />
 
-                <Form.Label className="ms-1 mt-2">UpdatedBy</Form.Label>
+                <Form.Label className="ms-1 mt-2">Updated By</Form.Label>
                 <Form.Control disabled type="text" value={user && user.updatedBy !=='' ? user.updatedBy :''} />
-                <Form.Label className="ms-1 mt-2">CreatedBy</Form.Label>
+                <Form.Label className="ms-1 mt-2">Created By</Form.Label>
                 <Form.Control disabled type="text" value={user && user.createdBy !=='' ? user.createdBy :''} />
                 <Form.Label className="ms-1 mt-2">Status</Form.Label>
                 <Form.Control disabled type="text" value={user && user.status !=='' ? user.status :''} />
