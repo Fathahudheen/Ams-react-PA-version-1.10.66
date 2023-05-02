@@ -13,6 +13,18 @@ import ViewModal from '../ViewModal/ViewModal'
 import { ToastContainer } from 'react-toastify'
 
 const ViewTable = () => {
+  //................Table Render Controll.............//
+
+  const [load, setLoad] = useState(false)
+  const tableRenderTrue = () => {
+    setLoad(true)
+  }
+  const tableRenderFalse = () => {
+    setLoad(false)
+  }
+
+  //................Table Render Controll Ends.............//
+
   // ................Fetching All Data.....................//
 
   const [data, setData] = useState([])
@@ -21,29 +33,60 @@ const ViewTable = () => {
       const response = await fetch('http://localhost:8000/enquiry')
       const json = await response.json()
       setData(json)
+      setSearchData(json)
       setFilterData(json)
-   
+      console.log('hp')
     }
     fetchData()
-  }, [])
+  }, [load])
+
   // ................Fetching All Data Enda.....................//
 
   //  .................Search Data........................//
 
-  const [filterData, setFilterData] = useState([])
+  const [searchData, setSearchData] = useState([])
 
   const Search = (event) => {
     const query = event.target.value
-    const filtered = filterData.filter((item) =>
+    const searched = searchData.filter((item) =>
       item.fname.toLowerCase().includes(query.toLowerCase()),
     )
-    setData(filtered)
+    setData(searched)
   }
   useEffect(() => {
-    setFilterData(data)
-  }, [filterData])
+    setSearchData(data)
+  }, [searchData])
 
   //  .................Search Data Ends.....................//
+
+   //  .................Filter Data........................//
+
+   const [filterData, setFilterData] = useState([])
+
+   const filter = (event) => {
+     const filterquery = event.target.value
+     const filtered = filterData.filter((item) =>
+     item.status.toUpperCase() === filterquery.toUpperCase() || filterquery === "",
+     )
+     setData(filtered)
+   }
+   useEffect(() => {
+    setFilterData(data)
+   }, [filterData])
+ 
+   //  .................Filter Data Ends.....................//
+
+  // ...........Add Modal ......................//
+
+  const [addModal, setAddModal] = useState(false)
+  const addModalClose = () => {
+    setAddModal(false)
+  }
+  const addModalShow = () => {
+    setAddModal(true)
+  }
+
+  // ...........Add Modal Ends ......................//
 
   // ...........View Modal ......................//
 
@@ -57,15 +100,17 @@ const ViewTable = () => {
 
   // ...........View Modal Ends ......................//
 
+  
 
-
-  // ............................//
+  // ...........Row Id.................//
   const [id, setId] = useState(null)
   const handleClick = (id) => {
     console.log(`You clicked me! ${id}`)
     setId(id)
     console.log(id)
   }
+
+  // ...........Row Id Ends..................//
 
   // .............................//
 
@@ -114,12 +159,13 @@ const ViewTable = () => {
       name: 'ACTIONS',
       cell: (row) => (
         <div className="d-flex align-items-center justify-content-center">
-          <Button
+         <Button
             key={`view-${row._id}`}
             className="icon-btn"
             onClick={() => {
               viewModalShow()
               handleClick(row._id)
+              tableRenderTrue()
             }}
           >
             <GoEye className="text-primary" />
@@ -141,16 +187,17 @@ const ViewTable = () => {
               <Card.Body className="pt-4">
                 <div style={{ width: '100%' }} className="d-flex ">
              
-                  <input
+                <input
                     className="ms-auto me-3 mb-2 ps-2 search_inp"
                     type="text"
                     onChange={Search}
                     placeholder="Search"
                   />
-                  <div className='me-3 mb-2' style={{ width: '180px' }}>
+                  <div className="me-3 mb-2" style={{ width: '120px' }}>
                     <Form.Select
                       className="ms-auto search_inp "
                       aria-label="Default select example"
+                      onChange={filter}
                       name=""
                     >
                       <option
@@ -165,8 +212,21 @@ const ViewTable = () => {
                       <option>Inactive</option>
                     </Form.Select>
                   </div>
-                  <div className='search_inp ' style={{width:'50px', display: 'flex', alignItems: 'center',justifyContent: 'center',fontSize: '20px',fontWeight: '400',marginRight:'10px',height:'37px'}}>
-                  <CgUserList style={{fontWeight: '400',fontSize:'22px'}} className="text-dark" />&nbsp;{data.length}
+                  <div
+                    className="search_inp "
+                    style={{
+                      width: '95px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1rem',
+                      fontWeight: '400',
+                      marginRight: '18px',
+                      height: '37px',
+                    }}
+                  >
+                    Count :
+                    &nbsp;{data.length}
                   </div>
                 </div>
                 <DataTable
@@ -186,7 +246,13 @@ const ViewTable = () => {
           </Col>
         </Row>
       </Container>
-      <ViewModal viewclose={viewModalClose} view={viewModal} id={id} />
+      <ViewModal
+        tableRenderFalse={tableRenderFalse}
+        load={load}
+        viewclose={viewModalClose}
+        view={viewModal}
+        id={id}
+      />
     
       <ToastContainer
         position="top-right"
