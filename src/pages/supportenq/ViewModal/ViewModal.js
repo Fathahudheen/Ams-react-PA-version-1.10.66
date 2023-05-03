@@ -59,7 +59,7 @@ const ViewModal = ({tableRenderFalse, load, viewclose, view, id }) => {
             <Row>
               <Col lg={12}>
                
-                <Form.Label className="ms-1 mt-2">Support type</Form.Label>
+              <Form.Label className="ms-1 mt-2">Support type</Form.Label>
                 <Form.Control disabled type="text" value={user && user.support_type !=='' ? user.support_type :''} />
                 <Form.Label className="ms-1 mt-2">Ticket number</Form.Label>
                 <Form.Control disabled type="text" value={user && user.ticket_no !=='' ? user.ticket_no :''} />
@@ -73,20 +73,17 @@ const ViewModal = ({tableRenderFalse, load, viewclose, view, id }) => {
                 <Form.Control disabled type="text" value={user && user.email !=='' ? user.email :''} />
                 <Form.Label className="ms-1 mt-2">Phone</Form.Label>
                 <Form.Control disabled type="text" value={user && user.mobile !=='' ? user.mobile :''} />
-
                 <Form.Label className="ms-1 mt-2">Remarks</Form.Label>
                 <Form.Control disabled type="text" value={user && user.remarks !=='' ? user.remarks :''} />
-
                 <Form.Label className="ms-1 mt-2">Status</Form.Label>
                 <Form.Control disabled type="text" value={user && user.status !=='' ? user.status :''} />
-
-                <Form.Label className="ms-1 mt-2">Created at</Form.Label>
+                <Form.Label className="ms-1 mt-2">Created On</Form.Label>
                 <Form.Control disabled type="text" value={user && user.createdAt !=='' ? user.createdAt :''} />                
-                <Form.Label className="ms-1 mt-2">Created by</Form.Label>
+                <Form.Label className="ms-1 mt-2">Created By</Form.Label>
                 <Form.Control disabled type="text" value={user && user.createdBy !=='' ? user.createdBy :''} />                
-                <Form.Label className="ms-1 mt-2">Updated at</Form.Label>
+                <Form.Label className="ms-1 mt-2">Updated On</Form.Label>
                 <Form.Control disabled type="text" value={user && user.updatedAt !=='' ? user.updatedAt :''} />                
-                <Form.Label className="ms-1 mt-2">Updated by</Form.Label>
+                <Form.Label className="ms-1 mt-2">Updated By</Form.Label>
                 <Form.Control disabled type="text" value={user && user.updatedBy !=='' ? user.updatedBy :''} />
               </Col>
             </Row>

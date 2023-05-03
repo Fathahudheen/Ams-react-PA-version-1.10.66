@@ -26,9 +26,9 @@ const ViewModal = ({ viewclose, view, id }) => {
   const showDetail = async (details) => {
     console.log('hai' + details)
     try {
-      const response = await axios.get(`http://localhost:8000/myteam/${details}`)
+      const response = await axios.get(`http://localhost:8000/enquiry/${details}`)
       const data = response.data
-      console.log('response' + response.data.f_name)
+      console.log('response' + response.data.fname)
       setUser(data)
     } catch (error) {
       console.error(error)
@@ -56,20 +56,34 @@ const ViewModal = ({ viewclose, view, id }) => {
           <Container>
             <Row>
               <Col lg={12}>
-                <Form.Label className="ms-1 mt-2">First Name</Form.Label>
-                <Form.Control disabled type="text" value={user.f_name} />
-                <Form.Label className="ms-1 mt-2">Last Name</Form.Label>
-                <Form.Control disabled type="text" value={user.l_name} />
+               
+        
+                <Form.Label className="ms-1 mt-2">First name</Form.Label>
+                <Form.Control disabled type="text" value={user.fname} />
+                <Form.Label className="ms-1 mt-2">Last name</Form.Label>
+                <Form.Control disabled type="text" value={user.lname} />
                 <Form.Label className="ms-1 mt-2">Email</Form.Label>
                 <Form.Control disabled type="text" value={user.email} />
-                <Form.Label className="ms-1 mt-2">Password</Form.Label>
-                <Form.Control disabled type="text" value={user.password} />
-                <Form.Label className="ms-1 mt-2">Phone</Form.Label>
-                <Form.Control disabled type="text" value={user.mobile_no} />
-                <Form.Label className="ms-1 mt-2">Role</Form.Label>
-                <Form.Control disabled type="text" value={user.role_opt} />
-                <Form.Label className="ms-1 mt-2">Join Date</Form.Label>
-                <Form.Control disabled type="text" value={user.join_Date} />
+                <Form.Label className="ms-1 mt-2">Mobile</Form.Label>
+                <Form.Control disabled type="text" value={user.mobile} />
+                <Form.Label className="ms-1 mt-2">Enq Mode</Form.Label>
+                <Form.Control disabled type="text" value={user.enq_mode} />
+                <Form.Label className="ms-1 mt-2">Enq For</Form.Label>
+                <Form.Control disabled type="text" value={user.enq_for} />
+                <Form.Label className="ms-1 mt-2">Location</Form.Label>
+                <Form.Control disabled type="text" value={user.loc} />
+                <Form.Label className="ms-1 mt-2">Org Id</Form.Label>
+                <Form.Control disabled type="text" value={user.org_id} />
+                <Form.Label className="ms-1 mt-2">Created At</Form.Label>
+                <Form.Control disabled type="text" value={user.createdAt} />
+                <Form.Label className="ms-1 mt-2">Created By</Form.Label>
+                <Form.Control disabled type="text" value={user.createdBy} />
+                <Form.Label className="ms-1 mt-2">Updated At</Form.Label>
+                <Form.Control disabled type="text" value={user.updatedAt} />
+                <Form.Label className="ms-1 mt-2">Updated By</Form.Label>
+                <Form.Control disabled type="text" value={user.updatedBy} />
+                <Form.Label className="ms-1 mt-2">Remarks</Form.Label>
+                <Form.Control disabled type="text" value={user.remarks} />
                 <Form.Label className="ms-1 mt-2">Status</Form.Label>
                 <Form.Control disabled type="text" value={user.status} />
               </Col>

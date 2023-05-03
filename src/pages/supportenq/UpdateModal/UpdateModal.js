@@ -28,7 +28,7 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
   const showDetail = async (details) => {
     try {
       const response = await axios.get(`http://localhost:8000/supportEnq/${details}`)
-      console.log('response' + response.data.email)
+      console.log('response' + response.data.support_type)
       const data = response.data
       setUser(data)
     } catch (error) {
@@ -51,21 +51,27 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
     }))
   }
 
-  const updateUser = async (user) => {
-    const { _id,support_type,ticket_no,enq_from,enq_to,descp,email,mobile,remarks, status } = user
+  const updateUser = async (supportenq) => {
+    const { _id, support_type, ticket_no, mobile,email,enq_from, enq_to,descp,remarks,createdAt,createdBy,updatedAt,updatedBy, password, status } = supportenq
     try {
-      const user_support_Enq = {
-        support_type: support_type,
-        ticket_no: ticket_no,
-        enq_from: enq_from,
-        enq_to: enq_to,
-        descp:descp,
-        email:email,
+      const suppenq= {
+        support_type:support_type,
+        ticket_no:ticket_no,
         mobile:mobile,
+        email:email,
+        enq_from:enq_from,
+        enq_to:enq_to,
+        descp:descp,
         remarks:remarks,
+        createdAt:createdAt,
+        createdBy:createdBy,
+        updatedAt:updatedAt,
+        updatedBy:updatedBy,
+        remarks:remarks,
+        password: password,
         status: status,
       }
-      const response = await axios.patch(`http://localhost:8000/supportEnq/${_id}`, user_support_Enq)
+      const response = await axios.patch(`http://localhost:8000/supportEnq/${_id}`, suppenq)
       if (response.status === 200) {
         toast.success('User Successfully Updated !', {
           toastId: 'success',
@@ -90,61 +96,55 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
           <Container>
             <Row>
               <Col lg={12}>
-              <Form action="">
-                  <Form.Label className="ms-1">SUPPORT TYPE</Form.Label>
+                <Form action="">
+                  <Form.Label className="ms-1">Support Type</Form.Label>
                   <Form.Control
                     type="text"
                     name="support_type"
                     value={user.support_type}
                     onChange={handleChange}
                   />
-                  <Form.Label className="ms-1 mt-2">TICKET NUMBER</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Ticket Number</Form.Label>
                   <Form.Control
                     type="text"
                     name="ticket_no"
                     value={user.ticket_no}
                     onChange={handleChange}
                   />
-                  <Form.Label className="ms-1 mt-2">ENQUIRY FROM</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="enq_from"
-                    value={user.enq_from}
-                    onChange={handleChange}
-                  />
-                  <Form.Label className="ms-1 mt-2">ENQUIRY TO</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="enq_to"
-                    value={user.enq_to}
-                    onChange={handleChange}
-                  />
-                  <Form.Label className="ms-1 mt-2">DESCRIPTION</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="descp"
-                    value={user.descp}
-                    onChange={handleChange}
-                  />
-                  <Form.Label className="ms-1 mt-2">EMAIL</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Email</Form.Label>
                   <Form.Control
                     type="text"
                     name="email"
                     value={user.email}
                     onChange={handleChange}
                   />
-                  <Form.Label className="ms-1 mt-2">PHONE</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Phone</Form.Label>
                   <Form.Control
                     type="text"
                     name="mobile"
                     value={user.mobile}
                     onChange={handleChange}
                   />
-                  <Form.Label className="ms-1 mt-2">REMARKS</Form.Label>
+
+                  <Form.Label className="ms-1 mt-2">Description</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="descp"
+                    value={user.descp}
+                    onChange={handleChange}
+                  />
+                  <Form.Label className="ms-1 mt-2">Remarks</Form.Label>
                   <Form.Control
                     type="text"
                     name="remarks"
                     value={user.remarks}
+                    onChange={handleChange}
+                  />
+                  <Form.Label className="ms-1 mt-2">Password</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="password"
+                    value={user.password}
                     onChange={handleChange}
                   />
                   <Form.Label className="ms-1 mt-2">Status</Form.Label>

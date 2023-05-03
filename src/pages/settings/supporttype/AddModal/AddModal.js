@@ -22,9 +22,9 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
   // ...........Validation...............//
 
   const initialValues = {
-    name: '',
-    description: '',
-   
+    name: "",
+    descp:"",
+
   }
   const handleReset = (formik) => {
     formik.resetForm()
@@ -33,59 +33,65 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
     initialValues: initialValues,
     validationSchema: ValidSchema,
     onSubmit: async (values, { resetForm }) => {
-      console.log(values.name)
+      console.log(values.name);
       try {
-        create(values)
-        resetForm()
-        handleModalClose()
-        tableRenderTrue()
+        create(values);
+        resetForm();
+        handleModalClose();
+        tableRenderTrue();
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
-  })
+  });
   // ...........Validation Ends..........//
 
   // ...............Adding User Here.......................//
 
-  const create = async ({ name, description}) => {
-    if (name == '' && description == '') {
+  const create = async ({ 
+    name,
+    descp,
+
+    }) => {
+    if (name == '' && descp == '') {
       console.log('enter all detailes')
     } else {
       try {
-        const user_mode = {
+        const user_support_type = {
           name: name,
-          description: description,
-         
+          descp:descp,
         }
-        const response = await axios.post(`http://localhost:8000/enmode`, user_mode)
+        const response = await axios.post(`http://localhost:8000/supportType`, user_support_type)
         if (response.status === 200) {
+          // alert(response.status.toString())
           toast.success('User Successfully Created !', {
             toastId: 'success',
             position: toast.POSITION.TOP_RIGHT,
             autoClose: 1000,
-          })
+          });
         }
         hg()
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
-  }
+  };
 
   // ...............Adding User Ends Here.......................//
   return (
     <>
       <Modal show={show} backdrop="static" centered onHide={handleModalClose} animation={false}>
         <Modal.Header closeButton style={{ backgroundColor: '#40536e', color: 'white' }}>
-          <Modal.Title>Add Enquiry Mode</Modal.Title>
+          <Modal.Title>Add Support Type</Modal.Title>
         </Modal.Header>
         <Container>
           <Row>
             <Col lg={12}>
               <Form onSubmit={formik.handleSubmit} action="">
-                <Modal.Body style={{ height: '310px' }} className="overflow-auto">
-                  <Form.Label className="ms-1 ">Name</Form.Label>
+                <Modal.Body style={{ height: '220px' }} className="overflow-auto">
+                <Form.Label className="ms-1  ">Name
+                  </Form.Label>
+
                   <Form.Control
                     required
                     type="text"
@@ -97,21 +103,47 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
+
+
                   {formik.errors.name && formik.touched.name ? (
-                    <p className="form-error">{formik.errors.name}</p>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        color: "red",
+                        marginTop: "1px",
+                        marginLeft: "2%",
+                      }}
+                      className="form-error"
+                    >
+                      {formik.errors.name }
+                    </p>
                   ) : null}
-                  <Form.Label className="ms-1 mt-1">Description</Form.Label>
+                  
+                  <Form.Label className="ms-1 mt-2">Description</Form.Label>
                   <Form.Control
                     required
                     type="text"
                     placeholder=""
                     defaultValue=""
-                    name="description"
-                    value={formik.values.description}
+                    name="descp"
+                    autoComplete="off"
+                    value={formik.values.descp}
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                   />
-                 
-                 
+                  {formik.errors.descp && formik.touched.descp ? (
+                    <p
+                      style={{
+                        fontSize: "10px",
+                        color: "red",
+                        marginTop: "1px",
+                        marginLeft: "2%",
+                      }}
+                      className="form-error"
+                    >
+                      {formik.errors.descp }
+                    </p>
+                  ) : null}
                 </Modal.Body>
                 <Modal.Footer className="positoin-fixed">
                   <Button
@@ -120,7 +152,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                     variant="danger"
                     onClick={() => {
                       handleReset(formik)
-                      handleModalClose();
+                      handleModalClose()
                     }}
                   >
                     Close
@@ -142,7 +174,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
         </Container>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 export default AddModal
