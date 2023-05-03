@@ -58,7 +58,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
           description: description,
          
         }
-        const response = await axios.post(`http://localhost:8000/mode`, user_mode)
+        const response = await axios.post(`http://localhost:8000/enmode`, user_mode)
         if (response.status === 200) {
           toast.success('User Successfully Created !', {
             toastId: 'success',
