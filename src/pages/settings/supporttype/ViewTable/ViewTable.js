@@ -31,7 +31,7 @@ const ViewTable = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://localhost:8000/source')
+      const response = await fetch('http://localhost:8000/supportType')
       const json = await response.json()
       setData(json)
       setSearchData(json)
@@ -138,25 +138,17 @@ const ViewTable = () => {
   // ...............Table...................//
   const columns = [
     {
-      name: 'ID',
-      selector: '_id',
-      sortable: true,
-    },
-    {
       name: 'NAME',
-      cell: (row) => (
-        <div>
-          {row.name} 
-        </div>
-      ),
+      selector: 'name',
       sortable: true,
+    
     },
     {
       name: 'DESCRIPTION',
-      selector: 'description',
+      selector: 'descp',
       sortable: true,
+    
     },
-   
     {
       name: 'STATUS',
       selector: 'status',

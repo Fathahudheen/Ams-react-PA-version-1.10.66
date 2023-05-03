@@ -3,7 +3,7 @@ import { Modal, Button, Container, Row, Col, Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
-const UpdateModal = ({ updateclose, update, id }) => {
+const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
   // ..................Modal Controlls......................//
 
   const [show, setShow] = useState(update)
@@ -17,7 +17,7 @@ const UpdateModal = ({ updateclose, update, id }) => {
 
   // ..................Modal Controlls Ends......................//
 
-  //  .................Fetching Employee One.................//
+  //  .................Fetching One data.................//
 
   const [details, setDetails] = useState(id)
   useEffect(() => {
@@ -26,7 +26,6 @@ const UpdateModal = ({ updateclose, update, id }) => {
 
   const [user, setUser] = useState({})
   const showDetail = async (details) => {
-    console.log('hai' + details)
     try {
       const response = await axios.get(`http://localhost:8000/mode/${details}`)
       console.log('response' + response.data.name)
@@ -40,16 +39,9 @@ const UpdateModal = ({ updateclose, update, id }) => {
     showDetail(details)
   }, [details])
 
-  //  .................Fetching Employee One Ends.................//
+  //  .................Fetching One data Ends.................//
 
-  // const [values, setValues] = useState({
-  //   id:row._id,
-  //   f_name:row.f_name,
-  //   l_name:row.l_name,
-  //   mobile_no:row.mobile_no,
-  //   password:row.password,
-  //   status:row.status
-  // });
+  // ....................Updating one data.....................//
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -60,7 +52,7 @@ const UpdateModal = ({ updateclose, update, id }) => {
   }
 
   const updateUser = async (user) => {
-    const { _id, name, description,  status } = user
+    const { _id, name, description, status } = user
     try {
       const user_1 = {
         name: name,
@@ -75,10 +67,14 @@ const UpdateModal = ({ updateclose, update, id }) => {
           position: toast.POSITION.TOP_RIGHT,
         })
       }
+      tableRenderTrue()
     } catch (error) {
       alert(error)
     }
   }
+
+  // ....................Updating one data ends.....................//
+
   return (
     <>
       <Modal show={show} backdrop="static" centered onHide={handleModalClose} animation={false}>
@@ -93,7 +89,7 @@ const UpdateModal = ({ updateclose, update, id }) => {
                   <Form.Label className="ms-1">Name</Form.Label>
                   <Form.Control
                     type="text"
-                    name="Name"
+                    name="name"
                     value={user.name}
                     onChange={handleChange}
                   />
@@ -104,7 +100,7 @@ const UpdateModal = ({ updateclose, update, id }) => {
                     value={user.description}
                     onChange={handleChange}
                   />
-                 
+                  
                   <Form.Label className="ms-1 mt-2">Status</Form.Label>
                   <Form.Select
                     aria-label="Default select example"

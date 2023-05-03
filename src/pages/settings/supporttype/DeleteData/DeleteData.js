@@ -27,7 +27,7 @@ const DeleteData = ({ deleteclose, dlt, id, tableRenderTrue }) => {
   const handleDelete = async (remove) => {
     console.log(remove)
     try {
-      const response = await axios.delete(`http://localhost:8000/supportEnq/${remove}`)
+      const response = await axios.delete(`http://localhost:8000/supportType/${remove}`)
       if (response.status === 200) {
         toast.success('User Successfully Deleted !', {
           toastId: 'success',

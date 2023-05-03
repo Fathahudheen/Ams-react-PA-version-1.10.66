@@ -22,11 +22,9 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
   // ...........Validation...............//
 
   const initialValues = {
-    firstname: '',
-    lastname: '',
-    mobile_no: '',
-    email: '',
-    password: '',
+    name: "",
+    descp:"",
+
   }
   const handleReset = (formik) => {
     formik.resetForm()
@@ -35,129 +33,116 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
     initialValues: initialValues,
     validationSchema: ValidSchema,
     onSubmit: async (values, { resetForm }) => {
-      console.log(values.firstname)
+      console.log(values.name);
       try {
-        create(values)
-        resetForm()
-        handleModalClose()
-        tableRenderTrue()
+        create(values);
+        resetForm();
+        handleModalClose();
+        tableRenderTrue();
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
-  })
+  });
   // ...........Validation Ends..........//
 
   // ...............Adding User Here.......................//
 
-  const create = async ({ firstname, lastname, email, password, mobile_no }) => {
-    if (firstname == '' && email == '') {
+  const create = async ({ 
+    name,
+    descp,
+
+    }) => {
+    if (name == '' && descp == '') {
       console.log('enter all detailes')
     } else {
       try {
-        const user_lic = {
-          f_name: firstname,
-          l_name: lastname,
-          email: email,
-          password: password,
-          mobile_no: mobile_no,
+        const user_support_type = {
+          name: name,
+          descp:descp,
         }
-        const response = await axios.post(`http://localhost:8000/myteam`, user_lic)
+        const response = await axios.post(`http://localhost:8000/supportType`, user_support_type)
         if (response.status === 200) {
+          // alert(response.status.toString())
           toast.success('User Successfully Created !', {
             toastId: 'success',
             position: toast.POSITION.TOP_RIGHT,
             autoClose: 1000,
-          })
+          });
         }
         hg()
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
-  }
+  };
 
   // ...............Adding User Ends Here.......................//
   return (
     <>
       <Modal show={show} backdrop="static" centered onHide={handleModalClose} animation={false}>
         <Modal.Header closeButton style={{ backgroundColor: '#40536e', color: 'white' }}>
-          <Modal.Title>Add User</Modal.Title>
+          <Modal.Title>Add Support Type</Modal.Title>
         </Modal.Header>
         <Container>
           <Row>
             <Col lg={12}>
               <Form onSubmit={formik.handleSubmit} action="">
-                <Modal.Body style={{ height: '310px' }} className="overflow-auto">
-                  <Form.Label className="ms-1 ">First Name</Form.Label>
+                <Modal.Body style={{ height: '220px' }} className="overflow-auto">
+                <Form.Label className="ms-1  ">Name
+                  </Form.Label>
+
                   <Form.Control
                     required
                     type="text"
                     placeholder=""
                     defaultValue=""
-                    name="firstname"
+                    name="name"
                     autoComplete="off"
-                    value={formik.values.firstname}
+                    value={formik.values.name}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.errors.firstname && formik.touched.firstname ? (
-                    <p className="form-error">{formik.errors.firstname}</p>
+
+
+                  {formik.errors.name && formik.touched.name ? (
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        color: "red",
+                        marginTop: "1px",
+                        marginLeft: "2%",
+                      }}
+                      className="form-error"
+                    >
+                      {formik.errors.name }
+                    </p>
                   ) : null}
-                  <Form.Label className="ms-1 mt-1">Last Name</Form.Label>
+                  
+                  <Form.Label className="ms-1 mt-2">Description</Form.Label>
                   <Form.Control
                     required
                     type="text"
                     placeholder=""
                     defaultValue=""
-                    name="lastname"
-                    value={formik.values.lastname}
-                    onChange={formik.handleChange}
-                  />
-                  <Form.Label className="ms-1 mt-1">Phone</Form.Label>
-                  <Form.Control
-                    required
-                    type="number"
-                    placeholder=""
-                    defaultValue=""
-                    name="mobile_no"
+                    name="descp"
                     autoComplete="off"
-                    value={formik.values.mobile_no}
+                    value={formik.values.descp}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.errors.mobile_no && formik.touched.mobile_no ? (
-                    <p className="form-error">{formik.errors.mobile_no}</p>
-                  ) : null}
-                  <Form.Label className="ms-1 mt-1">Email</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder=""
-                    defaultValue=""
-                    name="email"
-                    autoComplete="off"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  {formik.errors.email && formik.touched.email ? (
-                    <p className="form-error">{formik.errors.email}</p>
-                  ) : null}
-                  <Form.Label className="ms-1 mt-1">Password</Form.Label>
-                  <Form.Control
-                    required
-                    type="password"
-                    placeholder=""
-                    defaultValue=""
-                    name="password"
-                    autoComplete="off"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  {formik.errors.password && formik.touched.password ? (
-                    <p className="form-error">{formik.errors.password}</p>
+                  {formik.errors.descp && formik.touched.descp ? (
+                    <p
+                      style={{
+                        fontSize: "10px",
+                        color: "red",
+                        marginTop: "1px",
+                        marginLeft: "2%",
+                      }}
+                      className="form-error"
+                    >
+                      {formik.errors.descp }
+                    </p>
                   ) : null}
                 </Modal.Body>
                 <Modal.Footer className="positoin-fixed">
@@ -175,7 +160,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   <Button
                     className="text-white"
                     onClick={() => {
-                      formik.isValid ? create(formik.values) : alert(formik.errors)
+                      formik.isValid ? true : alert(formik.errors)
                     }}
                     type="submit"
                     variant="success ms-2"
@@ -189,7 +174,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
         </Container>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 export default AddModal

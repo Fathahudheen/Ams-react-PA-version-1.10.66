@@ -3,3 +3,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.form-error{
+  font-size: 10px;
+  color: red;
+  margin-top: 1px;
+  margin-left: 2%,
+}
