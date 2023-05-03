@@ -92,7 +92,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
     <>
       <Modal show={show} backdrop="static" centered onHide={handleModalClose} animation={false}>
         <Modal.Header closeButton style={{ backgroundColor: '#40536e', color: 'white' }}>
-          <Modal.Title>Add User</Modal.Title>
+          <Modal.Title>Add Support Enquiry</Modal.Title>
         </Modal.Header>
         <Container>
           <Row>
