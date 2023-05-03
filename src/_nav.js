@@ -158,31 +158,31 @@ const _nav = [
       },
     ],
   },
-  {
-    component: CNavGroup,
-    name: 'Miscellaneous',
+  // {
+  //   component: CNavGroup,
+  //   name: 'Miscellaneous',
 
-    to: '/miscellaneous',
+  //   to: '/miscellaneous',
     // icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Task',
-        to: '/miscellaneous/task',
+    // items: [
+    //   {
+    //     component: CNavItem,
+    //     name: 'Task',
+    //     to: '/miscellaneous/task',
         // icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
         // icon: <LayoutTextSidebarReverse className="me-3" customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Task Type',
-        to: '/miscellaneous/tasktype',
+      // },
+      // {
+      //   component: CNavItem,
+      //   name: 'Task Type',
+      //   to: '/miscellaneous/tasktype',
         // icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
         // icon: <LayoutTextSidebarReverse className="me-3" customClassName="nav-icon" />,
-      },
+    //   },
 
-    ]
+    // ]
 
-  }
+  // }
 ]
 
 export default _nav
