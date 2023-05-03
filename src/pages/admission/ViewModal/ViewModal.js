@@ -62,9 +62,9 @@ const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
                 <Form.Control disabled type="text"  value={user && user.followup_id !=='' ? user.followup_id :''}/>
                 <Form.Label className="ms-1 mt-2">Reg No</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.reg_no !=='' ? user.reg_no :''}/>
-                <Form.Label className="ms-1 mt-2">First name</Form.Label>
+                <Form.Label className="ms-1 mt-2">First Name</Form.Label>
                 <Form.Control disabled type="text" value={user && user.fname !=='' ? user.fname :''} />
-                <Form.Label className="ms-1 mt-2">Last name</Form.Label>
+                <Form.Label className="ms-1 mt-2">Last Name</Form.Label>
                 <Form.Control disabled type="text" value={user && user.lname !=='' ? user.lname :''}/>
                 <Form.Label className="ms-1 mt-2">Date of birth</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.dob !=='' ? user.dob :''} />
@@ -78,7 +78,7 @@ const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
                 <Form.Control disabled type="text" value={user && user.altphone !=='' ? user.altphone :''}/>            
                 <Form.Label className="ms-1 mt-2">Qualification</Form.Label>
                 <Form.Control disabled type="text" value={user && user.qualification !=='' ? user.qualification :''}/>
-                <Form.Label className="ms-1 mt-2">Course opted</Form.Label>
+                <Form.Label className="ms-1 mt-2">Course Opted</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.course_opted !=='' ? user.course_opted :''}/>
                 <Form.Label className="ms-1 mt-2">Guardian</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.guardian !=='' ? user.guardian :''}/>
@@ -98,15 +98,15 @@ const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
                 <Form.Control disabled type="text" value={user && user.recpNo !=='' ? user.recpNo :''}/>
                 <Form.Label className="ms-1 mt-2">Amount</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.amount !=='' ? user.amount :''}/>
-                <Form.Label className="ms-1 mt-2">Org_id</Form.Label>
+                <Form.Label className="ms-1 mt-2">Org Id</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.org_id !=='' ? user.org_id :''}/> 
-                <Form.Label className="ms-1 mt-2">CreatedAt</Form.Label>
+                <Form.Label className="ms-1 mt-2">Created At</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.createdAt !=='' ? user.createdAt :''}/> 
-                <Form.Label className="ms-1 mt-2">CreatedBy</Form.Label>
+                <Form.Label className="ms-1 mt-2">Created By</Form.Label>
                 <Form.Control disabled type="text" value={user && user.createdBy !=='' ? user.createdBy :''}/> 
-                <Form.Label className="ms-1 mt-2">UpdatedAt</Form.Label>
+                <Form.Label className="ms-1 mt-2">Updated At</Form.Label>
                 <Form.Control disabled type="text" value={user && user.updatedAt !=='' ? user.updatedAt :''}/>
-                <Form.Label className="ms-1 mt-2">UpdatedBy</Form.Label>
+                <Form.Label className="ms-1 mt-2">Updated By</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.updatedBy !=='' ? user.updatedBy :''}/>
                 <Form.Label className="ms-1 mt-2">Status</Form.Label>
                 <Form.Control disabled type="text" value={user && user.status !=='' ? user.status :''}/>
