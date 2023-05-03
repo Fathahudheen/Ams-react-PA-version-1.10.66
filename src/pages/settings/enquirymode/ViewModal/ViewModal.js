@@ -64,15 +64,15 @@ const ViewModal = ({tableRenderFalse, load, viewclose, view, id }) => {
                 <Form.Label className="ms-1 mt-2">Description</Form.Label>
                 <Form.Control disabled type="text" value={user && user.description !=='' ? user.description :''} />
             
-                <Form.Label className="ms-1 mt-2">UpdatedAt</Form.Label>
+                <Form.Label className="ms-1 mt-2">Updated On</Form.Label>
                 <Form.Control disabled type="text" value={user && user.updatedAt !=='' ? user.updatedAt :''} />
-                <Form.Label className="ms-1 mt-2">CreatedAt</Form.Label>
+                <Form.Label className="ms-1 mt-2">Created On</Form.Label>
                 <Form.Control disabled type="text" value={user && user.createdAt !=='' ? user.createdAt :''} />
 
-                <Form.Label className="ms-1 mt-2">UpdatedBy</Form.Label>
-                <Form.Control disabled type="text" value={user && user.updatedAt !=='' ? user.updatedAt :''} />
-                <Form.Label className="ms-1 mt-2">CreatedBy</Form.Label>
-                <Form.Control disabled type="text" value={user && user.createdAt !=='' ? user.createdAt :''} />
+                <Form.Label className="ms-1 mt-2">Updated By</Form.Label>
+                <Form.Control disabled type="text" value={user && user.updatedBy !=='' ? user.updatedBy :''} />
+                <Form.Label className="ms-1 mt-2">Created By</Form.Label>
+                <Form.Control disabled type="text" value={user && user.createdBy !=='' ? user.createdBy :''} />
                 <Form.Label className="ms-1 mt-2">Status</Form.Label>
                 <Form.Control disabled type="text" value={user && user.status !=='' ? user.status :''} />
               </Col>
