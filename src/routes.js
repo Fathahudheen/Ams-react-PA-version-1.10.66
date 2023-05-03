@@ -20,8 +20,8 @@ const Supportype = React.lazy(() => import('./pages/settings/supporttype/Suporty
 const Duration = React.lazy(() => import('./pages/settings/duration/Duration'))
 
 //miscellaneous ie,this is not for platform admin
-const Task = React.lazy(() => import('./pages/miscellaneous/task/Task'))
-const Tasktype = React.lazy(() => import('./pages/miscellaneous/task type/Tasktype'))
+// const Task = React.lazy(() => import('./pages/miscellaneous/task/Task'))
+// const Tasktype = React.lazy(() => import('./pages/miscellaneous/task type/Tasktype'))
 
 const routes = [
   { path: '/home', name: 'Home' },
@@ -45,8 +45,8 @@ const routes = [
   { path: '/settings/duration', name: 'Duration', element: Duration },
 
 //miscellaneous ie,this is not for platform admin
-{ path: '/miscellaneous/task', name: 'Task', element:Task },
-{ path: '/miscellaneous/tasktype', name: 'Task Type', element: Tasktype },
+// { path: '/miscellaneous/task', name: 'Task', element:Task },
+// { path: '/miscellaneous/tasktype', name: 'Task Type', element: Tasktype },
 
 ]
 
