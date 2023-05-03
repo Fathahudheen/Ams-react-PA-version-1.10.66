@@ -28,7 +28,7 @@ const ViewModal = ({tableRenderFalse, load, viewclose, view, id }) => {
   const showDetail = async (details) => {
 
       try {
-        const response = await axios.get(`http://localhost:8000/mode/${details}`)
+        const response = await axios.get(`http://localhost:8000/enmode/${details}`)
         const data = response.data
         setUser(data)
       } catch (error) {

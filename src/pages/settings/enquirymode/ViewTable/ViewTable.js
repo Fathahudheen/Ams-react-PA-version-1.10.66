@@ -31,7 +31,7 @@ const ViewTable = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://localhost:8000/mode')
+      const response = await fetch('http://localhost:8000/enmode')
       const json = await response.json()
       setData(json)
       setSearchData(json)

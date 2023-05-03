@@ -27,7 +27,7 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
   const [user, setUser] = useState({})
   const showDetail = async (details) => {
     try {
-      const response = await axios.get(`http://localhost:8000/mode/${details}`)
+      const response = await axios.get(`http://localhost:8000/enmode/${details}`)
       console.log('response' + response.data.name)
       const data = response.data
       setUser(data)
@@ -60,7 +60,7 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
        
         status: status,
       }
-      const response = await axios.patch(`http://localhost:8000/mode/${_id}`, user_1)
+      const response = await axios.patch(`http://localhost:8000/enmode/${_id}`, user_1)
       if (response.status === 200) {
         toast.success('User Successfully Updated !', {
           toastId: 'success',
