@@ -92,7 +92,7 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
                     value={user.name}
                     onChange={handleChange}
                   />
-                  <Form.Label className="ms-1 mt-2">DESCRIPTION</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Description</Form.Label>
                   <Form.Control
                     type="text"
                     name="descp"

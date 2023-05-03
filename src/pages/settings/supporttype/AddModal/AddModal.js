@@ -82,14 +82,14 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
     <>
       <Modal show={show} backdrop="static" centered onHide={handleModalClose} animation={false}>
         <Modal.Header closeButton style={{ backgroundColor: '#40536e', color: 'white' }}>
-          <Modal.Title>Add User</Modal.Title>
+          <Modal.Title>Add Support Type</Modal.Title>
         </Modal.Header>
         <Container>
           <Row>
             <Col lg={12}>
               <Form onSubmit={formik.handleSubmit} action="">
-                <Modal.Body style={{ height: '310px' }} className="overflow-auto">
-                <Form.Label className="ms-1  ">NAME
+                <Modal.Body style={{ height: '220px' }} className="overflow-auto">
+                <Form.Label className="ms-1  ">Name
                   </Form.Label>
 
                   <Form.Control
@@ -108,7 +108,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   {formik.errors.name && formik.touched.name ? (
                     <p
                       style={{
-                        fontSize: "10px",
+                        fontSize: "13px",
                         color: "red",
                         marginTop: "1px",
                         marginLeft: "2%",
@@ -119,7 +119,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                     </p>
                   ) : null}
                   
-                  <Form.Label className="ms-1 mt-2">DESCRIPTION</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Description</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -142,33 +142,6 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                       className="form-error"
                     >
                       {formik.errors.descp }
-                    </p>
-                  ) : null}
-                  
-              
-                  <Form.Label className="ms-1 mt-2">Password</Form.Label>
-                  <Form.Control
-                    required
-                    type="password"
-                    placeholder=""
-                    defaultValue=""
-                    name="password"
-                    autoComplete="off"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  {formik.errors.password && formik.touched.password ? (
-                    <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
-                      className="form-error"
-                    >
-                      {formik.errors.password}
                     </p>
                   ) : null}
                 </Modal.Body>
