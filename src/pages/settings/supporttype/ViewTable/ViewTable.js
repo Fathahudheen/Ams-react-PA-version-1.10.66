@@ -138,6 +138,11 @@ const ViewTable = () => {
   // ...............Table...................//
   const columns = [
     {
+    name: 'ID',
+    selector: '_id',
+    sortable: true,
+  },
+    {
       name: 'NAME',
       selector: 'name',
       sortable: true,
