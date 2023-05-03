@@ -56,9 +56,9 @@ const ViewModal = ({ viewclose, view, id }) => {
           <Container>
             <Row>
               <Col lg={12}>
-                <Form.Label className="ms-1 mt-2">First name</Form.Label>
+                <Form.Label className="ms-1 mt-2">First Name</Form.Label>
                 <Form.Control disabled type="text" value={user.f_name} />
-                <Form.Label className="ms-1 mt-2">Last name</Form.Label>
+                <Form.Label className="ms-1 mt-2">Last Name</Form.Label>
                 <Form.Control disabled type="text" value={user.l_name} />
                 <Form.Label className="ms-1 mt-2">Email</Form.Label>
                 <Form.Control disabled type="text" value={user.email} />
