@@ -27,7 +27,7 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
   const [user, setUser] = useState({})
   const showDetail = async (details) => {
     try {
-      const response = await axios.get(`http://localhost:8000/${details}`)
+      const response = await axios.get(`http://localhost:8000/licensee/${details}`)
       console.log('response' + response.data.f_name)
       const data = response.data
       setUser(data)
