@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {
   CAvatar,
@@ -14,6 +14,11 @@ import CIcon from '@coreui/icons-react'
 
 import avatar8 from './../../assets/images/avatars/8.jpg'
 const AppHeaderDropdown = () => {
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
+ 
+
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
@@ -30,7 +35,7 @@ const AppHeaderDropdown = () => {
           Reset password
         </CDropdownItem>
         <CDropdownDivider />
-        <Link className="text-dark" to="/login" style={{ textDecoration: 'none' }}>
+        <Link className="text-dark" to="/dashboard" onClick={logout} style={{ textDecoration: 'none' }}>
           <CDropdownItem>
             <CIcon icon={cilLockLocked} className="me-2" />
             Log Out

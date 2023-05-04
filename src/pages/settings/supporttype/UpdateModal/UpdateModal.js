@@ -27,7 +27,7 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
   const [user, setUser] = useState({})
   const showDetail = async (details) => {
     try {
-      const response = await axios.get(`http://localhost:8000/source/${details}`)
+      const response = await axios.get(`http://localhost:8000/supportType/${details}`)
       console.log('response' + response.data.name)
       const data = response.data
       setUser(data)
@@ -52,15 +52,14 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
   }
 
   const updateUser = async (user) => {
-    const { _id, name, description, status } = user
+    const { _id,name,descp, status } = user
     try {
-      const user_1 = {
+      const user_support_type = {
         name: name,
-        description: description,
-       
+        descp:descp,
         status: status,
       }
-      const response = await axios.patch(`http://localhost:8000/source/${_id}`, user_1)
+      const response = await axios.patch(`http://localhost:8000/supportType/${_id}`, user_support_type)
       if (response.status === 200) {
         toast.success('User Successfully Updated !', {
           toastId: 'success',
@@ -85,7 +84,7 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
           <Container>
             <Row>
               <Col lg={12}>
-                <Form action="">
+              <Form action="">
                   <Form.Label className="ms-1">Name</Form.Label>
                   <Form.Control
                     type="text"
@@ -96,11 +95,11 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue }) => {
                   <Form.Label className="ms-1 mt-2">Description</Form.Label>
                   <Form.Control
                     type="text"
-                    name="description"
-                    value={user.description}
+                    name="descp"
+                    value={user.descp}
                     onChange={handleChange}
                   />
-                  
+            
                   <Form.Label className="ms-1 mt-2">Status</Form.Label>
                   <Form.Select
                     aria-label="Default select example"

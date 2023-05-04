@@ -138,6 +138,11 @@ const ViewTable = () => {
   // ...............Table...................//
   const columns = [
     {
+      name: 'ID',
+      selector: '_id',
+      sortable: true,
+    },
+    {
       name: 'SUPPORT TYPE',
       selector: 'support_type',
       sortable: true,
@@ -149,23 +154,6 @@ const ViewTable = () => {
       sortable: true,
       
     },
-    // {
-    //   name: 'ENQUIRY FROM',
-    //   selector: 'enq_from',
-    //   sortable: true,
-    // },
-    // {      
-    //   name: 'ENQUIRY To',
-    //   selector: 'enq_to',
-    //   sortable: true,
-
-    // },
-    // {      
-    //   name: 'DESCRIPTION',
-    //   selector: 'descp',
-    //   sortable: true,
-
-    // },
     {
       name: 'EMAIL',
       selector: 'email',
@@ -176,11 +164,11 @@ const ViewTable = () => {
       selector: 'mobile',
       sortable: true,
     },
-    {
-      name: 'REMARKS',
-      selector: 'remarks',
-      sortable: true,
-    },
+    // {
+    //   name: 'REMARKS',
+    //   selector: 'remarks',
+    //   sortable: true,
+    // },
     {
       name: 'STATUS',
       selector: 'status',

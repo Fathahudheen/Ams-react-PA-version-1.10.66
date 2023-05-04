@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 // import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
@@ -23,7 +23,12 @@ import { logo } from 'src/assets/brand/logo'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
+  // const [data, setData] = useState(null);
 
+  const myValue = localStorage.getItem('token',);
+  
+  const token = JSON.parse(myValue);
+  // console.log(token.f_name+"hmfjhg");
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
@@ -39,7 +44,7 @@ const AppHeader = () => {
         <CHeaderNav className="me-auto"></CHeaderNav>
         <CHeaderNav>
           <CNavItem>
-            <CNavLink className="me-2">John &nbsp;Admin</CNavLink>
+            <CNavLink className="me-2">{token  ?token.f_name +' '+token.l_name:'' }</CNavLink>
           </CNavItem>
           <CNavItem>
             <CNavLink>

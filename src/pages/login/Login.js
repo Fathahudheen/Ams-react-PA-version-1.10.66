@@ -1,11 +1,49 @@
-import React from 'react'
+import {React,useEffect,useId,useState} from 'react'
 // import '/home/fathau/AMS Git versions/hizana/Ams-react-version-0.1/src/Index.css';
 import { BsPersonFill, BsLockFill } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 import { Container, Col, Row, InputGroup, Form, Button } from 'react-bootstrap'
 
 function Loginn() {
+const [email, setEmail] = useState()
+    //console.log(email)
+    const [password, setPassword] = useState()
+    const [error, setError] = useState()
+    
+    const navigate = useNavigate ();
+
+    async function loginUser(e){
+      e.preventDefault()
+  
+       const response = await fetch('http://localhost:8000/login',{
+        method:'POST',
+          headers:{
+            'Content-Type':'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+       
+        })   
+        const data = await response.json()
+        // console.log(data)
+        if(data.user && data.user.role_opt == "Admin"){
+        
+          localStorage.setItem('token', JSON.stringify(data.user))
+          alert("login successful")
+          navigate('/dashboard')
+
+        }else{
+          setError('Your email is not verified')
+        }
+        console.log(data)
+    }
+
+    
+  
+
   return (
     <>
       <Container fluid className="main-bg bg">
@@ -20,21 +58,24 @@ function Loginn() {
               </div>
 
               <div className="text-center">
-                <Form className="p-1">
+                <Form className="p-1" onSubmit={loginUser}>
                   <InputGroup className="mt-1 " style={{ width: '100%', height: '45px' }}>
                     <span className="input-group-text bg-light">
                       <BsPersonFill style={{ color: '#213b50' }} />
                     </span>
-                    <Form.Control type="text" value="John" placeholder="Username" />
+                    <Form.Control type="text" value={email} placeholder="email"  onChange={(e)=>setEmail(e.target.value)} />
                   </InputGroup>
 
                   <InputGroup className="mt-3" style={{ width: '100%', height: '45px' }}>
                     <span className="input-group-text bg-light">
                       <BsLockFill style={{ color: '#213b50' }} />
                     </span>
-                    <Form.Control type="password" value="**********" placeholder="Password" />
+                    
+                    <Form.Control type="password" value={password} placeholder="Password"  onChange={(e)=>setPassword(e.target.value)} />
+                    
                   </InputGroup>
-
+                  <p>{error == "" ? '' : error}</p>
+                
                   <div className="my-2">
                     <a href="" className="text-white">
                       Forgot password?
@@ -42,8 +83,9 @@ function Loginn() {
                   </div>
 
                   <Row className="justify-content-center">
-                    <Link to="/dashboard">
+                    {/* <Link to="/dashboard"> */}
                       <Button
+                       type='submit'
                         className="fw-bold "
                         style={{
                           width: '50%',
@@ -55,7 +97,7 @@ function Loginn() {
                       >
                         LOGIN
                       </Button>
-                    </Link>
+                    {/* </Link> */}
                   </Row>
                 </Form>
               </div>
