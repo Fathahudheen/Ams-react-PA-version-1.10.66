@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Modal, Button, Container, Row, Col, Form } from 'react-bootstrap'
-const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
+const ViewModal = ({ viewclose, view, id }) => {
   // ..................Modal Controlls......................//
 
   const [show, setShow] = useState(view)
@@ -24,11 +24,11 @@ const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
 
   const [user, setUser] = useState({})
   const showDetail = async (details) => {
-    
+    console.log('hai' + details)
     try {
       const response = await axios.get(`http://localhost:8000/std_profile/${details}`)
       const data = response.data
-     
+      console.log('response' + response.data.f_name)
       setUser(data)
     } catch (error) {
       console.error(error)
@@ -36,7 +36,7 @@ const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
   }
   useEffect(() => {
     showDetail(details)
-  }, [details,load])
+  }, [details])
 
   //.................fetch one data ends....................//
   return (
@@ -56,7 +56,7 @@ const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
           <Container>
             <Row>
               <Col lg={12}>
-                <Form.Label className="ms-1 mt-2">Enq Id</Form.Label>
+              <Form.Label className="ms-1 mt-2">Enq Id</Form.Label>
                 <Form.Control disabled type="text" value={user && user.enq_id !=='' ? user.enq_id :''} /> 
                 <Form.Label className="ms-1 mt-2">Followup Id</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.followup_id !=='' ? user.followup_id :''}/>
@@ -72,15 +72,15 @@ const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
                 <Form.Control disabled type="text"  value={user && user.gender !=='' ? user.gender :''}/>
                 <Form.Label className="ms-1 mt-2">Email</Form.Label>
                 <Form.Control disabled type="text" value={user && user.email !=='' ? user.email :''}/>
-                <Form.Label className="ms-1 mt-2">Mobile</Form.Label>
+                <Form.Label className="ms-1 mt-2">Phone</Form.Label>
                 <Form.Control disabled type="text" value={user && user.mobile !=='' ? user.mobile :''}/>    
-                <Form.Label className="ms-1 mt-2">Alt Mobile</Form.Label>
+                <Form.Label className="ms-1 mt-2">Alt Phone</Form.Label>
                 <Form.Control disabled type="text" value={user && user.altphone !=='' ? user.altphone :''}/>            
                 <Form.Label className="ms-1 mt-2">Qualification</Form.Label>
                 <Form.Control disabled type="text" value={user && user.qualification !=='' ? user.qualification :''}/>
-                <Form.Label className="ms-1 mt-2">Course Opted</Form.Label>
-                <Form.Control disabled type="text"  value={user && user.course_opted !=='' ? user.course_opted :''}/>
-                <Form.Label className="ms-1 mt-2">Guardian</Form.Label>
+                <Form.Label className="ms-1 mt-2">Course Selected</Form.Label>
+                <Form.Control disabled type="text"  value={user && user.course_opted !=='' ? user.course_opted :''}/>              
+                <Form.Label className="ms-1 mt-2">Guardian Name</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.guardian !=='' ? user.guardian :''}/>
                 <Form.Label className="ms-1 mt-2">Relationship</Form.Label>
                 <Form.Control disabled type="text" value={user && user.relationship !=='' ? user.relationship :''}/>
@@ -94,10 +94,10 @@ const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
                 <Form.Control disabled type="text"  value={user && user.district !=='' ? user.district :''}/>
                 <Form.Label className="ms-1 mt-2">State</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.state !=='' ? user.state :''}/>
-                <Form.Label className="ms-1 mt-2">Receipt No</Form.Label>
-                <Form.Control disabled type="text" value={user && user.recpNo !=='' ? user.recpNo :''}/>
+                {/* <Form.Label className="ms-1 mt-2">Receipt No</Form.Label> */}
+                {/* <Form.Control disabled type="text" value={user && user.recpNo !=='' ? user.recpNo :''}/>
                 <Form.Label className="ms-1 mt-2">Amount</Form.Label>
-                <Form.Control disabled type="text"  value={user && user.amount !=='' ? user.amount :''}/>
+                <Form.Control disabled type="text"  value={user && user.amount !=='' ? user.amount :''}/> */}
                 <Form.Label className="ms-1 mt-2">Org Id</Form.Label>
                 <Form.Control disabled type="text"  value={user && user.org_id !=='' ? user.org_id :''}/> 
                 <Form.Label className="ms-1 mt-2">Created At</Form.Label>
@@ -115,10 +115,7 @@ const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-        <Button className='text-white' variant="danger" onClick={()=>{
-            handleModalClose()
-            tableRenderFalse()
-          }}>
+          <Button className='text-white' variant="danger" onClick={handleModalClose}>
             Close
           </Button>
         </Modal.Footer>
