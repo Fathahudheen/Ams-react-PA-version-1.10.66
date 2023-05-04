@@ -145,18 +145,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.reg_no && formik.touched.reg_no ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.reg_no}
                     </p>
                   ) : null}
-                  <Form.Label className="ms-1 ">First Name</Form.Label>
+                  <Form.Label className="ms-1 mt-2">First Name</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -170,18 +170,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.firstname && formik.touched.firstname ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.firstname}
                     </p>
                   ) : null}
-                  <Form.Label className="ms-1 mt-1">Last Name</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Last Name</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -191,7 +191,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                     value={formik.values.lastname}
                     onChange={formik.handleChange}
                   />
-                  <Form.Label className="ms-1 mt-1">Phone</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Phone</Form.Label>
                   <Form.Control
                     required
                     type="number"
@@ -205,20 +205,20 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.mobile_no && formik.touched.mobile_no ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.mobile_no}
                     </p>
                   ) : null}
-                  <Form.Label className="ms-1 mt-1">Alt Phone</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Alternative Phone</Form.Label>
                   <Form.Control
-                    required
+                    
                     type="number"
                     placeholder=""
                     defaultValue=""
@@ -228,20 +228,20 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.errors.altphone && formik.touched.altphone ? (
+                  {/* {formik.errors.altphone && formik.touched.altphone ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.altphone}
                     </p>
-                  ) : null}
-                  <Form.Label className="ms-1 mt-1">Email</Form.Label>
+                  ) : null} */}
+                  <Form.Label className="ms-1 mt-2">Email</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -255,19 +255,19 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.email && formik.touched.email ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.email}
                     </p>
                   ) : null}
                                   
-                  <Form.Label className="ms-1 mt-1">Date of birth</Form.Label>
+                  <Form.Label className="ms-1 mt-2">Date of birth</Form.Label>
                   <Form.Control
                     required
                     type="date"
@@ -281,20 +281,23 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.dob && formik.touched.dob ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.dob}
                     </p>
                   ) : null}
-                   <Form.Label className="ms-1 mt-1">Gender</Form.Label>
+                  
+                   <Form.Label className="ms-1 mt-2">Gender</Form.Label>
+                   
                   <div className="gender d-flex">
                <div className="custom-control m-1 ">
+               
                  <input
                     id="male"
                     type="radio"
@@ -303,8 +306,9 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                     onChange={formik.handleChange}
                     defaultChecked={formik.values.gender=== "male"}
                   />
+                  
                   <label
-                     className="custom-control-label"
+                     className="custom-control-label m-1"
                      htmlFor="male"
                    >
                      Male
@@ -320,16 +324,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                     defaultChecked={formik.values.gender=== "female"}
                   />
                  <label
-                   className="custom-control-label"
+                   className="custom-control-label m-1"
                    htmlFor="female"
                   >
                     Female
                  </label>
+                 
                  </div>
                  </div>
+                 
+ 
 
-
-                       <Form.Label className="ms-1 mt-1">Qualification</Form.Label>
+                       <Form.Label className="ms-1 mt-2">Qualification</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -343,18 +349,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.qualification && formik.touched.qualification ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.qualification}
                     </p>
                   ) : null}
-                      <Form.Label className="ms-1 mt-1">Course Selected</Form.Label>                     
+                      <Form.Label className="ms-1 mt-2">Course Selected</Form.Label>                     
                    <Form.Control
                     required
                     type="text"
@@ -368,18 +374,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.course_opted && formik.touched.course_opted ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.course_opted}
                     </p>
                   ) : null} 
-                      <Form.Label className="ms-1 mt-1">Guardian Name</Form.Label>
+                      <Form.Label className="ms-1 mt-2">Guardian Name</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -393,18 +399,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.guardian && formik.touched.guardian ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.guardian}
                     </p>
                   ) : null}
-                          <Form.Label className="ms-1 mt-1">Relationship</Form.Label>
+                          <Form.Label className="ms-1 mt-2">Relationship</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -418,18 +424,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.relationship && formik.touched.relationship ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.relationship}
                     </p>
                   ) : null}
-                          <Form.Label className="ms-1 mt-1">Address Line1</Form.Label>
+                          <Form.Label className="ms-1 mt-2">Address Line1</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -443,20 +449,20 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.addline1 && formik.touched.addline1 ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.addline1}
                     </p>
                   ) : null}
-                            <Form.Label className="ms-1 mt-1">Address Line2</Form.Label>
+                            <Form.Label className="ms-1 mt-2">Address Line2</Form.Label>
                   <Form.Control
-                    required
+                   
                     type="text"
                     placeholder=""
                     defaultValue=""
@@ -468,18 +474,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.addline2 && formik.touched.addline2 ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.addline2}
                     </p>
                   ) : null}
-                   <Form.Label className="ms-1 mt-1">Pin Code</Form.Label>
+                   <Form.Label className="ms-1 mt-2">Pin Code</Form.Label>
                   <Form.Control
                     required
                     type="number"
@@ -493,18 +499,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.pincode && formik.touched.pincode ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "1px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.pincode}
                     </p>
                   ) : null}
-                   <Form.Label className="ms-1 mt-1">District</Form.Label>
+                   <Form.Label className="ms-1 mt-2">District</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -518,18 +524,18 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.district && formik.touched.district ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: "px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.district}
                     </p>
                   ) : null}
-                     <Form.Label className="ms-1 mt-1">State</Form.Label>
+                     <Form.Label className="ms-1 mt-2">State</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -543,12 +549,12 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   />
                   {formik.errors.state && formik.touched.state ? (
                     <p
-                      style={{
-                        fontSize: "10px",
-                        color: "red",
-                        marginTop: "1px",
-                        marginLeft: "2%",
-                      }}
+                      // style={{
+                      //   fontSize: "10px",
+                      //   color: "red",
+                      //   marginTop: ".5px",
+                      //   marginLeft: "2%",
+                      // }}
                       className="form-error"
                     >
                       {formik.errors.state}
