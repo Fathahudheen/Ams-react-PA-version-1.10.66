@@ -74,7 +74,7 @@ const ViewModal = ({ viewclose, view, id }) => {
                 <Form.Control disabled type="text" value={user && user.email !=='' ? user.email :''}/>
                 <Form.Label className="ms-1 mt-2">Phone</Form.Label>
                 <Form.Control disabled type="text" value={user && user.mobile !=='' ? user.mobile :''}/>    
-                <Form.Label className="ms-1 mt-2">Alt Phone</Form.Label>
+                <Form.Label className="ms-1 mt-2">Alternative Phone</Form.Label>
                 <Form.Control disabled type="text" value={user && user.altphone !=='' ? user.altphone :''}/>            
                 <Form.Label className="ms-1 mt-2">Qualification</Form.Label>
                 <Form.Control disabled type="text" value={user && user.qualification !=='' ? user.qualification :''}/>
