@@ -1,8 +1,13 @@
 import React from 'react'
+import ViewTable from './ViewTable/ViewTable'
+// import 'Index.css'
+
 
 const Coursetrack = () => {
   return (
-    <div><h1>Course Track</h1></div>
+    <>
+    <ViewTable/>
+    </>
   )
 }
 
