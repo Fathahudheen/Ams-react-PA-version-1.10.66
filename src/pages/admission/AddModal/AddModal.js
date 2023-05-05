@@ -138,7 +138,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                     placeholder=""
                     defaultValue=""
                     name="reg_no"
-                    autoComplete="off"
+                    autoComplete="off"                                  
                     value={formik.values.reg_no}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
