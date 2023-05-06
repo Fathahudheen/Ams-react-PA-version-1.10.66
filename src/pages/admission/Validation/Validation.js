@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 export const ValidSchema = Yup.object({
-  reg_no: Yup.string().required("Please enter phone register number*"),
+  reg_no: Yup.string().required("Please enter register number*"),
   firstname: Yup.string().min(3).max(30).required("Please enter first Name*"),
   lastname: Yup.string().max(30).required("Please enter last Name*"),
   email: Yup.string().email().required("Please enter email*"),

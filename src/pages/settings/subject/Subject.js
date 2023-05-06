@@ -1,8 +1,15 @@
+
+
 import React from 'react'
+import ViewTable from './ViewTable/ViewTable'
+// import 'Index.css'
+
 
 const Subject = () => {
   return (
-    <div><h1>Subject</h1></div>
+    <>
+    <ViewTable/>
+    </>
   )
 }
 

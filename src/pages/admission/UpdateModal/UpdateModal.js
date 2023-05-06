@@ -133,7 +133,7 @@ const UpdateModal = ({ updateclose, update, id , tableRenderTrue }) => {
                     value={user.mobile}
                     onChange={handleChange}
                   />
-                    <Form.Label className="ms-1 mt-2">Alt Phone</Form.Label>
+                    <Form.Label className="ms-1 mt-2">Alternative Phone</Form.Label>
                   <Form.Control
                     type="text"
                     name="mobile"

@@ -1,8 +1,15 @@
+
+
 import React from 'react'
+import ViewTable from './ViewTable/ViewTable'
+// import 'Index.css'
+
 
 const Coursecategory = () => {
   return (
-    <div><h1>Course Category</h1></div>
+    <>
+    <ViewTable/>
+    </>
   )
 }
 
