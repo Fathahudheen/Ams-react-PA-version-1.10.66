@@ -21,7 +21,9 @@ import {
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
 import CIcon from '@coreui/icons-react'
-import {Badge} from 'react-bootstrap'
+import {Container, Row, Col, Badge, Card, Form, Button } from 'react-bootstrap'
+import DataTable from 'react-data-table-component'
+import { GoEye, GoPlus } from 'react-icons/go'
 import {
   cibCcAmex,
   cibCcApplePay,
@@ -59,155 +61,68 @@ const Dashboard = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://localhost:8000/licensee')
+      const response = await fetch('http://localhost:8000/licensee/licensee')
       const json = await response.json()
       setData(json)
     }
     fetchData()
   }, [])
-  // const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+  
 
-  // const progressExample = [
-  //   { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
-  //   { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
-  //   { title: 'Pageviews', value: '78.706 Views', percent: 60, color: 'warning' },
-  //   { title: 'New Users', value: '22.123 Users', percent: 80, color: 'danger' },
-  //   { title: 'Bounce Rate', value: 'Average Rate', percent: 40.15, color: 'primary' },
-  // ]
 
-  // const progressGroupExample1 = [
-  //   { title: 'Monday', value1: 34, value2: 78 },
-  //   { title: 'Tuesday', value1: 56, value2: 94 },
-  //   { title: 'Wednesday', value1: 12, value2: 67 },
-  //   { title: 'Thursday', value1: 43, value2: 91 },
-  //   { title: 'Friday', value1: 22, value2: 73 },
-  //   { title: 'Saturday', value1: 53, value2: 82 },
-  //   { title: 'Sunday', value1: 9, value2: 69 },
-  // ]
 
-  // const progressGroupExample2 = [
-  //   { title: 'Male', icon: cilUser, value: 53 },
-  //   { title: 'Female', icon: cilUserFemale, value: 43 },
-  // ]
 
-  // const progressGroupExample3 = [
-  //   { title: 'Organic Search', icon: cibGoogle, percent: 56, value: '191,235' },
-  //   { title: 'Facebook', icon: cibFacebook, percent: 15, value: '51,223' },
-  //   { title: 'Twitter', icon: cibTwitter, percent: 11, value: '37,564' },
-  //   { title: 'LinkedIn', icon: cibLinkedin, percent: 8, value: '27,319' },
-  // ]
 
-  // const tableExample = [
-  //   {
-  //     avatar: { src: avatar1, status: 'success' },
-  //     user: {
-  //       name: 'Yiorgos Avraamu',
-  //       new: true,
-  //       registered: 'Jan 1, 2021',
-  //       place: 'Kozhikode',
-  //       mobile:"6238115451",
-  //       status:"Active",
-  //     },
-  //     country: { name: 'USA', flag: cifUs },
-  //     usage: {
-  //       value: 50,
-  //       period: 'Jun 11, 2021 - Jul 10, 2021',
-  //       color: 'success',
-  //     },
-  //     status:{activ:'Active'},
-  //     payment: { name: 'Mastercard', icon: cibCcMastercard },
-  //     activity: '10 sec ago',
-  //   },
-  //   {
-  //     avatar: { src: avatar2, status: 'danger' },
-  //     user: {
-  //       name: 'Avram Tarasios',
-  //       new: false,
-  //       registered: 'Jan 1, 2021',
-  //       place: 'Malappuram',
-  //       mobile:"9878115451",
-  //       status:"Active",
-  //     },
-  //     country: { name: 'Brazil', flag: cifBr },
-  //     usage: {
-  //       value: 22,
-  //       period: 'Jun 11, 2021 - Jul 10, 2021',
-  //       color: 'info',
-  //     },
-  //     payment: { name: 'Visa', icon: cibCcVisa },
-  //     activity: '5 minutes ago',
-  //   },
-  //   {
-  //     avatar: { src: avatar3, status: 'warning' },
-  //     user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2021',place: 'kannur', mobile:"9358115489",status:"Inactive",},
 
-  //     country: { name: 'India', flag: cifIn },
-  //     usage: {
-  //       value: 74,
-  //       period: 'Jun 11, 2021 - Jul 10, 2021',
-  //       color: 'warning',
-  //       place: 'Perambra',
-  //       mobile:"8538115452"
-  //     },
-  //     payment: { name: 'Stripe', icon: cibCcStripe },
-  //     activity: '1 hour ago',
-  //   },
-  //   {
-  //     avatar: { src: avatar4, status: 'secondary' },
-  //     user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2021',place: 'Kottakkal',mobile:"7238115456",status:"Active", },
-  //     country: { name: 'France', flag: cifFr },
-  //     usage: {
-  //       value: 98,
-  //       period: 'Jun 11, 2021 - Jul 10, 2021',
-  //       color: 'danger',
-        
-  //     },
-  //     payment: { name: 'PayPal', icon: cibCcPaypal },
-  //     activity: 'Last month',
-  //     status:{active:'Active'}
-  //   },
-  //   {
-  //     avatar: { src: avatar5, status: 'success' },
-  //     user: {
-  //       name: 'Agapetus Tadeáš',
-  //       new: true,
-  //       registered: 'Jan 1, 2021',
-  //       place: 'Valanchery',
-  //       mobile:"9528115485",
-  //       status:"Active",
-  //     },
-  //     country: { name: 'Spain', flag: cifEs },
-  //     usage: {
-  //       value: 22,
-  //       period: 'Jun 11, 2021 - Jul 10, 2021',
-  //       color: 'primary',
-        
-  //     },
-  //     payment: { name: 'Google Wallet', icon: cibCcApplePay },
-  //     activity: 'Last week',
-  //   },
-  //   {
-  //     avatar: { src: avatar6, status: 'danger' },
-  //     user: {
-  //       name: 'Friderik Dávid',
-  //       new: true,
-  //       registered: 'Jan 1, 2021',
-  //       place: 'Perinthalmanna',
-  //       mobile:"9538115445",
-  //       status:"Inactive",
-  //     },
-  //     country: { name: 'Poland', flag: cifPl },
-  //     usage: {
-  //       value: 43,
-  //       period: 'Jun 11, 2021 - Jul 10, 2021',
-  //       color: 'success',
-        
-  //     },
-  //     payment: { name: 'Amex', icon: cibCcAmex },
-  //     activity: 'Last week',
-  //   },
-  // ]
 
+
+  // ...............Table...................//
+  const columns = [
+   
+    {
+      name: 'NAME',
+      cell: (row) => (
+        <div>
+          {row.f_name} {row.l_name}
+        </div>
+      ),
+      sortable: true,
+    },
+    {
+      name: 'EMAIL',
+      selector: 'email',
+      sortable: true,
+    },
+    {
+      name: 'PHONE',
+      selector: 'mobile_no',
+      sortable: true,
+    },
+
+    {
+      name: 'STATUS',
+      selector: 'status',
+      cell: (row) => (
+        <div>
+          <Badge bg={`${row.status === 'Active' ? 'success' : 'danger'}`}>{row.status}</Badge>
+        </div>
+      ),
+      sortable: true,
+    },
+   
+    {
+      name: 'JOIN DATE',
+      selector: 'createdAt',
+      sortable: true,
+    },
+   
+           
+          
+  ]
+
+  const paginationRowsPerPageOptions = [7, 14, 25]
+
+  // ...............Table Ends...................//
   return (
     <>
       <WidgetsDropdown />
@@ -339,173 +254,43 @@ const Dashboard = () => {
       </CCard> */}
 
       {/* <WidgetsBrand withCharts /> */}
-
-      <CRow>
-        <CCol xs>
-          <CCard className="mb-4">
-            <CCardHeader>Licensee</CCardHeader>
-            <CCardBody>
-
-
-
-
+    
+      <Container fluid>
+        <Row>
+          <Col className="p-1" lg={12}>
+            <Card>
+              <Card.Body className="pt-4">
+                <div style={{ width: '100%' }} className="d-flex ">
+      
 
 
 
 
-              {/* <CRow>
-                <CCol xs={12} md={6} xl={6}>
-                  <CRow>
-                    <CCol sm={6}>
-                      <div className="border-start border-start-4 border-start-info py-1 px-3">
-                        <div className="text-medium-emphasis small">New Clients</div>
-                        <div className="fs-5 fw-semibold">9,123</div>
-                      </div>
-                    </CCol>
-                    <CCol sm={6}>
-                      <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small">Recurring Clients</div>
-                        <div className="fs-5 fw-semibold">22,643</div>
-                      </div>
-                    </CCol>
-                  </CRow>
 
-                  <hr className="mt-0" />
-                  {progressGroupExample1.map((item, index) => (
-                    <div className="progress-group mb-4" key={index}>
-                      <div className="progress-group-prepend">
-                        <span className="text-medium-emphasis small">{item.title}</span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <CProgress thin color="info" value={item.value1} />
-                        <CProgress thin color="danger" value={item.value2} />
-                      </div>
-                    </div>
-                  ))}
-                </CCol>
+               </div>
 
-                <CCol xs={12} md={6} xl={6}>
-                  <CRow>
-                    <CCol sm={6}>
-                      <div className="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small">Pageviews</div>
-                        <div className="fs-5 fw-semibold">78,623</div>
-                      </div>
-                    </CCol>
-                    <CCol sm={6}>
-                      <div className="border-start border-start-4 border-start-success py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small">Organic</div>
-                        <div className="fs-5 fw-semibold">49,123</div>
-                      </div>
-                    </CCol>
-                  </CRow>
 
-                  <hr className="mt-0" />
+                <DataTable
+                  columns={columns}
+                  data={data}
+                  paginationRowsPerPageOptions={paginationRowsPerPageOptions}
+                  pagination
+                  paginationPerPage={7}
+                  fixedHeader
+                  // selectableRows
+                  selectableRowsHighlight
+                  fixedHeaderScrollHeight="400px"
+                  highlightOnHover
+                />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
 
-                  {progressGroupExample2.map((item, index) => (
-                    <div className="progress-group mb-4" key={index}>
-                      <div className="progress-group-header">
-                        <CIcon className="me-2" icon={item.icon} size="lg" />
-                        <span>{item.title}</span>
-                        <span className="ms-auto fw-semibold">{item.value}%</span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <CProgress thin color="warning" value={item.value} />
-                      </div>
-                    </div>
-                  ))}
-
-                  <div className="mb-5"></div>
-
-                  {progressGroupExample3.map((item, index) => (
-                    <div className="progress-group" key={index}>
-                      <div className="progress-group-header">
-                        <CIcon className="me-2" icon={item.icon} size="lg" />
-                        <span>{item.title}</span>
-                        <span className="ms-auto fw-semibold">
-                          {item.value}{' '}
-                          <span className="text-medium-emphasis small">({item.percent}%)</span>
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <CProgress thin color="success" value={item.percent} />
-                      </div>
-                    </div>
-                  ))}
-                </CCol>
-              </CRow>
-
-              <br /> */}
-
-              <CTable align="middle" className="mb-0 border" hover responsive>
-                <CTableHead color="light">
-                  <CTableRow>
-                    <CTableHeaderCell className="text-center">
-                      <CIcon icon={cilPeople} />
-                    </CTableHeaderCell>
-                    <CTableHeaderCell>User</CTableHeaderCell>
-                    <CTableHeaderCell>Email</CTableHeaderCell>
-                    <CTableHeaderCell>Mobile</CTableHeaderCell>
-                    <CTableHeaderCell className="">Status</CTableHeaderCell>
-                    <CTableHeaderCell className="">Join Date</CTableHeaderCell>
-
-                    
-                  </CTableRow>
-                </CTableHead>
-                <CTableBody>
-                  {data.map((item, index) => (
-                    <CTableRow v-for="item in tableItems" key={index}>
-                      <CTableDataCell className="text-center">
-                        <CAvatar size="md" src=''   />
-                      </CTableDataCell>
-                      <CTableDataCell>
-                        <div>{item.f_name+' '+item.l_name}</div>
-                        {/* <div className="small text-medium-emphasis">
-                          <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
-                          {item.user.registered}
-                        </div> */}
-                      </CTableDataCell>
-
-                      <CTableDataCell className="">
-                        {/* <CIcon size="xl" icon={item.payment.icon} /> */}
-                        <div>{item.email}</div>
-
-                      </CTableDataCell>
-                      
-                      <CTableDataCell>
-                      <div>{item.mobile_no}</div>
-
-                      
-                        {/* <div className="clearfix">
-                          <div className="float-start">
-                            <strong>{item.usage.value}%</strong>
-                          </div>
-                          <div className="float-end">
-                            <small className="text-medium-emphasis">{item.usage.period}</small>
-                          </div>
-                        </div> */}
-                        {/* <CProgress thin color={item.usage.color} value={item.usage.value} /> */}
-                      </CTableDataCell>
-                      <CTableDataCell className="">
-                        {/* <CIcon size="xl" icon={item.payment.icon} /> */}
-                        <div>
-                        <Badge bg={`${item.status === 'Active' ? 'success' : 'danger'}`}>{item.status}</Badge>
-                      </div>
-                      </CTableDataCell>
-                      <CTableDataCell className="">
-                        {/* <CIcon size="xl" icon={item.payment.icon} /> */}
-                        <div>{item.createdAt}</div>
-
-                      </CTableDataCell>
-                    </CTableRow>
-                   ))} 
-                </CTableBody>
-              </CTable>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
+      
     </>
+  
   )
 }
 
