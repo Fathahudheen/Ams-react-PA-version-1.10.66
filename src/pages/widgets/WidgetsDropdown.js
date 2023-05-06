@@ -66,7 +66,7 @@ const WidgetsDropdown = () => {
           color="primary"
           value={
             <>
-              {license.length}
+              {license}
             </>
           }
           title="Licensee"
