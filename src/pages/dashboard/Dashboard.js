@@ -59,7 +59,7 @@ const Dashboard = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://localhost:8000/licensee')
+      const response = await fetch('http://localhost:8000/licensee/licensee')
       const json = await response.json()
       setData(json)
     }
