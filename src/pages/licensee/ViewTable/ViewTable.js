@@ -31,7 +31,7 @@ const ViewTable = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://localhost:8000/licensee')
+      const response = await fetch('http://localhost:8000/licensee/licensee')
       const json = await response.json()
       setData(json)
       setSearchData(json)
@@ -184,7 +184,7 @@ const ViewTable = () => {
     {
       name: 'ACTIONS',
       cell: (row) => (
-        <div className="d-flex align-items-center justify-content-center">
+        <div style={{width: '118px'}} className="d-flex align-items-center justify-content-center ">
           <Button
             key={`view-${row._id}`}
             className="icon-btn"
