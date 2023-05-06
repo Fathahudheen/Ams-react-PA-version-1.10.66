@@ -20,7 +20,7 @@ const WidgetsDropdown = () => {
     const [license, setlicense] = useState([])
     useEffect(() => {
       async function fetchData() {
-        const response = await fetch('http://localhost:8000/licensee')
+        const response = await fetch('http://localhost:8000/licensee/licensee/count')
         const json = await response.json()
         setlicense(json)
       }
