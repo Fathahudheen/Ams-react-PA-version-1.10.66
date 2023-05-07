@@ -35,7 +35,7 @@ const AppHeaderDropdown = () => {
           Reset password
         </CDropdownItem>
         <CDropdownDivider />
-        <Link className="text-dark" to="/dashboard" onClick={logout} style={{ textDecoration: 'none' }}>
+        <Link className="text-dark" to="/login" onClick={logout} style={{ textDecoration: 'none' }}>
           <CDropdownItem>
             <CIcon icon={cilLockLocked} className="me-2" />
             Log Out
