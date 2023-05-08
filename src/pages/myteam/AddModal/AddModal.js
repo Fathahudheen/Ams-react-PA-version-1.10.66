@@ -49,10 +49,6 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
   })
   // ...........Validation Ends..........//
 
-
-
-
-
   // ...............Adding User Here.......................//
 
   const create = async ({ firstname, lastname, email, role, password, mobile_no }) => {
@@ -125,14 +121,21 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   <Form.Select
                     aria-label="Default select example"
                     name="role"
-
                     onChange={formik.handleChange}
                   >
-                    <option style={{ backgroundColor: '#40536e' }} value="" className=" text-white">
+                    {/* <option style={{ backgroundColor: '#40536e' }} value="" className=" text-white"> */}
                       {/* {user.status} */}
-                    </option>
+                    {/* </option> */}
                     <option
+                      // className={formik.values.role === 'Operator' ? 'd-none' : 'd-block'}
+                      value="Select"
+                      disabled
+                      selected
+                    > 
+                      Select
+                    </option>
 
+                    <option
                       className={formik.values.role === 'Operator' ? 'd-none' : 'd-block'}
                       value="Operator"
                     >
@@ -166,7 +169,6 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   {formik.errors.mobile_no && formik.touched.mobile_no ? (
                     <p className="form-error">{formik.errors.mobile_no}</p>
                   ) : null}
-
 
                   <Form.Label className="ms-1 mt-1">Email</Form.Label>
                   <Form.Control
