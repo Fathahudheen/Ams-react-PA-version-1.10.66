@@ -10,6 +10,8 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
 
   //................Table Render Controll.............//
 
+
+  
   const [ren, setRen] = useState(load)
   useEffect(() => {
     setRen(load)
@@ -37,8 +39,8 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
   // ...........Validation...............//
 
   const initialValues = {
-    crs_name: '',
-    crs_ctgry: '',
+   crs_name: '',
+     crs_ctgry: '',
    duration: '',
  crs_dscrp: '',
   }
@@ -49,7 +51,7 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
     initialValues: initialValues,
     validationSchema: ValidSchema,
     onSubmit: async (values, { resetForm }) => {
-      console.log(values.firstname)
+      
       try {
         create(values)
         resetForm()
@@ -62,19 +64,48 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
   })
   // ...........Validation Ends..........//
 
+  const [setup, setsetup] = useState([])
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('http://localhost:8000/course_setup')
+      const json = await response.json()
+      setsetup(json)
+      console.log(setup)
+    }
+    fetchData()
+  }, [])
+
+  const [category, setcategory] = useState([])
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('http://localhost:8000/course_ctgry')
+      const json = await response.json()
+      setcategory(json)
+      console.log(category)
+    }
+    fetchData()
+  }, [])
+
+
   // ...............Adding User Here.......................//
 
-  const create = async ({ crs_name, crs_ctgry, duration, crs_dscrp}) => {
-    if(crs_name==''&&crs_ctgry==''){
+
+  const create = async ({  crs_name,crs_dscrp,crs_ctgry,duration}) => {
+    console.log(crs_name);
+    if(crs_name==''){
       console.log('enter all detailes')
     }else{
       try {
+        console.log(crs_name);
         const user_crse = {
             crs_name: crs_name,
             crs_ctgry: crs_ctgry,
-            duration: duration,
-            crs_dscrp: crs_dscrp,
+             duration: duration,
+            crs_dscrp: crs_dscrp
         }
+
+//  console.log(u);
+
         const response = await axios.post(`http://localhost:8000/course`, user_crse)
         if (response.status === 200) {
           toast.success('User Successfully Created !', {
@@ -83,7 +114,7 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
             autoClose: 1000,
           })
         }
-        hg()
+        // hg()
       } catch (error) {
         console.log(error)
       }
@@ -103,42 +134,48 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
             <Col lg={12}>
               <Form onSubmit={formik.handleSubmit} action="">
                 <Modal.Body style={{ height: '310px' }} className="overflow-auto">
-                  <Form.Label className="ms-1 ">Course name</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder=""
-                    defaultValue=""
-                    name="crs_name"
-                    autoComplete="off"
-                    value={formik.values.crs_name}
+                 
+
+                  
+                  
+                  <Form.Label className="ms-1 mt-2">Course Name</Form.Label>
+                  <Form.Select
+                    aria-label="Default select example"
+                    name="status"
+                    //  value={formik.crs_name}
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  {formik.errors.crs_name && formik.touched.crs_name ? (
-                    <p
-                      style={{ 
-                        fontSize: '10px',
-                        color: 'red',
-                        marginTop: '1px',
-                        marginLeft: '2%',
-                      }}
-                      className="form-error"
+                  >
+                  {setup.map(crs_n =>(
+                    <option
+                      value={formik.values.crs_name=crs_n.name}
+                    
                     >
-                      {formik.errors.crs_name}
-                    </p>
-                  ) : null}
-                  <Form.Label className="ms-1 mt-1">Course category</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder=""
-                    defaultValue=""
-                    name="crs_ctgry"
-                    value={formik.values.crs_ctgry}
+                      {crs_n.name}
+                    </option>
+                  ))}
+                    
+                   
+                  </Form.Select>
+                  <Form.Label className="ms-1 mt-2">Course Category</Form.Label>
+                  <Form.Select
+                    aria-label="Default select example"
+                    name="status"
+                    //  value={formik.crs_name}
                     onChange={formik.handleChange}
-                  />
-                  <Form.Label className="ms-1 mt-1">Duration</Form.Label>
+                  >
+                  {category.map(crs_c =>(
+                    <option
+                      value={formik.values.crs_ctgry=crs_c.name}
+                    
+                    >
+                      {crs_c.name}
+                    </option>
+                  ))}
+                    
+                    </Form.Select>
+                  
+
+                   <Form.Label className="ms-1 mt-1">Course Duration</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -163,7 +200,8 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
                       {formik.errors.duration}
                     </p>
                   ) : null}
-                  <Form.Label className="ms-1 mt-1">Course description</Form.Label>
+
+                  <Form.Label className="ms-1 mt-1">Course Description</Form.Label>
                   <Form.Control
                     required
                     type="text"
@@ -205,7 +243,7 @@ const AddModal = ({ tableRenderTrue, load, addclose, add }) => {
                   <Button
                     className="text-white"
                     onClick={() => {
-                      formik.isValid ? create(formik.values) : alert(formik.errors)  
+                      formik.isValid ? true : alert(formik.errors)  
                     }}
                     type="submit"
                     variant="success ms-2"
