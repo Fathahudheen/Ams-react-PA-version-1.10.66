@@ -1,8 +1,9 @@
 import React from 'react'
+import bgimg from '../../assets/images/no_record.png'
 
 const Enrollments = () => {
   return (
-    <div><h1>Enrollments</h1></div>
+    <div className='text-center'><img src = {bgimg} /></div>
   )
 }
 
