@@ -184,7 +184,7 @@ const ViewTable = () => {
     {
       name: 'ACTIONS',
       cell: (row) => (
-        <div className="d-flex align-items-center justify-content-center">
+        <div style={{width: '118px'}}  className="d-flex align-items-center justify-content-center">
           <Button
             key={`view-${row._id}`}
             className="icon-btn"
