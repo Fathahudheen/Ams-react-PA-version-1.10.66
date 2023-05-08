@@ -60,12 +60,13 @@ const UpdateModal = ({ updateclose, update, id , tableRenderTrue }) => {
   }
 
   const updateUser = async (user) => {
-    const { _id, f_name, l_name, mobile_no, password, status } = user
+    const { _id, f_name, l_name, mobile_no,role, password, status } = user
     try {
       const user_1 = {
         f_name: f_name,
         l_name: l_name,
         mobile_no: mobile_no,
+        role_opt:role,
         password: password,
         status: status,
       }
@@ -113,6 +114,39 @@ const UpdateModal = ({ updateclose, update, id , tableRenderTrue }) => {
                     value={user.mobile_no}
                     onChange={handleChange}
                   />
+                  
+                  <Form.Label className="ms-1 mt-2">Role</Form.Label>
+                  <Form.Select
+                    aria-label="Default select example"
+                    name="role"
+                    onChange={handleChange}
+                  >
+                    <option style={{ backgroundColor: '#40536e' }} value="" className=" text-white">
+                      {user.role_opt}
+                    </option>
+                    <option
+                      className={user.role_opt === 'Operator' ? 'd-none' : 'd-block'}
+                      value="Operator"
+                    >
+                      Operator
+                    </option>
+                    <option
+                      className={user.role_opt=== 'Faculty' ? 'd-none' : 'd-block'}
+                      value="Faculty"
+                    >
+                      Faculty
+                    </option>
+                    <option
+                      className={user.role_opt === 'Accountant' ? 'd-none' : 'd-block'}
+                      value="Accountant"
+                    >
+                      Accountant
+                    </option>
+                  </Form.Select>
+
+
+
+
                   <Form.Label className="ms-1 mt-2">Password</Form.Label>
                   <Form.Control
                     type="text"

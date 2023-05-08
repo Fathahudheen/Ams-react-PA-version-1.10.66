@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Modal, Button, Container, Row, Col, Form } from 'react-bootstrap'
-const ViewModal = ({ viewclose, view, id }) => {
+const ViewModal = ({ tableRenderFalse,load,viewclose, view, id }) => {
   // ..................Modal Controlls......................//
 
   const [show, setShow] = useState(view)
@@ -77,7 +77,10 @@ const ViewModal = ({ viewclose, view, id }) => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button className='text-white' variant="danger" onClick={handleModalClose}>
+        <Button className='text-white' variant="danger" onClick={()=>{
+            handleModalClose()
+            tableRenderFalse()
+          }}>
             Close
           </Button>
         </Modal.Footer>

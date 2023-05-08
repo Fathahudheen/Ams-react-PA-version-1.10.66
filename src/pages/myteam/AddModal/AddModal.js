@@ -26,6 +26,7 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
     lastname: '',
     mobile_no: '',
     email: '',
+    role: '',
     password: '',
   }
   const handleReset = (formik) => {
@@ -48,21 +49,26 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
   })
   // ...........Validation Ends..........//
 
+
+
+
+
   // ...............Adding User Here.......................//
 
-  const create = async ({ firstname, lastname, email, password, mobile_no }) => {
+  const create = async ({ firstname, lastname, email, role, password, mobile_no }) => {
     if (firstname == '' && email == '') {
       console.log('enter all detailes')
     } else {
       try {
-        const user_lic = {
+        const user = {
           f_name: firstname,
           l_name: lastname,
           email: email,
+          role_opt: role,
           password: password,
           mobile_no: mobile_no,
         }
-        const response = await axios.post(`http://localhost:8000/myteam`, user_lic)
+        const response = await axios.post(`http://localhost:8000/myteam`, user)
         if (response.status === 200) {
           toast.success('User Successfully Created !', {
             toastId: 'success',
@@ -114,6 +120,37 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                     value={formik.values.lastname}
                     onChange={formik.handleChange}
                   />
+
+                  <Form.Label className="ms-1 mt-2">Role</Form.Label>
+                  <Form.Select
+                    aria-label="Default select example"
+                    name="role"
+
+                    onChange={formik.handleChange}
+                  >
+                    <option style={{ backgroundColor: '#40536e' }} value="" className=" text-white">
+                      {/* {user.status} */}
+                    </option>
+                    <option
+
+                      className={formik.values.role === 'Operator' ? 'd-none' : 'd-block'}
+                      value="Operator"
+                    >
+                      Operator
+                    </option>
+                    <option
+                      className={formik.values.role === 'Faculty' ? 'd-none' : 'd-block'}
+                      value="Faculty"
+                    >
+                      Faculty
+                    </option>
+                    <option
+                      className={formik.values.role === 'Accountant' ? 'd-none' : 'd-block'}
+                      value="Accountant"
+                    >
+                      Accountant
+                    </option>
+                  </Form.Select>
                   <Form.Label className="ms-1 mt-1">Phone</Form.Label>
                   <Form.Control
                     required
@@ -129,6 +166,8 @@ const AddModal = ({ tableRenderTrue, addclose, add }) => {
                   {formik.errors.mobile_no && formik.touched.mobile_no ? (
                     <p className="form-error">{formik.errors.mobile_no}</p>
                   ) : null}
+
+
                   <Form.Label className="ms-1 mt-1">Email</Form.Label>
                   <Form.Control
                     required
