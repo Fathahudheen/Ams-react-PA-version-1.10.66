@@ -112,13 +112,13 @@ const UpdateModal = ({ updateclose, update, id, tableRenderTrue, load }) => {
                     value={user.crs_ctgry}
                     onChange={handleChange}
                   />
-                  <Form.Label className="ms-1 mt-2">Phone</Form.Label>
+                  {/* <Form.Label className="ms-1 mt-2">Phone</Form.Label>
                   <Form.Control
                     type="text"
                     name="mobile_no"
                     value={user.mobile_no}
                     onChange={handleChange}
-                  />
+                  /> */}
                   <Form.Label className="ms-1 mt-2">Duration</Form.Label>
                   <Form.Control
                     type="text"
