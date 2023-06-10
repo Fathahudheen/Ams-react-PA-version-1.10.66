@@ -234,16 +234,7 @@ const ViewTable = () => {
             <Card>
               <Card.Body className="pt-4">
                 <div style={{ width: '100%' }} className="d-flex ">
-                  <Button
-                    className="mb-2 fw-600 d-flex align-items-center text-white"
-                    variant="success"
-                    onClick={() => {
-                      addModalShow()
-                      tableRenderFalse()
-                    }}
-                  >
-                    <GoPlus /> ADD
-                  </Button>
+                 
                   <input
                     className="ms-auto me-3 mb-2 ps-2 search_inp"
                     type="text"
